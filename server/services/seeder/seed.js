@@ -1,24 +1,17 @@
 import mongoose from 'mongoose';
-import seed from './seeder-function';
-
-const User = mongoose.model('User', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
-const Product = mongoose.model('Product', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
+import seed from './seed-function';
+import seedList from './seed-list';
 
 mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-.then(() => {
+.then(connected => {
   (async function() {
-    try {
-      await seed('Users', User, {name: 'Name'}, 1000)
-      await seed('Products', Product, {name: 'Product'}, 7500);
-      mongoose.disconnect();
-    } catch (err) {
-      console.log(err);
+    for (let item of seedList) {
+      await seed(item);
     }
-  })();
+    mongoose.disconnect();
+  })()
 })
-.catch(err => {
-  console.log(`\n${err.message}\n`);
-});
+.catch(err => console.log(`\n${err.message}\n`));
 
