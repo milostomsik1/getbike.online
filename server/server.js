@@ -9,7 +9,7 @@ const server = express();
 process.env.SECRET_KEY = config.secretKey;
 
 // -- Connect to MongoDB
-mongoose.connect(config.databaseUrl)
+mongoose.connect(config.databaseUrl, { useMongoClient: true })
 mongoose.Promise = global.Promise
 
 // -- Console Logging
