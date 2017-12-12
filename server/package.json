@@ -1,0 +1,27 @@
+{
+  "name": "getbike.online",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Miloš Tomšik",
+  "license": "ISC",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --exec babel-node --presets es2015,stage-2",
+    "build": "babel server.js -d dist --presets es2015,stage-2",
+    "serve": "node dist/server.js",
+    "seed": "node ./services/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "graphiql": "^0.11.10",
+    "graphql": "^0.11.7",
+    "mongoose": "^4.13.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "nodemon": "^1.12.5"
+  }
+}
