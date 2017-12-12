@@ -1,7 +1,8 @@
 {
-  "name": "getbike.online",
+  "name": "getbike.online-client",
   "version": "1.0.0",
   "private": true,
+  "author": "Miloš Tomšik",
   "dependencies": {
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",

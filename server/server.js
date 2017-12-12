@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import config from './config/db';
+import morgan from 'morgan';
 import graphqlHTTP from 'express-graphql';
+import config from './config/db';
 
 // -- Setup Express
 const server = express();
@@ -11,6 +12,9 @@ process.env.SECRET_KEY = config.secretKey;
 mongoose.connect(config.databaseUrl)
 mongoose.Promise = global.Promise
 
+// -- Console Logging
+server.use(morgan('dev'));
+
 // -- GraphQL setup
 server.use('/graphql', graphqlHTTP({
   schema: {},
@@ -19,5 +23,5 @@ server.use('/graphql', graphqlHTTP({
 
 // -- Listen to requests
 server.listen(process.env.port || config.port, () => {
-    console.log(`Listening for requests on localhost: ${config.port}`)
-  });
+  console.log(`Listening for requests on localhost:${config.port}`)
+});
