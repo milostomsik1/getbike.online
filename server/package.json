@@ -8,7 +8,8 @@
     "start": "nodemon server.js --exec babel-node --presets es2015,stage-2",
     "build": "babel server.js -d dist --presets es2015,stage-2",
     "serve": "node dist/server.js",
-    "seed": "babel-node ./services/seeder/seed.js --presets es2015,stage-2"
+    "seed": "babel-node ./services/seeder/seed.js --presets es2015,stage-2",
+    "seeder": "babel-node ./services/seeder/seeder.js --presets es2015,stage-2"
   },
   "dependencies": {
     "express": "^4.16.2",
@@ -22,6 +23,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "faker": "^4.1.0",
     "nodemon": "^1.12.5"
   }
 }

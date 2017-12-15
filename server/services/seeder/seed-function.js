@@ -4,7 +4,7 @@ export default function seed(item) {
     const DB_INSERT_QUEUE = [];
 
     while (DB_INSERT_QUEUE.length < item.amount) {
-      DB_INSERT_QUEUE.push(item.model.create(item.payload))
+      DB_INSERT_QUEUE.push(item.model.create(item.payload));
     }
 
     console.log(`\n[ Seeding ${item.name} ]`);

@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
 .then(connected => {
   (async function() {
     for (let item of seedList) {
-      await seed(item);
+      await seed(item());
     }
     mongoose.disconnect();
   })()
