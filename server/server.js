@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import graphqlHTTP from 'express-graphql';
 import config from './config/db';
+import schema from './graphql-schema'
 
 // -- Setup Express
 const server = express();
@@ -17,7 +18,7 @@ server.use(morgan('dev'));
 
 // -- GraphQL setup
 server.use('/graphql', graphqlHTTP({
-  schema: {},
+  schema: schema,
   graphiql: true
 }));
 
