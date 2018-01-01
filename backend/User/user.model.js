@@ -9,10 +9,12 @@ import {
 // -- Mongo Schema
 export const UserSchema = mongoose.model('User', new mongoose.Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
   email: {
-    type: String
+    type: String,
+    required: true
   }
 },
 { versionKey: false }));
