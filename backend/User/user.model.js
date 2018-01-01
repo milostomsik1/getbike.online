@@ -1,9 +1,25 @@
+import mongoose from 'mongoose';
 import {
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString,
+  GraphQLNonNull
 } from 'graphql';
 
-const UserType = new GraphQLObjectType({
+
+// -- Mongo Schema
+export const UserSchema = mongoose.model('User', new mongoose.Schema({
+  name: {
+    type: String
+  },
+  email: {
+    type: String
+  }
+},
+{ versionKey: false }));
+
+
+// -- GraphQL Type
+export const UserType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
     id: { type: GraphQLString },
@@ -11,5 +27,3 @@ const UserType = new GraphQLObjectType({
     email: { type: GraphQLString }
   })
 });
-
-export default UserType;
