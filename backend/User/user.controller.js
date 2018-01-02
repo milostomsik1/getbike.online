@@ -43,6 +43,7 @@ export const addUser = {
       email: args.email,
       password: args.password,
       location: args.location,
+      canCreateAds: args.canCreateAds,
       created: Date.now(),
       updated: Date.now()
     });
@@ -58,7 +59,9 @@ export const updateUser = {
     email: { type: GraphQLString },
   },
   async resolve(value, args) {
-    await UserSchema.findByIdAndUpdate(args.id, {...args})
+    const data = {...args};
+    data.updated = Date.now();
+    await UserSchema.findByIdAndUpdate(args.id, data)
     return await UserSchema.findById(args.id);
   }
 }

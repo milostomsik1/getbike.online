@@ -2,7 +2,8 @@ import {
   GraphQLObjectType,
   GraphQLInputObjectType,
   GraphQLString,
-  GraphQLNonNull
+  GraphQLNonNull,
+  GraphQLBoolean
 } from 'graphql/type';
 
 
@@ -33,6 +34,7 @@ export const UserType = new GraphQLObjectType({
     email: { type: GraphQLString },
     password: { type: GraphQLString },
     location: { type: LocationOutputType },
+    canCreateAds: { type: GraphQLBoolean },
     created: { type: GraphQLString },
     updated: { type: GraphQLString }
   }

@@ -26,10 +26,10 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
   //   ref: 'Ad'
   //   default: []
   // },
-  // canCreateAds: {
-  //   type: Boolean,
-  //   default: true
-  // },
+  canCreateAds: {
+    type: Boolean,
+    default: true
+  },
   // favorites: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Ad'

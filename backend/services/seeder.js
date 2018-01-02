@@ -1,16 +1,24 @@
 import mongoose from 'mongoose';
 import faker from 'faker';
 
-const User = mongoose.model('User', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
+// const User = mongoose.model('User', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
 const Product = mongoose.model('Product', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
-
+import { UserSchema } from '../User/user.mongoose.model';
 
 //------------------------------
 // SEED LIST
 //------------------------------
 const seedList = [
-  createSeedable(User, 200, () => {
-    return { name: faker.name.firstName() };
+  createSeedable(UserSchema, 200, () => {
+    return {
+      name: faker.name.firstName() + ' ' + faker.name.lastName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(9),
+      location: {
+        country: faker.address.country(),
+        city: faker.address.city()
+      }
+    };
   }),
   createSeedable(Product, 5000, () => {
     return { name: faker.name.firstName() };
