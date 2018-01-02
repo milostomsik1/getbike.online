@@ -2,7 +2,9 @@ import mongoose from 'mongoose';
 import {
   GraphQLString,
   GraphQLList,
-  GraphQLNonNull
+  GraphQLNonNull,
+  GraphQLID,
+  GraphQLInputObjectType
 } from 'graphql';
 import { UserType, UserSchema } from './user.model'
 
@@ -11,7 +13,7 @@ import { UserType, UserSchema } from './user.model'
 export const user = {
   type: UserType,
   args: {
-    id: { type: new GraphQLNonNull(GraphQLString) }
+    id: { type: new GraphQLNonNull(GraphQLID) }
   },
   async resolve(value, args) {
     return await UserSchema.findById(args.id);
@@ -31,12 +33,22 @@ export const addUser = {
   type: UserType,
   args: {
     name: { type: new GraphQLNonNull(GraphQLString) },
-    email: { type: new GraphQLNonNull(GraphQLString) }
+    email: { type: new GraphQLNonNull(GraphQLString) },
+    password: { type: new GraphQLNonNull(GraphQLString) },
+    location: { type: new GraphQLNonNull(new GraphQLInputObjectType({
+      name: 'UserLocation',
+      fields: {
+        country: { type: GraphQLString },
+        city: { type: GraphQLString }
+      }
+    }))},
   },
   async resolve(value, args) {
     return await UserSchema.create({
       name: args.name,
-      email: args.email
+      email: args.email,
+      password: args.password,
+      location: args.location
     });
   }
 }
@@ -45,7 +57,7 @@ export const addUser = {
 export const updateUser = {
   type: UserType,
   args: {
-    id: { type: new GraphQLNonNull(GraphQLString) },
+    id: { type: new GraphQLNonNull(GraphQLID) },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
   },
@@ -59,7 +71,7 @@ export const updateUser = {
 export const deleteUser = {
   type: UserType,
   args: {
-    id: { type: new GraphQLNonNull(GraphQLString) }
+    id: { type: new GraphQLNonNull(GraphQLID) }
   },
   async resolve(value, args) {
     return await UserSchema.findByIdAndRemove(args.id);
