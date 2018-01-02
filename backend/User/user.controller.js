@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import {
   GraphQLString,
   GraphQLList,
@@ -6,7 +5,8 @@ import {
   GraphQLID,
   GraphQLInputObjectType
 } from 'graphql';
-import { UserType, UserSchema } from './user.model'
+import { UserType, LocationInputType } from './user.graphql.model'
+import { UserSchema } from './user.mongoose.model'
 
 
 // -- Get User By ID
@@ -35,20 +35,16 @@ export const addUser = {
     name: { type: new GraphQLNonNull(GraphQLString) },
     email: { type: new GraphQLNonNull(GraphQLString) },
     password: { type: new GraphQLNonNull(GraphQLString) },
-    location: { type: new GraphQLNonNull(new GraphQLInputObjectType({
-      name: 'UserLocation',
-      fields: {
-        country: { type: GraphQLString },
-        city: { type: GraphQLString }
-      }
-    }))},
+    location: { type: new GraphQLNonNull(LocationInputType)},
   },
   async resolve(value, args) {
     return await UserSchema.create({
       name: args.name,
       email: args.email,
       password: args.password,
-      location: args.location
+      location: args.location,
+      created: Date.now(),
+      updated: Date.now()
     });
   }
 }

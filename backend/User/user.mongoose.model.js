@@ -1,13 +1,7 @@
 import mongoose from 'mongoose';
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLInputObjectType
-} from 'graphql/type';
 
 
-// -- Mongo Schema
+// -- User Schema
 export const UserSchema = mongoose.model('User', new mongoose.Schema({
   name: {
     type: String,
@@ -73,27 +67,3 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
   }
 },
 { versionKey: false }));
-
-
-// -- GraphQL Location Output Type
-const LocationOutputType = new GraphQLObjectType({
-  name: 'Location',
-  fields: {
-    country: { type: GraphQLString },
-    city: { type: GraphQLString }
-  }
-});
-
-// -- GraphQL Type
-export const UserType = new GraphQLObjectType({
-  name: 'User',
-  fields: {
-    id: { type: GraphQLString },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    password: { type: GraphQLString },
-    location: { type: LocationOutputType },
-    created: { type: GraphQLString },
-    updated: { type: GraphQLString }
-  }
-});
