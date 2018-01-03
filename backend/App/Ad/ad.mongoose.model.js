@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 
 // -- Ad Schema
 export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
-  // seller: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  //   required: true
-  // },
+  seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    // required: true
+  },
   title: {
     type: String,
     required: true,

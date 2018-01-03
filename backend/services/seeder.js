@@ -10,22 +10,27 @@ async function getRandomUser() {
   return users[Math.floor(Math.random() * users.length)]._id;
 }
 
+
 //------------------------------
 // SEED LIST
 //------------------------------
+
+
 const seedList = [
-  () => seed(createSeedable(UserSchema, 3, payload({
-    name: faker.name.firstName() + ' ' + faker.name.lastName(),
-    email: faker.internet.email(),
-    password: faker.internet.password(9),
-    location: {
-      country: faker.address.country(),
-      city: faker.address.city()
-    }
-  }))),
-  () => seed(createSeedable(AdSchema, 3, () => {
+  seed(seedable(UserSchema, 3, () => {
     return {
-      // seller: ,
+      name: faker.name.firstName() + ' ' + faker.name.lastName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(9),
+      location: {
+        country: faker.address.country(),
+        city: faker.address.city()
+      }
+    }
+  })),
+  seed(seedable(AdSchema, 3, () => {
+    return {
+      seller: getRandomUser(),
       title: faker.lorem.sentence(),
       views: Math.ceil(Math.random() * 1000),
       availability: Boolean(Math.round(Math.random() * 0.67)) ? 'available' : Boolean(Math.round(Math.random())) ? 'sold' : 'reserved',
@@ -52,7 +57,7 @@ const seedList = [
       created: Date.now(),
       refreshed: Date.now(),
       updated: Date.now()
-    };
+    }
   }))
 ];
 
@@ -60,7 +65,7 @@ const seedList = [
 //------------------------------
 // CREATE SEEDABLE OBJECT
 //------------------------------
-function createSeedable(model, amount, payload) {
+function seedable(model, amount, payload) {
   return {
     name: model.modelName,
     model: model,
@@ -68,45 +73,26 @@ function createSeedable(model, amount, payload) {
   };
 }
 
-class Seedable {
-  constructor(model, amount, payload) {
-    this.model = model;
-    this.amount = amount;
-    this.payload = payload;
-  }
-
-  get() {
-    return {
-      name: this.model.modelName,
-      model: this.model,
-      payload: (new Array(this.amount)).fill(null).map(item => this.payload())
-    }
-  };
-}
-
-function payload (payload) {
-  return () => payload;
-}
-
 
 //------------------------------
 // SEED FUNCTION
 //------------------------------
-async function seed(item) {
-  const SEED_START = Date.now();
-  console.log(`-> Seeding ${item.name}`);
-
-  try {
-    item.model.collection.drop();
-    await item.model.create(item.payload);
-    console.log(`Completed in ${(Date.now() - SEED_START) / 1000}s, ${item.payload.length} ${item.name.toLowerCase()}s seeded.`);
-  } catch (err) {
-    console.log(err);
-    // reject(err);
+function seed(item) {
+  return async () => {
+    const SEED_START = Date.now();
+    console.log(`-> Seeding ${item.name}`);
+    try {
+      item.model.collection.drop();
+      await item.model.create(item.payload);
+      console.log(`Completed in ${(Date.now() - SEED_START) / 1000}s, ${item.payload.length} ${item.name.toLowerCase()}s seeded.`);
+    } catch (err) {
+      console.log(err);
+      // reject(err);
+    }
+    return new Promise((resolve, reject) => {
+      resolve(true);
+    });
   }
-  return new Promise((resolve, reject) => {
-    resolve(true);
-  });
 }
 
 
