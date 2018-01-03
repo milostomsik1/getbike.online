@@ -1,28 +1,59 @@
 import mongoose from 'mongoose';
 import faker from 'faker';
 
-// const User = mongoose.model('User', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
-const Product = mongoose.model('Product', new mongoose.Schema({ name: { type: String } }, { versionKey: false }));
-import { UserSchema } from '../User/user.mongoose.model';
+import { UserSchema } from '../App/User/user.mongoose.model';
+import { AdSchema } from '../App/Ad/ad.mongoose.model';
+
+
+async function getRandomUser() {
+  const users = await UserSchema.find();
+  return users[Math.floor(Math.random() * users.length)]._id;
+}
 
 //------------------------------
 // SEED LIST
 //------------------------------
 const seedList = [
-  createSeedable(UserSchema, 200, () => {
+  () => seed(createSeedable(UserSchema, 3, payload({
+    name: faker.name.firstName() + ' ' + faker.name.lastName(),
+    email: faker.internet.email(),
+    password: faker.internet.password(9),
+    location: {
+      country: faker.address.country(),
+      city: faker.address.city()
+    }
+  }))),
+  () => seed(createSeedable(AdSchema, 3, () => {
     return {
-      name: faker.name.firstName() + ' ' + faker.name.lastName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(9),
-      location: {
-        country: faker.address.country(),
-        city: faker.address.city()
-      }
+      // seller: ,
+      title: faker.lorem.sentence(),
+      views: Math.ceil(Math.random() * 1000),
+      availability: Boolean(Math.round(Math.random() * 0.67)) ? 'available' : Boolean(Math.round(Math.random())) ? 'sold' : 'reserved',
+      price: {
+        amount: Math.ceil(Math.random() * 2500),
+        currency: 'EUR'
+      },
+      status: 'second hand',
+      // category: faker.lorem.word(),
+      // subcategory: faker.lorem.word(),
+      description: faker.lorem.words(25),
+      specifications: {
+        groupset: 'Ultegra 6800'
+      },
+      thumbnail: faker.image.imageUrl(),
+      images: [faker.image.imageUrl()],
+      tradable: Boolean(Math.round(Math.random())) ? true : false,
+      tradeMethods: ['In Person', 'Delivery'],
+      type: {
+        name: 'regular',
+        expires: null
+      },
+      rated: false,
+      created: Date.now(),
+      refreshed: Date.now(),
+      updated: Date.now()
     };
-  }),
-  createSeedable(Product, 5000, () => {
-    return { name: faker.name.firstName() };
-  })
+  }))
 ];
 
 
@@ -37,26 +68,45 @@ function createSeedable(model, amount, payload) {
   };
 }
 
+class Seedable {
+  constructor(model, amount, payload) {
+    this.model = model;
+    this.amount = amount;
+    this.payload = payload;
+  }
+
+  get() {
+    return {
+      name: this.model.modelName,
+      model: this.model,
+      payload: (new Array(this.amount)).fill(null).map(item => this.payload())
+    }
+  };
+}
+
+function payload (payload) {
+  return () => payload;
+}
+
 
 //------------------------------
 // SEED FUNCTION
 //------------------------------
-async function seed(seedList) {
-  for (let item of seedList) {
-    const SEED_START = Date.now();
-    console.log(`-> Seeding ${item.name}`)
+async function seed(item) {
+  const SEED_START = Date.now();
+  console.log(`-> Seeding ${item.name}`);
 
-    try {
-      item.model.collection.drop();
-    } catch (err) {
-      console.log(err);
-    } finally {
-      await item.model.create(item.payload)
-    }
-
-    console.log(`Completed in ${(Date.now() - SEED_START) / 1000}s, ${item.payload.length} ${item.name.toLowerCase()}s seeded.\n`);
+  try {
+    item.model.collection.drop();
+    await item.model.create(item.payload);
+    console.log(`Completed in ${(Date.now() - SEED_START) / 1000}s, ${item.payload.length} ${item.name.toLowerCase()}s seeded.`);
+  } catch (err) {
+    console.log(err);
+    // reject(err);
   }
-  return new Promise(resolve => resolve(true));
+  return new Promise((resolve, reject) => {
+    resolve(true);
+  });
 }
 
 
@@ -69,6 +119,13 @@ mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
   console.log('\n//--------------------------');
   console.log('// EXECUTING DATABASE SEEDER');
   console.log('//--------------------------\n');
-  seed(seedList).then(() => mongoose.disconnect());
+
+  // -- SEQUENTIALLY EXECUTE SEED LIST
+  (async function() {
+    for (const seed of seedList) {
+      await seed();
+    }
+    mongoose.disconnect();
+  })();
 })
 .catch(err => console.log(`\n${err.message}\n`));

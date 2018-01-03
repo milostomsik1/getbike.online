@@ -4,7 +4,7 @@ import {
   GraphQLString,
   GraphQLNonNull,
   GraphQLBoolean
-} from 'graphql/type';
+} from 'graphql';
 
 
 // -- GraphQL Location Input Type
