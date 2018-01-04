@@ -2,15 +2,12 @@ import faker from 'faker';
 import { AdSchema } from '../App/Ad/ad.mongoose.model';
 import { UserSchema } from '../App/User/user.mongoose.model';
 
-async function getRandomUser() {
-  const users = await UserSchema.find();
-  return users[Math.floor(Math.random() * users.length)]._id;
-}
-
+// -- dependency as parameter
 export default (users) => {
   return {
     model: AdSchema,
-    amount: 2,
+    references: [{name: 'seller', ref: 'ads', model: UserSchema}],
+    amount: 5,
     fields: {
       seller: users[Math.floor(Math.random() * users.length)]._id,
       title: faker.lorem.sentence(),

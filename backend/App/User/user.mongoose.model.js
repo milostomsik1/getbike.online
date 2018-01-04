@@ -21,11 +21,10 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
     minlength: 6,
     maxlength: 32
   },
-  // ads: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Ad'
-  //   default: []
-  // },
+  ads: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Ad'
+  },
   canCreateAds: {
     type: Boolean,
     default: true

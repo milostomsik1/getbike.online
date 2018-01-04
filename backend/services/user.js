@@ -4,6 +4,7 @@ import { UserSchema } from '../App/User/user.mongoose.model';
 export default () => {
   return {
     model: UserSchema,
+    references: [],
     amount: 2,
     fields: {
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
