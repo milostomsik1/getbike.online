@@ -7,7 +7,7 @@ export default (users) => {
   return {
     model: AdSchema,
     references: [{name: 'seller', ref: 'ads', model: UserSchema}],
-    amount: 5,
+    amount: 50,
     fields: {
       seller: users[Math.floor(Math.random() * users.length)]._id,
       title: faker.lorem.sentence(),

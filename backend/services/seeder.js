@@ -33,6 +33,21 @@ function transformDocuments(documents) {
   return transformedDocuments;
 }
 
+
+function linkReference(reference, docs) {
+  return new Promise((resolve, reject) => {
+    let refs = [];
+    docs.forEach(doc => refs.push({key: doc[reference.name], value: doc._id}));
+    refs = transformDocuments(refs);
+    refs.forEach(ref => {
+      reference.model.findByIdAndUpdate(ref.key, {[reference.ref]: ref.value})
+      .then(updatedDoc => resolve(updatedDoc))
+      .catch(err => reject(err));
+    });
+  });
+}
+
+
 export default function seed(factory) {
   return new Promise((resolve, reject) => {
     mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true }).then(() => {
@@ -45,33 +60,23 @@ export default function seed(factory) {
       // -- inserts generated documents
       seedable.model.create(seedable.documents)
       .then((docs) => {
-        // -- links created documents with parent collections
+        // ads have seller(user), when ads are created with seller id those ads arent automatically
+        // added back to users(sellers) collection
+        // this function takes created docs, checks references and links them back to their references
+        const refsToBeLinked = [];
         seedable.references.forEach(reference => {
-          let refs = [];
-          docs.forEach(doc => {
-            refs.push({key: doc[reference.name], value: doc._id});
-            // console.log('ad id', doc._id);
-            // console.log('seller id', doc[reference.name]);
-            // console.log('references', reference.ref);
-            // console.log('reference model', reference.model.modelName);
-            // reference.model.findById(doc[reference.name]).then(refDoc => {
-            //   const updatedValue = refDoc[reference.ref] ? refDoc[reference.ref].push(doc._id) : [doc._id];
-            //   reference.model.findByIdAndUpdate(doc[reference.name], {[reference.ref]: updatedValue})
-            //   .then(updated => {});
-            // });
-          });
-          refs = transformDocuments(refs);
-          console.log(refs);
-          console.log('// -- Should insert ' + seedable.model.modelName + 's into ' + reference.model.modelName + ' here.');
+          refsToBeLinked.push(linkReference(reference, docs));
+        })
+        Promise.all(refsToBeLinked).then(complete => {
+          console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName}s\n`);
+          resolve(docs);
+          mongoose.disconnect();
         });
-        console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName}s\n`);
-        resolve(docs);
-        // mongoose.disconnect();
       })
       .catch(err => {
         console.log(err);
         reject(err);
-        // mongoose.disconnect();
+        mongoose.disconnect();
       });
     })
     .catch(err => {

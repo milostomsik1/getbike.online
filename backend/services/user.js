@@ -5,7 +5,7 @@ export default () => {
   return {
     model: UserSchema,
     references: [],
-    amount: 2,
+    amount: 5,
     fields: {
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       email: faker.internet.email(),

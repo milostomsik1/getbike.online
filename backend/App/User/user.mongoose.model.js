@@ -22,7 +22,7 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
     maxlength: 32
   },
   ads: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
     ref: 'Ad'
   },
   canCreateAds: {
