@@ -1,20 +1,24 @@
 import mongoose from 'mongoose';
 mongoose.Promise = global.Promise
 
-function generateSeedable(factory) {
+function generateSeedable(data) {
   return {
-    model: factory().model,
-    references: factory().references,
-    documents: (new Array(factory().amount)).fill(null).map(item => factory().fields)
+    model: data().model,
+    references: data().references,
+    documents: (new Array(data().amount)).fill(null).map(item => data().fields)
   }
 }
 
-function transformDocuments(documents) {
-  documents.sort(function(a, b) {
+function sortByKey(data) {
+  data.sort(function(a, b) {
     var comparison = 0;
     comparison = a.key > b.key ? 1 : -1;
     return comparison;
   });
+}
+
+function transformDocuments(documents) {
+  sortByKey(documents);
 
   var currKey = documents[0].key;
   var transformedDocuments = [{key: documents[0].key, value: []}];
@@ -47,42 +51,43 @@ function linkReference(reference, docs) {
   });
 }
 
+function executeReferenceLinking(references, docs) {
+  return new Promise(resolve => {
+    const refsToBeLinked = [];
+    references.forEach(reference => {
+      refsToBeLinked.push(linkReference(reference, docs));
+    })
+    Promise.all(refsToBeLinked).then(() => resolve(docs));
+  })
+}
 
-export default function seed(factory) {
+
+export default function seed(data) {
   return new Promise((resolve, reject) => {
     mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true }).then(() => {
-      const seedable = generateSeedable(factory);
+      const seedable = generateSeedable(data);
 
       console.log(`-> Seeding ${seedable.model.modelName}`);
 
-      // -- drops the collection to start from scratch
+      // drops the collection to start from scratch
       seedable.model.collection.drop();
-      // -- inserts generated documents
+      // inserts generated documents
       seedable.model.create(seedable.documents)
-      .then((docs) => {
-        // ads have seller(user), when ads are created with seller id those ads arent automatically
-        // added back to users(sellers) collection
-        // this function takes created docs, checks references and links them back to their references
-        const refsToBeLinked = [];
-        seedable.references.forEach(reference => {
-          refsToBeLinked.push(linkReference(reference, docs));
-        })
-        Promise.all(refsToBeLinked).then(complete => {
-          console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName}s\n`);
-          resolve(docs);
-          mongoose.disconnect();
-        });
+      // ads have seller(user), when ads are created with seller id those ads arent automatically
+      // added back to users(sellers) collection
+      // this function takes created docs, checks references and links them back to their references
+      .then(docs => executeReferenceLinking(seedable.references, docs))
+      .then(docs => {
+        console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName}s\n`);
+        resolve(docs);
+        mongoose.disconnect();
       })
       .catch(err => {
-        console.log(err);
         reject(err);
         mongoose.disconnect();
       });
     })
-    .catch(err => {
-      console.log(`\n${err.message}\n`);
-      reject(err);
-    });
+    .catch(err => reject(err.message));
   });
 
 }
