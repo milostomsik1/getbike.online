@@ -68,6 +68,7 @@ export default function seed(data) {
       const seedable = generateSeedable(data);
 
       console.log(`-> Seeding ${seedable.model.modelName}`);
+      const SEED_START = Date.now();
 
       // drops the collection to start from scratch
       seedable.model.collection.drop();
@@ -78,7 +79,8 @@ export default function seed(data) {
       // this function takes created docs, checks references and links them back to their references
       .then(docs => executeReferenceLinking(seedable.references, docs))
       .then(docs => {
-        console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName} items.\n`);
+        const SEED_END = Date.now();
+        console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName} items in ${(SEED_END - SEED_START) / 1000}s.\n`);
         resolve(docs);
         mongoose.disconnect();
       })

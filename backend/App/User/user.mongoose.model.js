@@ -34,21 +34,19 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
   //   ref: 'Ad'
   //   default: []
   // },
-  // ratings: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Rating'
-  //   default: []
-  // },
+  ratings: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Rating'
+  },
   // messages: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Thread'
   //   default: []
   // },
-  // notifications: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Notification'
-  //   default: []
-  // },
+  notifications: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Notification'
+  },
   location: {
     type: Object,
     required: true,
