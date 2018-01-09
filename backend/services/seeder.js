@@ -78,7 +78,7 @@ export default function seed(data) {
       // this function takes created docs, checks references and links them back to their references
       .then(docs => executeReferenceLinking(seedable.references, docs))
       .then(docs => {
-        console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName}s\n`);
+        console.log(`Successfully seeded ${seedable.documents.length} ${seedable.model.modelName} items.\n`);
         resolve(docs);
         mongoose.disconnect();
       })

@@ -39,14 +39,14 @@ export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
     type: String,
     required: true
   },
-  // category: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Category',
-  // },
-  // subcategory: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Subcategory',
-  // },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+  },
+  subcategory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Subcategory',
+  },
   description: {
     type: String,
     required: true,

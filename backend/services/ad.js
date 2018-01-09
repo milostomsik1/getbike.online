@@ -1,12 +1,18 @@
 import faker from 'faker';
 import { AdSchema } from '../App/Ad/ad.mongoose.model';
 import { UserSchema } from '../App/User/user.mongoose.model';
+import { CategorySchema } from '../App/Category/category.mongoose.model';
+import { SubcategorySchema } from '../App/Subcategory/subcategory.mongoose.model';
 
 // -- dependency as parameter
-export default (users) => {
+export default (users, categories, subcategories) => {
   return {
     model: AdSchema,
-    references: [{name: 'seller', ref: 'ads', model: UserSchema}],
+    references: [
+      {name: 'seller', ref: 'ads', model: UserSchema},
+      // {name: 'category', ref: 'categories', model: CategorySchema},
+      // {name: 'subcategory', ref: 'subcategories', model: SubcategorySchema}
+    ],
     amount: 50,
     fields: {
       seller: users[Math.floor(Math.random() * users.length)]._id,
@@ -18,8 +24,8 @@ export default (users) => {
         currency: 'EUR'
       },
       status: 'second hand',
-      // category: faker.lorem.word(),
-      // subcategory: faker.lorem.word(),
+      category: categories[Math.floor(Math.random() * categories.length)]._id,
+      subcategory: subcategories[Math.floor(Math.random() * subcategories.length)]._id,
       description: faker.lorem.words(25),
       specifications: {
         groupset: 'Ultegra 6800'
