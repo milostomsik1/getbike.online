@@ -10,8 +10,6 @@ export default (users, categories, subcategories) => {
     model: AdSchema,
     references: [
       {name: 'seller', ref: 'ads', model: UserSchema},
-      // {name: 'category', ref: 'categories', model: CategorySchema},
-      // {name: 'subcategory', ref: 'subcategories', model: SubcategorySchema}
     ],
     amount: 50,
     fields: {

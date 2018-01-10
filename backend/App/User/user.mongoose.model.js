@@ -38,11 +38,10 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Rating'
   },
-  // messages: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Thread'
-  //   default: []
-  // },
+  messages: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Thread'
+  },
   notifications: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Notification'

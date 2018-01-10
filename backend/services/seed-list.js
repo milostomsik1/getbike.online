@@ -7,6 +7,8 @@ import Category from './category';
 import Subcategory from './subcategory';
 import Rating from './rating';
 import Notification from './notification';
+import Thread from './thread';
+import Message from './message';
 
 const dependencies = {};
 // -- Data Seeding
@@ -35,6 +37,15 @@ seed(() => User(null)).then(users => {
 })
 .then(notifications => {
   dependencies['notifications'] = notifications;
+  return seed(() => Message(dependencies.users));
+})
+.then(messages => {
+  dependencies['messages'] = messages;
+  return seed(() => Thread(dependencies.messages,
+                           dependencies.ads));
+})
+.then(threads => {
+  dependencies['threads'] = threads;
 })
 .catch(err => console.log(err));
 
