@@ -9,7 +9,17 @@ export default (users, categories, subcategories) => {
   return {
     model: AdSchema,
     references: [
-      {name: 'seller', ref: 'ads', model: UserSchema},
+      {name: ['seller'], ref: 'ads', model: UserSchema},
+      // {
+      //   target: {
+      //     model: UserSchema,
+      //     property: 'ads'
+      //   },
+      //   source: {
+      //     property: 'seller',
+      //     createdFrom: '_id'
+      //   }
+      // }
     ],
     amount: 50,
     fields: {
