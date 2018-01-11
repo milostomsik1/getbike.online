@@ -2,16 +2,12 @@ import faker from 'faker';
 import mongoose from 'mongoose';
 import { UserSchema } from '../../App/User/user.mongoose.model';
 import { AdSchema } from '../../App/Ad/ad.mongoose.model';
+import { sort, byKeyAscending, randomItem, transformDocuments } from './helpers';
 
-// -- array random prototype
-Array.prototype.random = function() {
-  return this[Math.floor(Math.random() * this.length)];
-}
 
 // -- user factory
 const ad = () => {
   return {
-    // seller: users[Math.floor(Math.random() * users.length)]._id,
     title: faker.lorem.words(3),
     views: Math.ceil(Math.random() * 1000),
     availability: Boolean(Math.round(Math.random() * 0.67)) ? 'Available' : Boolean(Math.round(Math.random())) ? 'Sold' : 'Reserved',
@@ -47,12 +43,12 @@ const generateAds = (ad, amount) => {
 }
 
 // -- generate ads
-const ads = generateAds(ad, 1000);
+const ads = generateAds(ad, 20);
 
-const getRandomUser = () => {
+const getUsers = () => {
   return new Promise((resolve, reject) => {
     UserSchema.find()
-    .then(users => resolve(users.random()._id))
+    .then(users => resolve(users))
     .catch(err => resolve(err));
   });
 }
@@ -76,20 +72,36 @@ const writeToDB = (model, ads) => {
 
 const addSellerToAds = (ads, seller) => {
   return ads.map(ad => {
-    return {...ad, seller}
+    return {...ad, seller: seller()}
   })
+}
+
+// REFACTOR THIS
+const insertCreatedAdsIntoUsers = (docs) => {
+  return new Promise((resolve, reject) => {
+    docs = sort(docs, 'seller', byKeyAscending);
+    const transformedDocuments = transformDocuments(docs, 'seller', '_id');
+    const toBeUpdated = [];
+    transformedDocuments.forEach(doc => {
+      const userID = Object.keys(doc)[0];
+      toBeUpdated.push(UserSchema.findByIdAndUpdate(userID, {ads: doc[userID]}));
+      Promise.all(toBeUpdated).then(() => resolve(true));
+    });
+  });
 }
 
 // -- ad seeder
 const seed = (model, ads) => {
   mongoose.Promise = global.Promise
   mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-  .then(connected => getRandomUser())
-  .then(randomUser => {
+  .then(connected => getUsers())
+  .then(users => {
+    const randomUser = () => randomItem(users)._id
     ads = addSellerToAds(ads, randomUser);
     return writeToDB(model, ads);
   })
-  .then(seededAds => mongoose.disconnect())
+  .then(createdAds => insertCreatedAdsIntoUsers(createdAds))
+  .then(() => mongoose.disconnect())
   .catch(err => console.log(err));
 }
 

@@ -11,8 +11,8 @@ function generateSeedable(data) {
 
 function sortByKey(data) {
   data.sort(function(a, b) {
-    var comparison = 0;
-    comparison = a.key > b.key ? 1 : -1;
+    let comparison = 0;
+    if (a.key !== b.key) comparison = a.key > b.key ? 1 : -1;
     return comparison;
   });
 }
@@ -20,9 +20,9 @@ function sortByKey(data) {
 function transformDocuments(documents) {
   sortByKey(documents);
 
-  var currKey = documents[0].key;
-  var transformedDocuments = [{key: documents[0].key, value: []}];
-  var lastKeyIndex = 0;
+  let currKey = documents[0].key;
+  let transformedDocuments = [{key: documents[0].key, value: []}];
+  let lastKeyIndex = 0;
 
   documents.forEach(function(item, i) {
     if (item.key === currKey) {
