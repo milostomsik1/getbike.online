@@ -5,7 +5,7 @@ import { AdSchema } from '../../App/Ad/ad.mongoose.model';
 import { sort, byKeyAscending, randomItem, transformDocuments } from './helpers';
 
 
-// -- user factory
+// -- ad factory
 const ad = () => {
   return {
     title: faker.lorem.words(3),

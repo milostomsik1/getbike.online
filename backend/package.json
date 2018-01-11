@@ -10,7 +10,8 @@
     "serve": "node dist/server.js",
     "seed": "babel-node ./services/seed-list.js --presets es2015,stage-2",
     "seed:users": "babel-node ./services/seeder/users.js --presets es2015,stage-2",
-    "seed:ads": "babel-node ./services/seeder/ads.js --presets es2015,stage-2"
+    "seed:ads": "babel-node ./services/seeder/ads.js --presets es2015,stage-2",
+    "seed:ratings": "babel-node ./services/seeder/ratings.js --presets es2015,stage-2"
   },
   "dependencies": {
     "express": "^4.16.2",
