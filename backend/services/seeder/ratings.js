@@ -16,8 +16,8 @@ import {
 // -- ratings factory
 const rating = () => {
   return {
-    // user: users[Math.floor(Math.random() * users.length)]._id,
-    // ad: ads[Math.floor(Math.random() * ads.length)]._id,
+    // user: added in code afterwards
+    // ad: added in code afterwards
     type: 'seller',
     description: Math.ceil(Math.random() * 5),
     communication: Math.ceil(Math.random() * 5),

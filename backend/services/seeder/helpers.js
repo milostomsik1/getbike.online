@@ -76,3 +76,8 @@ export const writeToDB = (model, ads) => {
     .catch(err => reject(err))
   })
 }
+
+// -- seedable generator
+export const generateSeedable = (data, amount) => {
+  return (new Array(amount)).fill(null).map(element => data());
+}
