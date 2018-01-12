@@ -14,7 +14,8 @@
     "seed:ratings": "babel-node ./services/seeder/ratings.js --presets es2015,stage-2",
     "seed:notifications": "babel-node ./services/seeder/notifications.js --presets es2015,stage-2",
     "seed:categories": "babel-node ./services/seeder/categories.js --presets es2015,stage-2",
-    "seed:subcategories": "babel-node ./services/seeder/subcategories.js --presets es2015,stage-2"
+    "seed:subcategories": "babel-node ./services/seeder/subcategories.js --presets es2015,stage-2",
+    "seed:messages": "babel-node ./services/seeder/messages.js --presets es2015,stage-2"
   },
   "dependencies": {
     "express": "^4.16.2",
