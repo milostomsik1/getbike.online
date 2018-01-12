@@ -24,7 +24,7 @@ const message = () => {
 }
 
 // -- generate messages
-const messages = generateSeedable(message, 200);
+const messages = generateSeedable(message, 15);
 
 // -- inserts sender and recipient into messages
 const addSenderRecipientToMessages = (messages, generateTwoUniqueUsers) => {

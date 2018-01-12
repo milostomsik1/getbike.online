@@ -1,6 +1,7 @@
 import { UserSchema } from '../../App/User/user.mongoose.model';
 import { AdSchema } from '../../App/Ad/ad.mongoose.model';
 import { CategorySchema } from '../../App/Category/category.mongoose.model';
+import { MessageSchema } from '../../App/Message/message.mongoose.model';
 
 
 export const byKeyAscending = function(key) {
@@ -17,18 +18,18 @@ export const randomItem = function(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+export const isUnique = (value, index, self) => {
+  return self.indexOf(value) === index;
+}
+
+export const getUniqueKeys = (arr) => {
+  return arr.map(item => item[KEY]).filter(isUnique);
+}
+
 export const transformDocuments = (documents, KEY, VALUE) => {
   // key = 'seller' -> writes into users with that ID
   // value = '_id' -> IDs of given ads
   // { userId: [ adId, adId, adId] }
-
-  function isUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
-
-  function getUniqueKeys(arr) {
-    return arr.map(item => item[KEY]).filter(isUnique);
-  }
 
   const uniqueKeys = getUniqueKeys(documents);
   const transformedDocuments = uniqueKeys.map(key => {
@@ -67,6 +68,14 @@ export const getCategories = () => {
   return new Promise((resolve, reject) => {
     CategorySchema.find()
     .then(categories => resolve(categories))
+    .catch(err => resolve(err));
+  });
+}
+
+export const getMessages = () => {
+  return new Promise((resolve, reject) => {
+    MessageSchema.find()
+    .then(messages => resolve(messages))
     .catch(err => resolve(err));
   });
 }
