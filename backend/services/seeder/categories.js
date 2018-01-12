@@ -20,19 +20,13 @@ const categories = generateSeedable(category, 10);
 
 // -- notificaton seeder
 const seed = (model, categories) => {
-  mongoose.Promise = global.Promise
-  mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-  .then(connected => writeToDB(model, categories))
-  .then(() => mongoose.disconnect())
-  .catch(err => console.log(err));
-}
-
-
-export default function() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      seed(CategorySchema, categories);
-      resolve(true);
-    }, 500);
+  return new Promise((resolve, reject) => {
+    mongoose.Promise = global.Promise
+    mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
+    .then(connected => writeToDB(model, categories))
+    .then(() => mongoose.disconnect().then(() => resolve(true)))
+    .catch(err => reject(err));
   });
 }
+
+export default seed.bind({}, CategorySchema, categories);

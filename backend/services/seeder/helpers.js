@@ -83,12 +83,12 @@ export const getMessages = () => {
 export const writeToDB = (model, ads) => {
   return new Promise((resolve, reject) => {
     const SEED_START = Date.now();
-    console.log(`-> Seeding ${model.modelName}`);
+    console.log(`\n-> Seeding ${model.modelName}`);
     model.collection.drop()
     .then(dropped => model.create(ads))
     .then(adDocs => {
       const SEED_END = Date.now();
-      console.log(`Successfully seeded ${adDocs.length} ${model.modelName} items in ${(SEED_END - SEED_START) / 1000}s.\n`);
+      console.log(`Successfully seeded ${adDocs.length} ${model.modelName} items in ${(SEED_END - SEED_START) / 1000}s.`);
       resolve(adDocs);
     })
     .catch(err => reject(err))

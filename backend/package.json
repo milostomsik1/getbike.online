@@ -8,7 +8,6 @@
     "start": "nodemon server.js --exec babel-node --presets es2015,stage-2",
     "build": "babel server.js -d dist --presets es2015,stage-2",
     "serve": "node dist/server.js",
-    "seed": "babel-node ./services/seed-list.js --presets es2015,stage-2",
     "seed:users": "babel-node ./services/seeder/executables/users.js --presets es2015,stage-2",
     "seed:categories": "babel-node ./services/seeder/executables/categories.js --presets es2015,stage-2",
     "seed:subcategories": "babel-node ./services/seeder/executables/subcategories.js --presets es2015,stage-2",
@@ -17,7 +16,8 @@
     "seed:notifications": "babel-node ./services/seeder/executables/notifications.js --presets es2015,stage-2",
     "seed:messages": "babel-node ./services/seeder/executables/messages.js --presets es2015,stage-2",
     "seed:threads": "babel-node ./services/seeder/executables/threads.js --presets es2015,stage-2",
-    "seed:all": "babel-node ./services/seeder/executables/all.js --presets es2015,stage-2"
+    "seed:all": "babel-node ./services/seeder/executables/all.js --presets es2015,stage-2",
+    "seed": "babel-node ./services/seeder/executables/all.js --presets es2015,stage-2"
   },
   "dependencies": {
     "express": "^4.16.2",

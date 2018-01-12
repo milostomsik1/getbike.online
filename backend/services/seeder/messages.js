@@ -24,7 +24,7 @@ const message = () => {
 }
 
 // -- generate messages
-const messages = generateSeedable(message, 15);
+const messages = generateSeedable(message, 5000);
 
 // -- inserts sender and recipient into messages
 const addSenderRecipientToMessages = (messages, generateTwoUniqueUsers) => {
@@ -48,23 +48,18 @@ const generateTwoUniqueUsers = (users) => {
 
 // -- messages seeder
 const seed = (model, messages) => {
-  mongoose.Promise = global.Promise
-  mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-  .then(connected => getUsers())
-  .then(users => {
-    const twoUniqueUsers = () => generateTwoUniqueUsers(users);
-    messages = addSenderRecipientToMessages(messages, twoUniqueUsers);
-    return writeToDB(model, messages);
-  })
-  .then(() => mongoose.disconnect())
-  .catch(err => console.log(err));
+  return new Promise((resolve, reject) => {
+    mongoose.Promise = global.Promise
+    mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
+    .then(connected => getUsers())
+    .then(users => {
+      const twoUniqueUsers = () => generateTwoUniqueUsers(users);
+      messages = addSenderRecipientToMessages(messages, twoUniqueUsers);
+      return writeToDB(model, messages);
+    })
+    .then(() => mongoose.disconnect().then(() => resolve(true)))
+    .catch(err => reject(err));
+  });
 }
 
-export default function() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      seed(MessageSchema, messages);
-      resolve(true);
-    }, 500);
-  });
-};
+export default seed.bind({}, MessageSchema, messages);

@@ -33,7 +33,7 @@ const generateRatings = (rating, amount) => {
 }
 
 // -- generate ratings
-const ratings = generateRatings(rating, 100);
+const ratings = generateRatings(rating, 1000);
 
 
 const addUserToRatings = (ratings, user) => {
@@ -51,6 +51,7 @@ const addAdToRatings = (ratings, ad) => {
 // REFACTOR THIS
 const insertCreatedRatingsIntoUsers = (docs) => {
   return new Promise((resolve, reject) => {
+    console.log('** Inserting created ratings into users...')
     docs = sort(docs, 'user', byKeyAscending);
     const transformedDocuments = transformDocuments(docs, 'user', '_id');
     const toBeUpdated = [];
@@ -64,32 +65,27 @@ const insertCreatedRatingsIntoUsers = (docs) => {
 
 // -- rating seeder
 const seed = (model, ratings) => {
-  let randomUser;
-  let randomAd;
-  mongoose.Promise = global.Promise
-  mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-  .then(connected => getUsers())
-  .then(users => {
-    randomUser = () => randomItem(users)._id;
-    return getAds();
-  })
-  .then(ads => {
-    randomAd = () => randomItem(ads)._id;
-    ratings = addUserToRatings(ratings, randomUser);
-    ratings = addAdToRatings(ratings, randomAd);
-    return writeToDB(model, ratings);
-  })
-  .then(createdRatings => insertCreatedRatingsIntoUsers(createdRatings))
-  .then(() => mongoose.disconnect())
-  .catch(err => console.log(err));
+  return new Promise((resolve, reject) => {
+    let randomUser;
+    let randomAd;
+    mongoose.Promise = global.Promise
+    mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
+    .then(connected => getUsers())
+    .then(users => {
+      randomUser = () => randomItem(users)._id;
+      return getAds();
+    })
+    .then(ads => {
+      randomAd = () => randomItem(ads)._id;
+      ratings = addUserToRatings(ratings, randomUser);
+      ratings = addAdToRatings(ratings, randomAd);
+      return writeToDB(model, ratings);
+    })
+    .then(createdRatings => insertCreatedRatingsIntoUsers(createdRatings))
+    .then(() => mongoose.disconnect().then(() => resolve(true)))
+    .catch(err => reject(err));
+  });
 }
 
 
-export default function() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      seed(RatingSchema, ratings);
-      resolve(true);
-    }, 500);
-  });
-};
+export default seed.bind({}, RatingSchema, ratings);

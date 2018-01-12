@@ -15,4 +15,5 @@ Users()
 .then(() => Notifications())
 .then(() => Messages())
 .then(() => Threads())
-.then(() => {});
+.then(() => console.log('\nSuccessfully finished seeding all items.'))
+.catch(err => console.log(err));

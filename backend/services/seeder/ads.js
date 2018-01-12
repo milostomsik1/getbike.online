@@ -7,7 +7,9 @@ import {
   byKeyAscending,
   randomItem,
   transformDocuments,
-  getCategories
+  getCategories,
+  getUsers,
+  writeToDB
 } from './helpers';
 
 
@@ -49,32 +51,7 @@ const generateAds = (ad, amount) => {
 }
 
 // -- generate ads
-const ads = generateAds(ad, 100);
-
-const getUsers = () => {
-  return new Promise((resolve, reject) => {
-    UserSchema.find()
-    .then(users => resolve(users))
-    .catch(err => resolve(err));
-  });
-}
-
-// -- write to DB
-const writeToDB = (model, ads) => {
-  return new Promise((resolve, reject) => {
-    const SEED_START = Date.now();
-    console.log(`-> Seeding ${model.modelName}`);
-    model.collection.drop()
-    .then(dropped => model.create(ads))
-    .then(adDocs => {
-      // -- NOW UPDATE USERS WITH ADS THAT WERE CREATED
-      const SEED_END = Date.now();
-      console.log(`Successfully seeded ${adDocs.length} ${model.modelName} items in ${(SEED_END - SEED_START) / 1000}s.\n`);
-      resolve(adDocs);
-    })
-    .catch(err => reject(err))
-  });
-}
+const ads = generateAds(ad, 1000);
 
 const addSellerToAds = (ads, seller) => {
   return ads.map(ad => {
@@ -92,6 +69,7 @@ const addCategoryToAds = (ads, category) => {
 // REFACTOR THIS
 const insertCreatedAdsIntoUsers = (docs) => {
   return new Promise((resolve, reject) => {
+    console.log('** Inserting created ads into users...')
     docs = sort(docs, 'seller', byKeyAscending);
     const transformedDocuments = transformDocuments(docs, 'seller', '_id');
     const toBeUpdated = [];
@@ -105,33 +83,28 @@ const insertCreatedAdsIntoUsers = (docs) => {
 
 // -- ad seeder
 const seed = (model, ads) => {
-  let randomUser;
-  let randomCategory;
+  return new Promise((resolve, reject) => {
+    let randomUser;
+    let randomCategory;
 
-  mongoose.Promise = global.Promise
-  mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-  .then(connected => getUsers())
-  .then(users => {
-    randomUser = () => randomItem(users)._id;
-    return getCategories();
-  })
-  .then(categories => {
-    randomCategory = () => randomItem(categories)._id;
-    ads = addSellerToAds(ads, randomUser);
-    ads = addCategoryToAds(ads, randomCategory);
-    return writeToDB(model, ads);
-  })
-  .then(createdAds => insertCreatedAdsIntoUsers(createdAds))
-  .then(() => mongoose.disconnect())
-  .catch(err => console.log(err));
-}
-
-
-export default function () {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      seed(AdSchema, ads);
-      resolve(true);
-    }, 500);
+    mongoose.Promise = global.Promise
+    mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
+    .then(connected => getUsers())
+    .then(users => {
+      randomUser = () => randomItem(users)._id;
+      return getCategories();
+    })
+    .then(categories => {
+      randomCategory = () => randomItem(categories)._id;
+      ads = addSellerToAds(ads, randomUser);
+      ads = addCategoryToAds(ads, randomCategory);
+      return writeToDB(model, ads);
+    })
+    .then(createdAds => insertCreatedAdsIntoUsers(createdAds))
+    .then(() => mongoose.disconnect().then(() => resolve(true)))
+    .catch(err => reject(err));
   });
 }
+
+
+export default seed.bind({}, AdSchema, ads);

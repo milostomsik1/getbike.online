@@ -42,6 +42,7 @@ const transformMessages = (messages, uniqueParticipantPairs) => {
 
 const insertCreatedThreadsIntoUsers = (docs) => {
   return new Promise((resolve, reject) => {
+    console.log('** Inserting created threads into users...')
     const transformedThreads = docs.map(doc => {
       return {
         user: doc.participants[0],
@@ -56,8 +57,8 @@ const insertCreatedThreadsIntoUsers = (docs) => {
     const toBeUpdated = [];
     transformedThreads.forEach(doc => {
       toBeUpdated.push(UserSchema.findByIdAndUpdate(doc.user, {messages: doc.messages}));
-      Promise.all(toBeUpdated).then(() => resolve(true));
     });
+    Promise.all(toBeUpdated).then(() => resolve(true));
   });
 }
 
@@ -65,38 +66,33 @@ let threads;
 
 // -- thread seeder
 const seed = (model, threads) => {
-  let randomAd;
-  mongoose.Promise = global.Promise
-  mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
-  .then(connected => getAds())
-  .then(ads => {
-    randomAd = () => randomItem(ads).id;
-    return getMessages();
-  })
-  .then(messages => {
-    const uniqueParticipants = uniqueParticipantPairs(messages);
-    const transformedMessages = transformMessages(messages, uniqueParticipants);
-    threads = transformedMessages.map(msg => {
-      return {
-        ...msg,
-        ad: randomAd(),
-        created: Date.now(),
-        updated: Date.now()
-      }
-    });
-    return writeToDB(model, threads);
-  })
-  .then(createdThreads => insertCreatedThreadsIntoUsers(createdThreads))
-  .then(() => mongoose.disconnect())
-  .catch(err => console.log(err));
+  return new Promise((resolve, reject) => {
+    let randomAd;
+    mongoose.Promise = global.Promise
+    mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
+    .then(connected => getAds())
+    .then(ads => {
+      randomAd = () => randomItem(ads).id;
+      return getMessages();
+    })
+    .then(messages => {
+      const uniqueParticipants = uniqueParticipantPairs(messages);
+      const transformedMessages = transformMessages(messages, uniqueParticipants);
+      threads = transformedMessages.map(msg => {
+        return {
+          ...msg,
+          ad: randomAd(),
+          created: Date.now(),
+          updated: Date.now()
+        }
+      });
+      return writeToDB(model, threads);
+    })
+    .then(createdThreads => insertCreatedThreadsIntoUsers(createdThreads))
+    .then(() => mongoose.disconnect().then(() => resolve(true)))
+    .catch(err => reject(err));
+  });
 }
 
 
-export default function() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      seed(ThreadSchema, threads);
-      resolve(true);
-    }, 500);
-  });
-};
+export default seed.bind({}, ThreadSchema, threads);
