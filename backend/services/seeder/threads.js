@@ -91,5 +91,12 @@ const seed = (model, threads) => {
   .catch(err => console.log(err));
 }
 
-// -- execute threads seeding
-seed(ThreadSchema, threads);
+
+export default function() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(ThreadSchema, threads);
+      resolve(true);
+    }, 500);
+  });
+};

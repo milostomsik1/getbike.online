@@ -2,7 +2,13 @@ import faker from 'faker';
 import mongoose from 'mongoose';
 import { UserSchema } from '../../App/User/user.mongoose.model';
 import { AdSchema } from '../../App/Ad/ad.mongoose.model';
-import { sort, byKeyAscending, randomItem, transformDocuments, getCategories } from './helpers';
+import {
+  sort,
+  byKeyAscending,
+  randomItem,
+  transformDocuments,
+  getCategories
+} from './helpers';
 
 
 // -- ad factory
@@ -16,8 +22,8 @@ const ad = () => {
       currency: 'EUR'
     },
     status: 'Second Hand',
-    // category: categories[Math.floor(Math.random() * categories.length)]._id,
-    // subcategory: subcategories[Math.floor(Math.random() * subcategories.length)]._id,
+    // category: later added in code
+    // subcategory: later added in code
     description: faker.lorem.words(25),
     specifications: {
       groupset: 'Ultegra 6800'
@@ -67,19 +73,20 @@ const writeToDB = (model, ads) => {
       resolve(adDocs);
     })
     .catch(err => reject(err))
-  })
+  });
 }
 
 const addSellerToAds = (ads, seller) => {
   return ads.map(ad => {
     return {...ad, seller: seller()}
-  })
+  });
 }
 
 const addCategoryToAds = (ads, category) => {
   return ads.map(ad => {
-    return {...ad, category: category()}
-  })
+    return {
+      ...ad, category: category()};
+  });
 }
 
 // REFACTOR THIS
@@ -119,5 +126,12 @@ const seed = (model, ads) => {
   .catch(err => console.log(err));
 }
 
-// -- execute ad seeding
-seed(AdSchema, ads);
+
+export default function () {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(AdSchema, ads);
+      resolve(true);
+    }, 500);
+  });
+}

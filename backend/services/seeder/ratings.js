@@ -84,5 +84,12 @@ const seed = (model, ratings) => {
   .catch(err => console.log(err));
 }
 
-// -- execute rating seeding
-seed(RatingSchema, ratings);
+
+export default function() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(RatingSchema, ratings);
+      resolve(true);
+    }, 500);
+  });
+};

@@ -27,5 +27,12 @@ const seed = (model, categories) => {
   .catch(err => console.log(err));
 }
 
-// -- execute category seeding
-seed(CategorySchema, categories);
+
+export default function() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(CategorySchema, categories);
+      resolve(true);
+    }, 500);
+  });
+}

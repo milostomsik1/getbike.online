@@ -61,5 +61,11 @@ const seed = (model, notifications) => {
   .catch(err => console.log(err));
 }
 
-// -- execute notification seeding
-seed(NotificationSchema, notifications);
+export default function() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(NotificationSchema, notifications);
+      resolve(true);
+    }, 500);
+  });
+};

@@ -22,8 +22,8 @@ export const isUnique = (value, index, self) => {
   return self.indexOf(value) === index;
 }
 
-export const getUniqueKeys = (arr) => {
-  return arr.map(item => item[KEY]).filter(isUnique);
+export const getUniqueKeys = (arr, key) => {
+  return arr.map(item => item[key]).filter(isUnique);
 }
 
 export const transformDocuments = (documents, KEY, VALUE) => {
@@ -31,7 +31,7 @@ export const transformDocuments = (documents, KEY, VALUE) => {
   // value = '_id' -> IDs of given ads
   // { userId: [ adId, adId, adId] }
 
-  const uniqueKeys = getUniqueKeys(documents);
+  const uniqueKeys = getUniqueKeys(documents, KEY);
   const transformedDocuments = uniqueKeys.map(key => {
     return {[key] : []};
   });

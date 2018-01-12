@@ -48,5 +48,12 @@ const seed = (model, users) => {
   .catch(err => console.log(err));
 }
 
-// -- execute user seeding
-seed(UserSchema, users);
+
+export default function() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(UserSchema, users);
+      resolve(true);
+    }, 500);
+  });
+};

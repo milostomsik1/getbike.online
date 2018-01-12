@@ -60,5 +60,11 @@ const seed = (model, messages) => {
   .catch(err => console.log(err));
 }
 
-// -- execute messages seeding
-seed(MessageSchema, messages);
+export default function() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(MessageSchema, messages);
+      resolve(true);
+    }, 500);
+  });
+};

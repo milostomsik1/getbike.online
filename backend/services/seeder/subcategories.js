@@ -59,5 +59,11 @@ const seed = (model, subcategories) => {
   .catch(err => console.log(err));
 }
 
-// -- execute subcategory seeding
-seed(SubcategorySchema, subcategories);
+export default function () {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      seed(SubcategorySchema, subcategories);
+      resolve(true);
+    }, 500);
+  });
+}
