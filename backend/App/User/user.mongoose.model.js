@@ -29,11 +29,10 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  // favorites: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Ad'
-  //   default: []
-  // },
+  favorites: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Ad'
+  },
   ratings: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Rating'

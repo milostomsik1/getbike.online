@@ -40,8 +40,8 @@ const insertCreatedSubcategoriesIntoCategories = (docs) => {
     transformedDocuments.forEach(doc => {
       const categoryID = Object.keys(doc)[0];
       toBeUpdated.push(CategorySchema.findByIdAndUpdate(categoryID, {subcategories: doc[categoryID]}));
-      Promise.all(toBeUpdated).then(() => resolve(true));
     });
+    Promise.all(toBeUpdated).then(() => resolve(true));
   });
 }
 

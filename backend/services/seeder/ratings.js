@@ -58,8 +58,8 @@ const insertCreatedRatingsIntoUsers = (docs) => {
     transformedDocuments.forEach(doc => {
       const userID = Object.keys(doc)[0];
       toBeUpdated.push(UserSchema.findByIdAndUpdate(userID, {ratings: doc[userID]}));
-      Promise.all(toBeUpdated).then(() => resolve(true));
     });
+    Promise.all(toBeUpdated).then(() => resolve(true));
   });
 }
 

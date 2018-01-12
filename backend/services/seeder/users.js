@@ -24,7 +24,7 @@ const generateUsers = (user, amount) => {
 }
 
 // -- generate users
-const users = generateUsers(user, 100);
+const users = generateUsers(user, 50);
 
 // -- user seeder
 const seed = (model, users) => {

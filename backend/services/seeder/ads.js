@@ -76,10 +76,12 @@ const insertCreatedAdsIntoUsers = (docs) => {
     transformedDocuments.forEach(doc => {
       const userID = Object.keys(doc)[0];
       toBeUpdated.push(UserSchema.findByIdAndUpdate(userID, {ads: doc[userID]}));
-      Promise.all(toBeUpdated).then(() => resolve(true));
+      toBeUpdated.push(UserSchema.findByIdAndUpdate(userID, {favorites: doc[userID]}));
     });
+    Promise.all(toBeUpdated).then(() => resolve(true));
   });
 }
+
 
 // -- ad seeder
 const seed = (model, ads) => {
