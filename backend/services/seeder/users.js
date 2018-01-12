@@ -21,7 +21,7 @@ const generateUsers = (user, amount) => {
 }
 
 // -- generate users
-const users = generateUsers(user, 3);
+const users = generateUsers(user, 10);
 
 // -- write to DB
 const writeToDB = (model, users) => {

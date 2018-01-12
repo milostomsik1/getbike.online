@@ -2,7 +2,7 @@ import faker from 'faker';
 import mongoose from 'mongoose';
 import { UserSchema } from '../../App/User/user.mongoose.model';
 import { AdSchema } from '../../App/Ad/ad.mongoose.model';
-import { sort, byKeyAscending, randomItem, transformDocuments } from './helpers';
+import { sort, byKeyAscending, randomItem, transformDocuments, getCategories } from './helpers';
 
 
 // -- ad factory
@@ -43,7 +43,7 @@ const generateAds = (ad, amount) => {
 }
 
 // -- generate ads
-const ads = generateAds(ad, 20);
+const ads = generateAds(ad, 100);
 
 const getUsers = () => {
   return new Promise((resolve, reject) => {
@@ -76,6 +76,12 @@ const addSellerToAds = (ads, seller) => {
   })
 }
 
+const addCategoryToAds = (ads, category) => {
+  return ads.map(ad => {
+    return {...ad, category: category()}
+  })
+}
+
 // REFACTOR THIS
 const insertCreatedAdsIntoUsers = (docs) => {
   return new Promise((resolve, reject) => {
@@ -92,12 +98,20 @@ const insertCreatedAdsIntoUsers = (docs) => {
 
 // -- ad seeder
 const seed = (model, ads) => {
+  let randomUser;
+  let randomCategory;
+
   mongoose.Promise = global.Promise
   mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
   .then(connected => getUsers())
   .then(users => {
-    const randomUser = () => randomItem(users)._id
+    randomUser = () => randomItem(users)._id;
+    return getCategories();
+  })
+  .then(categories => {
+    randomCategory = () => randomItem(categories)._id;
     ads = addSellerToAds(ads, randomUser);
+    ads = addCategoryToAds(ads, randomCategory);
     return writeToDB(model, ads);
   })
   .then(createdAds => insertCreatedAdsIntoUsers(createdAds))

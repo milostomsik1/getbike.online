@@ -1,5 +1,6 @@
 import { UserSchema } from '../../App/User/user.mongoose.model';
 import { AdSchema } from '../../App/Ad/ad.mongoose.model';
+import { CategorySchema } from '../../App/Category/category.mongoose.model';
 
 
 export const byKeyAscending = function(key) {
@@ -62,6 +63,14 @@ export const getAds = () => {
   });
 }
 
+export const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    CategorySchema.find()
+    .then(categories => resolve(categories))
+    .catch(err => resolve(err));
+  });
+}
+
 export const writeToDB = (model, ads) => {
   return new Promise((resolve, reject) => {
     const SEED_START = Date.now();
@@ -77,7 +86,6 @@ export const writeToDB = (model, ads) => {
   })
 }
 
-// -- seedable generator
 export const generateSeedable = (data, amount) => {
   return (new Array(amount)).fill(null).map(element => data());
 }

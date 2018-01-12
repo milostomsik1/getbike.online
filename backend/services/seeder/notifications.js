@@ -26,10 +26,9 @@ const notification = () => {
 // -- generate notifications
 const notifications = generateSeedable(notification, 200);
 
-
 const addUserToNotifications = (notifications, user) => {
   return notifications.map(notification => {
-    return {...notification, user: user()}
+    return {...notification, user: user()};
   });
 }
 
