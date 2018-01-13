@@ -54,9 +54,9 @@ const generateAds = (ad, amount) => {
 // -- generate ads
 const ads = generateAds(ad, 1000);
 
-const addSellerToAds = (ads, seller) => {
+const addUserToAds = (ads, user) => {
   return ads.map(ad => {
-    return {...ad, seller: seller()}
+    return {...ad, user: user()}
   });
 }
 
@@ -78,8 +78,8 @@ const addSubcategoryToAds = (ads, subcategory) => {
 const insertCreatedAdsIntoUsers = (docs) => {
   return new Promise((resolve, reject) => {
     console.log('** Inserting created ads into users...')
-    docs = sort(docs, 'seller', byKeyAscending);
-    const transformedDocuments = transformDocuments(docs, 'seller', '_id');
+    docs = sort(docs, 'user', byKeyAscending);
+    const transformedDocuments = transformDocuments(docs, 'user', '_id');
     const toBeUpdated = [];
     transformedDocuments.forEach(doc => {
       const userID = Object.keys(doc)[0];
@@ -111,7 +111,7 @@ const seed = (model, ads) => {
     })
     .then(subcategories => {
       randomSubcategory = () => randomItem(subcategories)._id;
-      ads = addSellerToAds(ads, randomUser);
+      ads = addUserToAds(ads, randomUser);
       ads = addCategoryToAds(ads, randomCategory);
       ads = addSubcategoryToAds(ads, randomSubcategory);
       return writeToDB(model, ads);

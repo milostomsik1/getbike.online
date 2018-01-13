@@ -51,7 +51,7 @@ export const AdType = new GraphQLObjectType({
   name: 'Ad',
   fields: {
     id: { type: GraphQLID },
-    seller: { type: GraphQLString },
+    user: { type: GraphQLString },
     title: { type: GraphQLString },
     views: { type: GraphQLString },
     availability: { type: GraphQLString },

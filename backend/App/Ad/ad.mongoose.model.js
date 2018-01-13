@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 // -- Ad Schema
 export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
-  seller: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true

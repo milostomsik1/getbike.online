@@ -17,6 +17,12 @@ import {
   deleteAd
 } from './Ad/ad.controller';
 
+import {
+  category,
+  categories,
+  deleteCategory
+} from './Category/category.controller';
+
 // -- Root Query
 const query = new GraphQLObjectType({
   name: 'RootQuery',
@@ -24,7 +30,9 @@ const query = new GraphQLObjectType({
     user: user,
     users: users,
     ad: ad,
-    ads: ads
+    ads: ads,
+    category: category,
+    categories, categories
   }
 });
 
@@ -35,7 +43,8 @@ const mutation = new GraphQLObjectType({
     addUser: addUser,
     updateUser, updateUser,
     deleteUser: deleteUser,
-    deleteAd: deleteAd
+    deleteAd: deleteAd,
+    deleteCategory: deleteCategory
   }
 });
 
