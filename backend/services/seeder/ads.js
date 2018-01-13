@@ -8,6 +8,7 @@ import {
   randomItem,
   transformDocuments,
   getCategories,
+  getSubcategories,
   getUsers,
   writeToDB
 } from './helpers';
@@ -38,7 +39,7 @@ const ad = () => {
       name: 'Regular',
       expires: null
     },
-    rated: false,
+    isRated: false,
     created: Date.now(),
     refreshed: Date.now(),
     updated: Date.now()
@@ -66,6 +67,13 @@ const addCategoryToAds = (ads, category) => {
   });
 }
 
+const addSubcategoryToAds = (ads, subcategory) => {
+  return ads.map(ad => {
+    return {
+      ...ad, subcategory: subcategory()};
+  });
+}
+
 // REFACTOR THIS
 const insertCreatedAdsIntoUsers = (docs) => {
   return new Promise((resolve, reject) => {
@@ -88,6 +96,7 @@ const seed = (model, ads) => {
   return new Promise((resolve, reject) => {
     let randomUser;
     let randomCategory;
+    let randomSubcategory;
 
     mongoose.Promise = global.Promise
     mongoose.connect('mongodb://localhost/getbike', { useMongoClient: true })
@@ -98,8 +107,13 @@ const seed = (model, ads) => {
     })
     .then(categories => {
       randomCategory = () => randomItem(categories)._id;
+      return getSubcategories();
+    })
+    .then(subcategories => {
+      randomSubcategory = () => randomItem(subcategories)._id;
       ads = addSellerToAds(ads, randomUser);
       ads = addCategoryToAds(ads, randomCategory);
+      ads = addSubcategoryToAds(ads, randomSubcategory);
       return writeToDB(model, ads);
     })
     .then(createdAds => insertCreatedAdsIntoUsers(createdAds))

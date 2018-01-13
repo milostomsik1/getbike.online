@@ -14,6 +14,9 @@ const user = () => {
     location: {
       country: faker.address.country(),
       city: faker.address.city()
+    },
+    contact: {
+      phone: faker.lorem.word(10),
     }
   }
 }

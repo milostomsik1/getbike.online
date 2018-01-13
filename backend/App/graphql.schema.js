@@ -2,6 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLSchema
 } from 'graphql';
+
 import {
   user,
   users,
@@ -10,12 +11,20 @@ import {
   deleteUser
 } from './User/user.controller'
 
+import {
+  ad,
+  ads,
+  deleteAd
+} from './Ad/ad.controller';
+
 // -- Root Query
 const query = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
     user: user,
-    users: users
+    users: users,
+    ad: ad,
+    ads: ads
   }
 });
 
@@ -25,7 +34,8 @@ const mutation = new GraphQLObjectType({
   fields: {
     addUser: addUser,
     updateUser, updateUser,
-    deleteUser: deleteUser
+    deleteUser: deleteUser,
+    deleteAd: deleteAd
   }
 });
 

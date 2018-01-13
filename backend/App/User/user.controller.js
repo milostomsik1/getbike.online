@@ -15,16 +15,16 @@ export const user = {
   args: {
     id: { type: new GraphQLNonNull(GraphQLID) }
   },
-  async resolve(value, args) {
-    return await UserSchema.findById(args.id);
+  resolve(parentValue, args) {
+    return UserSchema.findById(args.id);
   }
 }
 
 // -- Get All Users
 export const users = {
   type: new GraphQLList(UserType),
-  async resolve() {
-    return await UserSchema.find();
+  resolve() {
+    return UserSchema.find();
   }
 }
 
@@ -37,8 +37,8 @@ export const addUser = {
     password: { type: new GraphQLNonNull(GraphQLString) },
     location: { type: new GraphQLNonNull(LocationInputType)},
   },
-  async resolve(value, args) {
-    return await UserSchema.create({
+  resolve(parentValue, args) {
+    return UserSchema.create({
       name: args.name,
       email: args.email,
       password: args.password,
@@ -58,11 +58,11 @@ export const updateUser = {
     name: { type: GraphQLString },
     email: { type: GraphQLString },
   },
-  async resolve(value, args) {
+  resolve(parentValue, args) {
     const data = {...args};
     data.updated = Date.now();
-    await UserSchema.findByIdAndUpdate(args.id, data)
-    return await UserSchema.findById(args.id);
+    UserSchema.findByIdAndUpdate(args.id, data)
+    return UserSchema.findById(args.id);
   }
 }
 
@@ -72,7 +72,7 @@ export const deleteUser = {
   args: {
     id: { type: new GraphQLNonNull(GraphQLID) }
   },
-  async resolve(value, args) {
-    return await UserSchema.findByIdAndRemove(args.id);
+  resolve(parentValue, args) {
+    return UserSchema.findByIdAndRemove(args.id);
   }
 }

@@ -2,40 +2,72 @@ import {
   GraphQLObjectType,
   GraphQLInputObjectType,
   GraphQLString,
-  GraphQLNonNull,
-  GraphQLBoolean
+  GraphQLID,
+  GraphQLInt,
+  GraphQLBoolean,
+  GraphQLList
 } from 'graphql';
 
 
-// -- GraphQL Location Input Type
-export const LocationInputType = new GraphQLInputObjectType({
-  name: 'InputLocation',
+// -- Price Input Type
+export const PriceInputType = new GraphQLInputObjectType({
+  name: 'InputPrice',
   fields: {
-    country: { type: GraphQLString },
-    city: { type: GraphQLString }
+    amount: { type: GraphQLInt },
+    currency: { type: GraphQLString }
   }
 })
 
-// -- GraphQL Location Output Type
-export const LocationOutputType = new GraphQLObjectType({
-  name: 'Location',
+// -- Price Type
+export const PriceType = new GraphQLObjectType({
+  name: 'Price',
   fields: {
-    country: { type: GraphQLString },
-    city: { type: GraphQLString }
+    amount: { type: GraphQLInt },
+    currency: { type: GraphQLString }
   }
 });
 
-// -- GraphQL Type
-export const UserType = new GraphQLObjectType({
-  name: 'User',
+// -- Type Input Type
+export const TypeInputType = new GraphQLInputObjectType({
+  name: 'InputType',
   fields: {
-    id: { type: GraphQLString },
     name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    password: { type: GraphQLString },
-    location: { type: LocationOutputType },
-    canCreateAds: { type: GraphQLBoolean },
+    expires: { type: GraphQLString }
+  }
+})
+
+// -- Type Type
+export const TypeType = new GraphQLObjectType({
+  name: 'Type',
+  fields: {
+    name: { type: GraphQLString },
+    expires: { type: GraphQLString }
+  }
+});
+
+
+// -- Ad Type
+export const AdType = new GraphQLObjectType({
+  name: 'Ad',
+  fields: {
+    id: { type: GraphQLID },
+    seller: { type: GraphQLString },
+    title: { type: GraphQLString },
+    views: { type: GraphQLString },
+    availability: { type: GraphQLString },
+    price: { type: PriceType },
+    status: { type: GraphQLString },
+    category: { type: GraphQLID },
+    subcategory: { type: GraphQLID },
+    description: { type: GraphQLString },
+    thumbnail: { type: GraphQLString },
+    images: { type: new GraphQLList(GraphQLString) },
+    tradable: { type: GraphQLBoolean },
+    tradeMethods: { type: new GraphQLList(GraphQLString) },
+    type: { type: TypeType },
+    isRated: { type: GraphQLBoolean },
     created: { type: GraphQLString },
-    updated: { type: GraphQLString }
+    refreshed: { type: GraphQLString },
+    updated: { type: GraphQLString },
   }
 });

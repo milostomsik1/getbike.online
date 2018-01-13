@@ -6,7 +6,7 @@ export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
   seller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    // required: true
+    required: true
   },
   title: {
     type: String,
@@ -42,10 +42,12 @@ export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
+    required: true
   },
   subcategory: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Subcategory',
+    required: true
   },
   description: {
     type: String,
@@ -61,11 +63,12 @@ export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
     type: String
   },
   images: {
-    type: String
+    type: Array
   },
   tradable: {
     type: Boolean,
     required: true,
+    default: false
   },
   tradeMethods: {
     type: Array,
@@ -82,7 +85,7 @@ export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
       default: null
     }
   },
-  rated: {
+  isRated: {
     type: Boolean,
     default: false
   },

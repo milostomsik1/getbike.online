@@ -3,11 +3,13 @@ import {
   GraphQLInputObjectType,
   GraphQLString,
   GraphQLNonNull,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLID,
+  GraphQLList
 } from 'graphql';
 
 
-// -- GraphQL Location Input Type
+// -- Location Input Type
 export const LocationInputType = new GraphQLInputObjectType({
   name: 'InputLocation',
   fields: {
@@ -16,7 +18,7 @@ export const LocationInputType = new GraphQLInputObjectType({
   }
 })
 
-// -- GraphQL Location Output Type
+// -- Location Output Type
 export const LocationOutputType = new GraphQLObjectType({
   name: 'Location',
   fields: {
@@ -25,16 +27,38 @@ export const LocationOutputType = new GraphQLObjectType({
   }
 });
 
-// -- GraphQL Type
+// -- Contact Input Type
+export const ContactInputType = new GraphQLInputObjectType({
+  name: 'InputContact',
+  fields: {
+    phone: { type: GraphQLString }
+  }
+})
+
+// -- Contact Output Type
+export const ContactOutputType = new GraphQLObjectType({
+  name: 'Contact',
+  fields: {
+    phone: { type: GraphQLString },
+  }
+});
+
+// -- User Type
 export const UserType = new GraphQLObjectType({
   name: 'User',
   fields: {
-    id: { type: GraphQLString },
+    id: { type: GraphQLID },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     password: { type: GraphQLString },
-    location: { type: LocationOutputType },
+    ads: { type: GraphQLID },
     canCreateAds: { type: GraphQLBoolean },
+    favorites: { type: new GraphQLList(GraphQLID) },
+    ratings: { type: new GraphQLList(GraphQLID) },
+    messages: { type: new GraphQLList(GraphQLID) },
+    notifications: { type: new GraphQLList(GraphQLID) },
+    location: { type: LocationOutputType },
+    contact: { type: ContactOutputType },
     created: { type: GraphQLString },
     updated: { type: GraphQLString }
   }
