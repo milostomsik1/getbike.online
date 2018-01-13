@@ -11,6 +11,16 @@ import {
 import { AdType } from '../Ad/ad.graphql.model';
 import { AdSchema } from '../Ad/ad.mongoose.model';
 
+import { RatingType } from '../Rating/rating.graphql.model';
+import { RatingSchema } from '../Rating/rating.mongoose.model';
+
+import { MessageType } from '../Message/message.graphql.model';
+import { MessageSchema } from '../Message/message.mongoose.model';
+
+import { NotificationType } from '../Notification/notification.graphql.model';
+import { NotificationSchema } from '../Notification/notification.mongoose.model';
+
+
 // -- Location Input Type
 export const LocationInputType = new GraphQLInputObjectType({
   name: 'InputLocation',
@@ -45,6 +55,7 @@ export const ContactOutputType = new GraphQLObjectType({
   }
 });
 
+
 // -- User Type
 export const UserType = new GraphQLObjectType({
   name: 'User',
@@ -64,10 +75,46 @@ export const UserType = new GraphQLObjectType({
       }
     },
     canCreateAds: { type: GraphQLBoolean },
-    favorites: { type: new GraphQLList(GraphQLID) },
-    ratings: { type: new GraphQLList(GraphQLID) },
-    messages: { type: new GraphQLList(GraphQLID) },
-    notifications: { type: new GraphQLList(GraphQLID) },
+    favorites: {
+      type: new GraphQLList(AdType),
+      async resolve(parentValue, args) {
+        const ads = [];
+        for (const ad of parentValue.ads) {
+          ads.push(await AdSchema.findById(ad));
+        }
+        return ads;
+      }
+    },
+    ratings: {
+      type: new GraphQLList(RatingType),
+      async resolve(parentValue, args) {
+        const ratings = [];
+        for (const rating of parentValue.ratings) {
+          ratings.push(await RatingSchema.findById(rating));
+        }
+        return ratings;
+      }
+    },
+    messages: {
+      type: new GraphQLList(MessageType),
+      async resolve(parentValue, args) {
+        const messages = [];
+        for (const message of parentValue.messages) {
+          messages.push(await MessageSchema.findById(message));
+        }
+        return messages;
+      }
+    },
+    notifications: {
+      type: new GraphQLList(NotificationType),
+      async resolve(parentValue, args) {
+        const notifications = [];
+        for (const notification of parentValue.notifications) {
+          notifications.push(await NotificationSchema.findById(notification));
+        }
+        return notifications;
+      }
+    },
     location: { type: LocationOutputType },
     contact: { type: ContactOutputType },
     created: { type: GraphQLString },
