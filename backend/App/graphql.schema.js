@@ -35,12 +35,23 @@ import {
   deleteNotification
 } from './Notification/notification.controller';
 
-
 import {
   rating,
   ratings,
   deleteRating
 } from './Rating/rating.controller';
+
+import {
+  message,
+  messages,
+  deleteMessage
+} from './Message/message.controller';
+
+import {
+  thread,
+  threads,
+  deleteThread
+} from './Thread/thread.controller';
 
 
 // -- Root Query Type
@@ -65,6 +76,12 @@ const rootQueryType = new GraphQLObjectType({
     // -- rating
     rating: rating,
     ratings: ratings,
+    // -- message
+    message: message,
+    messages: messages,
+    // -- thread
+    thread: thread,
+    threads: threads,
   }
 });
 
@@ -86,6 +103,10 @@ const rootMutationType = new GraphQLObjectType({
     deleteNotification: deleteNotification,
     // -- rating
     deleteRating: deleteRating,
+    // -- message
+    deleteMessage: deleteMessage,
+    // -- thread
+    deleteThread: deleteThread,
   }
 });
 

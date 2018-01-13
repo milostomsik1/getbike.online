@@ -8,6 +8,8 @@ import {
   GraphQLList
 } from 'graphql';
 
+import { AdType } from '../Ad/ad.graphql.model';
+import { AdSchema } from '../Ad/ad.mongoose.model';
 
 // -- Location Input Type
 export const LocationInputType = new GraphQLInputObjectType({
@@ -46,12 +48,21 @@ export const ContactOutputType = new GraphQLObjectType({
 // -- User Type
 export const UserType = new GraphQLObjectType({
   name: 'User',
-  fields: {
+  fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     password: { type: GraphQLString },
-    ads: { type: GraphQLID },
+    ads: {
+      type: new GraphQLList(AdType),
+      async resolve(parentValue, args) {
+        const ads = [];
+        for (const ad of parentValue.ads) {
+          ads.push(await AdSchema.findById(ad));
+        }
+        return ads;
+      }
+    },
     canCreateAds: { type: GraphQLBoolean },
     favorites: { type: new GraphQLList(GraphQLID) },
     ratings: { type: new GraphQLList(GraphQLID) },
@@ -61,5 +72,5 @@ export const UserType = new GraphQLObjectType({
     contact: { type: ContactOutputType },
     created: { type: GraphQLString },
     updated: { type: GraphQLString }
-  }
+  })
 });

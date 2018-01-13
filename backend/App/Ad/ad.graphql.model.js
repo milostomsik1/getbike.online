@@ -8,6 +8,9 @@ import {
   GraphQLList
 } from 'graphql';
 
+import { UserType } from '../User/user.graphql.model'
+import { UserSchema } from '../User/user.mongoose.model'
+
 
 // -- Price Input Type
 export const PriceInputType = new GraphQLInputObjectType({
@@ -49,9 +52,14 @@ export const TypeType = new GraphQLObjectType({
 // -- Ad Type
 export const AdType = new GraphQLObjectType({
   name: 'Ad',
-  fields: {
+  fields: () => ({
     id: { type: GraphQLID },
-    user: { type: GraphQLString },
+    user: {
+      type: UserType,
+      resolve(parentValue, args) {
+        return UserSchema.findById(parentValue.user);
+      }
+    },
     title: { type: GraphQLString },
     views: { type: GraphQLString },
     availability: { type: GraphQLString },
@@ -69,5 +77,5 @@ export const AdType = new GraphQLObjectType({
     created: { type: GraphQLString },
     refreshed: { type: GraphQLString },
     updated: { type: GraphQLString },
-  }
+  })
 });
