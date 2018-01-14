@@ -11,6 +11,12 @@ import {
 import { UserType } from '../User/user.graphql.model'
 import { UserSchema } from '../User/user.mongoose.model'
 
+import { CategoryType } from '../Category/category.graphql.model'
+import { CategorySchema } from '../Category/category.mongoose.model'
+
+import { SubcategoryType } from '../Subcategory/subcategory.graphql.model'
+import { SubcategorySchema } from '../Subcategory/subcategory.mongoose.model'
+
 
 // -- Price Input Type
 export const PriceInputType = new GraphQLInputObjectType({
@@ -65,8 +71,18 @@ export const AdType = new GraphQLObjectType({
     availability: { type: GraphQLString },
     price: { type: PriceType },
     status: { type: GraphQLString },
-    category: { type: GraphQLID },
-    subcategory: { type: GraphQLID },
+    category: {
+      type: CategoryType,
+      resolve(parentValue, args) {
+        return CategorySchema.findById(parentValue.category);
+      }
+    },
+    subcategory: {
+      type: SubcategoryType,
+      resolve(parentValue, args) {
+        return SubcategorySchema.findById(parentValue.subcategory);
+      }
+    },
     description: { type: GraphQLString },
     thumbnail: { type: GraphQLString },
     images: { type: new GraphQLList(GraphQLString) },
