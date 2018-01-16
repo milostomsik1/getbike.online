@@ -21,6 +21,10 @@ import { NotificationType } from '../Notification/notification.graphql.model';
 import { NotificationSchema } from '../Notification/notification.mongoose.model';
 
 
+//------------------------------
+// Subtypes for User Type
+//------------------------------
+
 // -- Location Input Type
 export const LocationInputType = new GraphQLInputObjectType({
   name: 'InputLocation',
@@ -56,22 +60,31 @@ export const ContactOutputType = new GraphQLObjectType({
 });
 
 
+//------------------------------
+// Field Resolvers
+//------------------------------
+
+// -- ID
 const id = {
   type: GraphQLID
 };
 
+// -- Name
 const name = {
   type: GraphQLString
 };
 
+// -- Email
 const email = {
   type: GraphQLString
 };
 
+// -- Password
 const password = {
   type: GraphQLString
 };
 
+// -- Ads
 const ads = {
   type: new GraphQLList(AdType),
   args: {
@@ -96,10 +109,12 @@ const ads = {
   }
 }
 
+// -- Can Create Ads
 const canCreateAds = {
   type: GraphQLBoolean
 };
 
+// -- Favorites
 const favorites = {
   type: new GraphQLList(AdType),
   async resolve(parentValue, args) {
@@ -111,6 +126,7 @@ const favorites = {
   }
 };
 
+// -- Ratings
 const ratings = {
   type: new GraphQLList(RatingType),
   async resolve(parentValue, args) {
@@ -122,6 +138,7 @@ const ratings = {
   }
 };
 
+// -- Messages
 const messages = {
   type: new GraphQLList(MessageType),
   async resolve(parentValue, args) {
@@ -133,6 +150,7 @@ const messages = {
   }
 };
 
+// -- Notifications
 const notifications = {
   type: new GraphQLList(NotificationType),
   async resolve(parentValue, args) {
@@ -144,24 +162,30 @@ const notifications = {
   }
 };
 
+// -- Location
 const location = {
   type: LocationOutputType
 };
 
+// -- Contact
 const contact = {
   type: ContactOutputType
 };
 
+// -- Created
 const created = {
   type: GraphQLString
 };
 
+// -- Updated
 const updated = {
   type: GraphQLString
 };
 
 
-// -- User Type
+//------------------------------
+// User Type
+//------------------------------
 export const UserType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
