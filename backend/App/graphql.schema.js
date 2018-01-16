@@ -14,7 +14,6 @@ import {
 import {
   ad,
   ads,
-  adsByCategory,
   deleteAd
 } from './Ad/ad.controller';
 
@@ -60,30 +59,29 @@ const rootQueryType = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
     // -- user
-    user: user,
-    users: users,
+    user,
+    users,
     // -- ad
-    ad: ad,
-    ads: ads,
-    adsByCategory: adsByCategory,
+    ad,
+    ads,
     // -- category
-    category: category,
-    categories: categories,
+    category,
+    categories,
     // -- subcategory
-    subcategory: subcategory,
-    subcategories: subcategories,
+    subcategory,
+    subcategories,
     // -- notification
-    notification: notification,
-    notifications: notifications,
+    notification,
+    notifications,
     // -- rating
-    rating: rating,
-    ratings: ratings,
+    rating,
+    ratings,
     // -- message
-    message: message,
-    messages: messages,
+    message,
+    messages,
     // -- thread
-    thread: thread,
-    threads: threads,
+    thread,
+    threads,
   }
 });
 

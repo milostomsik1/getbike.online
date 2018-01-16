@@ -32,10 +32,10 @@ export const LocationInputType = new GraphQLInputObjectType({
     country: { type: GraphQLString },
     city: { type: GraphQLString }
   }
-})
+});
 
-// -- Location Output Type
-export const LocationOutputType = new GraphQLObjectType({
+// -- Location Type
+export const LocationType = new GraphQLObjectType({
   name: 'Location',
   fields: {
     country: { type: GraphQLString },
@@ -49,10 +49,10 @@ export const ContactInputType = new GraphQLInputObjectType({
   fields: {
     phone: { type: GraphQLString }
   }
-})
+});
 
-// -- Contact Output Type
-export const ContactOutputType = new GraphQLObjectType({
+// -- Contact Type
+export const ContactType = new GraphQLObjectType({
   name: 'Contact',
   fields: {
     phone: { type: GraphQLString },
@@ -164,12 +164,12 @@ const notifications = {
 
 // -- Location
 const location = {
-  type: LocationOutputType
+  type: LocationType
 };
 
 // -- Contact
 const contact = {
-  type: ContactOutputType
+  type: ContactType
 };
 
 // -- Created

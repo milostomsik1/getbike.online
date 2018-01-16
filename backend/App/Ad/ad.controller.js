@@ -27,18 +27,6 @@ export const ads = {
   }
 }
 
-// -- Get All Ads With Given Category ID
-export const adsByCategory = {
-  type: new GraphQLList(AdType),
-  args: {
-    category: { type: new GraphQLNonNull(GraphQLID) }
-  },
-  async resolve(parentValue, args) {
-    const ads = await AdSchema.find();
-    return ads.filter(ad => ad.category == args.category);
-  }
-}
-
 // -- Delete A User
 export const deleteAd = {
   type: AdType,

@@ -18,6 +18,10 @@ import { SubcategoryType } from '../Subcategory/subcategory.graphql.model'
 import { SubcategorySchema } from '../Subcategory/subcategory.mongoose.model'
 
 
+//------------------------------
+// Subtypes for Ad Type
+//------------------------------
+
 // -- Price Input Type
 export const PriceInputType = new GraphQLInputObjectType({
   name: 'InputPrice',
@@ -55,43 +59,139 @@ export const TypeType = new GraphQLObjectType({
 });
 
 
-// -- Ad Type
+//------------------------------
+// Field Resolvers
+//------------------------------
+
+// -- ID
+const id = {
+  type: GraphQLID
+};
+
+// -- User
+const user = {
+  type: UserType,
+  resolve(parentValue, args) {
+    return UserSchema.findById(parentValue.user);
+  }
+};
+
+// -- Title
+const title = {
+  type: GraphQLString
+};
+
+// -- Views
+const views = {
+  type: GraphQLString
+};
+
+// -- Availability
+const availability = {
+  type: GraphQLString
+};
+
+// -- Price
+const price = {
+  type: PriceType
+};
+
+// -- Status
+const status = {
+  type: GraphQLString
+};
+
+// -- Category
+const category = {
+  type: CategoryType,
+  resolve(parentValue, args) {
+    return CategorySchema.findById(parentValue.category);
+  }
+};
+
+// -- Subcategory
+const subcategory = {
+  type: SubcategoryType,
+  resolve(parentValue, args) {
+    return SubcategorySchema.findById(parentValue.subcategory);
+  }
+};
+
+// -- Description
+const description = {
+  type: GraphQLString
+};
+
+// -- Thumbnail
+const thumbnail = {
+  type: GraphQLString
+};
+
+// -- Images
+const images = {
+  type: new GraphQLList(GraphQLString)
+};
+
+// -- Tradable
+const tradable = {
+  type: GraphQLBoolean
+};
+
+// -- Trade Methods
+const tradeMethods = {
+  type: new GraphQLList(GraphQLString)
+};
+
+// -- Type
+const type = {
+  type: TypeType
+};
+
+// -- Is Ad Rated
+const isRated = {
+  type: GraphQLBoolean
+};
+
+// -- Created
+const created = {
+  type: GraphQLString
+};
+
+// -- Refreshed
+const refreshed = {
+  type: GraphQLString
+};
+
+// -- Updated
+const updated = {
+  type: GraphQLString
+};
+
+
+//------------------------------
+// Ad Type
+//------------------------------
 export const AdType = new GraphQLObjectType({
   name: 'Ad',
   fields: () => ({
-    id: { type: GraphQLID },
-    user: {
-      type: UserType,
-      resolve(parentValue, args) {
-        return UserSchema.findById(parentValue.user);
-      }
-    },
-    title: { type: GraphQLString },
-    views: { type: GraphQLString },
-    availability: { type: GraphQLString },
-    price: { type: PriceType },
-    status: { type: GraphQLString },
-    category: {
-      type: CategoryType,
-      resolve(parentValue, args) {
-        return CategorySchema.findById(parentValue.category);
-      }
-    },
-    subcategory: {
-      type: SubcategoryType,
-      resolve(parentValue, args) {
-        return SubcategorySchema.findById(parentValue.subcategory);
-      }
-    },
-    description: { type: GraphQLString },
-    thumbnail: { type: GraphQLString },
-    images: { type: new GraphQLList(GraphQLString) },
-    tradable: { type: GraphQLBoolean },
-    tradeMethods: { type: new GraphQLList(GraphQLString) },
-    type: { type: TypeType },
-    isRated: { type: GraphQLBoolean },
-    created: { type: GraphQLString },
-    refreshed: { type: GraphQLString },
-    updated: { type: GraphQLString },
+    id,
+    user,
+    title,
+    views,
+    availability,
+    price,
+    status,
+    category,
+    subcategory,
+    description,
+    thumbnail,
+    images,
+    tradable,
+    tradeMethods,
+    type,
+    isRated,
+    created,
+    refreshed,
+    updated
   })
 });
