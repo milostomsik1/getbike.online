@@ -14,6 +14,7 @@ import {
 import {
   ad,
   ads,
+  adsByCategory,
   deleteAd
 } from './Ad/ad.controller';
 
@@ -64,6 +65,7 @@ const rootQueryType = new GraphQLObjectType({
     // -- ad
     ad: ad,
     ads: ads,
+    adsByCategory: adsByCategory,
     // -- category
     category: category,
     categories: categories,

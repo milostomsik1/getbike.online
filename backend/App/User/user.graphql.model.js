@@ -56,68 +56,128 @@ export const ContactOutputType = new GraphQLObjectType({
 });
 
 
+const id = {
+  type: GraphQLID
+};
+
+const name = {
+  type: GraphQLString
+};
+
+const email = {
+  type: GraphQLString
+};
+
+const password = {
+  type: GraphQLString
+};
+
+const ads = {
+  type: new GraphQLList(AdType),
+  args: {
+    category: { type: GraphQLID },
+    subcategory: { type: GraphQLID }
+  },
+  async resolve(parentValue, args) {
+    const noArgs = !Boolean(Object.keys(args).length);
+    const ads = [];
+
+    for (const ad of parentValue.ads) {
+      const doc = await AdSchema.findById(ad);
+      const isArgCategory = args.category && args.category == doc.category;
+      const isArgSubcategory = args.subcategory && args.subcategory == doc.subcategory;
+
+      if (noArgs || isArgCategory || isArgSubcategory) {
+        ads.push(doc);
+      }
+    }
+
+    return ads;
+  }
+}
+
+const canCreateAds = {
+  type: GraphQLBoolean
+};
+
+const favorites = {
+  type: new GraphQLList(AdType),
+  async resolve(parentValue, args) {
+    const ads = [];
+    for (const ad of parentValue.ads) {
+      ads.push(await AdSchema.findById(ad));
+    }
+    return ads;
+  }
+};
+
+const ratings = {
+  type: new GraphQLList(RatingType),
+  async resolve(parentValue, args) {
+    const ratings = [];
+    for (const rating of parentValue.ratings) {
+      ratings.push(await RatingSchema.findById(rating));
+    }
+    return ratings;
+  }
+};
+
+const messages = {
+  type: new GraphQLList(MessageType),
+  async resolve(parentValue, args) {
+    const messages = [];
+    for (const message of parentValue.messages) {
+      messages.push(await MessageSchema.findById(message));
+    }
+    return messages;
+  }
+};
+
+const notifications = {
+  type: new GraphQLList(NotificationType),
+  async resolve(parentValue, args) {
+    const notifications = [];
+    for (const notification of parentValue.notifications) {
+      notifications.push(await NotificationSchema.findById(notification));
+    }
+    return notifications;
+  }
+};
+
+const location = {
+  type: LocationOutputType
+};
+
+const contact = {
+  type: ContactOutputType
+};
+
+const created = {
+  type: GraphQLString
+};
+
+const updated = {
+  type: GraphQLString
+};
+
+
 // -- User Type
 export const UserType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    password: { type: GraphQLString },
-    ads: {
-      type: new GraphQLList(AdType),
-      async resolve(parentValue, args) {
-        const ads = [];
-        for (const ad of parentValue.ads) {
-          ads.push(await AdSchema.findById(ad));
-        }
-        return ads;
-      }
-    },
-    canCreateAds: { type: GraphQLBoolean },
-    favorites: {
-      type: new GraphQLList(AdType),
-      async resolve(parentValue, args) {
-        const ads = [];
-        for (const ad of parentValue.ads) {
-          ads.push(await AdSchema.findById(ad));
-        }
-        return ads;
-      }
-    },
-    ratings: {
-      type: new GraphQLList(RatingType),
-      async resolve(parentValue, args) {
-        const ratings = [];
-        for (const rating of parentValue.ratings) {
-          ratings.push(await RatingSchema.findById(rating));
-        }
-        return ratings;
-      }
-    },
-    messages: {
-      type: new GraphQLList(MessageType),
-      async resolve(parentValue, args) {
-        const messages = [];
-        for (const message of parentValue.messages) {
-          messages.push(await MessageSchema.findById(message));
-        }
-        return messages;
-      }
-    },
-    notifications: {
-      type: new GraphQLList(NotificationType),
-      async resolve(parentValue, args) {
-        const notifications = [];
-        for (const notification of parentValue.notifications) {
-          notifications.push(await NotificationSchema.findById(notification));
-        }
-        return notifications;
-      }
-    },
-    location: { type: LocationOutputType },
-    contact: { type: ContactOutputType },
-    created: { type: GraphQLString },
-    updated: { type: GraphQLString }
+    id,
+    name,
+    email,
+    password,
+    ads,
+    canCreateAds,
+    favorites,
+    ratings,
+    messages,
+    notifications,
+    location,
+    contact,
+    created,
+    updated
   })
 });
