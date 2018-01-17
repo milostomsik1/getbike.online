@@ -21,8 +21,8 @@ mongoose.connect(config.databaseUrl, { useMongoClient: true })
 server.use(morgan('dev'));
 
 // -- Apollo GraphQL setup
-server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-server.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+server.use(config.GraphQLEndpoint, bodyParser.json(), graphqlExpress({ schema }));
+server.get('/graphiql', graphiqlExpress({ endpointURL: config.GraphQLEndpoint }));
 
 // -- Listen to requests
 server.listen(process.env.port || config.port, () => {
