@@ -1,8 +1,12 @@
+import {
+  graphqlExpress,
+  graphiqlExpress
+} from 'apollo-server-express';
 import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-import graphqlHTTP from 'express-graphql';
 import config from './config/db';
+import bodyParser from 'body-parser';
 import schema from './App/graphql.schema'
 
 // -- Setup Express
@@ -16,11 +20,9 @@ mongoose.connect(config.databaseUrl, { useMongoClient: true })
 // -- Console Logging
 server.use(morgan('dev'));
 
-// -- GraphQL setup
-server.use('/graphql', graphqlHTTP({
-  schema: schema,
-  graphiql: true
-}));
+// -- Apollo GraphQL setup
+server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+server.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 // -- Listen to requests
 server.listen(process.env.port || config.port, () => {

@@ -8,6 +8,7 @@ Official repo of getbike.online - second hand bikes, equipment, tools and servic
 #### Backend:
 * Node.js
 * Express.js
+* Apollo
 * GraphQL
 * MongoDB
 
