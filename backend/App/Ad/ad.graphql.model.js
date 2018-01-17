@@ -69,12 +69,12 @@ const id = {
 };
 
 // -- User
-const user = {
-  type: UserType,
-  resolve(parentValue, args) {
-    return UserSchema.findById(parentValue.user);
+const user = () => ({
+    type: UserType,
+    resolve(parentValue, args) {
+      return UserSchema.findById(parentValue.user);
   }
-};
+});
 
 // -- Title
 const title = {
@@ -102,20 +102,20 @@ const status = {
 };
 
 // -- Category
-const category = {
+const category = () => ({
   type: CategoryType,
   resolve(parentValue, args) {
     return CategorySchema.findById(parentValue.category);
   }
-};
+});
 
 // -- Subcategory
-const subcategory = {
+const subcategory = () => ({
   type: SubcategoryType,
   resolve(parentValue, args) {
     return SubcategorySchema.findById(parentValue.subcategory);
   }
-};
+});
 
 // -- Description
 const description = {
@@ -175,14 +175,14 @@ export const AdType = new GraphQLObjectType({
   name: 'Ad',
   fields: () => ({
     id,
-    user,
+    user: user(),
     title,
     views,
     availability,
     price,
     status,
-    category,
-    subcategory,
+    category: category(),
+    subcategory: subcategory(),
     description,
     thumbnail,
     images,
