@@ -132,6 +132,6 @@ export default {
     },
     messages({messages}) {
       return Promise.all(messages.map(message => MessageSchema.findById(message)));
-    },
+    }
   },
 };
