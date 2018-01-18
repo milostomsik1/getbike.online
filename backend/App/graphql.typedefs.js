@@ -87,23 +87,6 @@ type Subcategory {
   category: Category
 }
 
-type Message {
-  id: String
-  sender: User
-  recipient: User
-  content: String
-  created: String
-}
-
-type Thread {
-  id: String
-  participants: [User]
-  ad: Ad
-  messages: [Message]
-  created: String
-  updated: String
-}
-
 type Rating {
   id: String
   user: User
@@ -122,5 +105,22 @@ type Notification {
   title: String
   content: String
   created: String
+}
+
+type Message {
+  id: String
+  sender: User
+  recipient: User
+  content: String
+  created: String
+}
+
+type Thread {
+  id: String
+  participants: [User]
+  ad: Ad
+  messages: [Message]
+  created: String
+  updated: String
 }
 `;
