@@ -1,7 +1,21 @@
 export default `
 type Query {
   users: [User]
+  user(id: ID!): User
   ads: [Ad]
+  ad(id: ID!): Ad
+  categories: [Category]
+  category(id: ID!): Category
+  subcategories: [Subcategory]
+  subcategory(id: ID!): Subcategory
+  ratings: [Rating]
+  rating(id: ID!): Rating
+  notifications: [Notification]
+  notification(id: ID!): Notification
+  threads: [Thread]
+  thread(id: ID!): Thread
+  messages: [Message]
+  message(id: ID!): Message
 }
 
 type Location {
@@ -14,7 +28,7 @@ type Contact {
 }
 
 type User {
-  id: String
+  id: ID
   name: String
   email: String
   password: String
@@ -41,7 +55,7 @@ type AdType {
 }
 
 type Ad {
-  id: String
+  id: ID
   user: User
   title: String
   views: Int
