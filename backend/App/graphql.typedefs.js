@@ -2,20 +2,28 @@ export default `
 type Query {
   users: [User]
   user(id: ID!): User
+  userCount: Int
   ads: [Ad]
   ad(id: ID!): Ad
+  adCount: Int
   categories: [Category]
   category(id: ID!): Category
+  categoryCount: Int
   subcategories: [Subcategory]
   subcategory(id: ID!): Subcategory
+  subcategoryCount: Int
   ratings: [Rating]
   rating(id: ID!): Rating
+  ratingCount: Int
   notifications: [Notification]
   notification(id: ID!): Notification
+  notificationCount: Int
   threads: [Thread]
   thread(id: ID!): Thread
+  threadCount: Int
   messages: [Message]
   message(id: ID!): Message
+  messageCount: Int
 }
 
 type Location {

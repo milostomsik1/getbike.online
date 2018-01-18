@@ -16,11 +16,17 @@ export default {
     user(_, {id}) {
       return UserSchema.findById(id);
     },
+    userCount() {
+      return UserSchema.count();
+    },
     ads() {
       return AdSchema.find();
     },
     ad(_, {id}) {
       return AdSchema.findById(id);
+    },
+    adCount() {
+      return AdSchema.count();
     },
     categories() {
       return CategorySchema.find();
@@ -28,11 +34,17 @@ export default {
     category(_, {id}) {
       return CategorySchema.findById(id);
     },
+    categoryCount() {
+      return CategorySchema.count();
+    },
     subcategories() {
       return SubcategorySchema.find();
     },
     subcategory(_, {id}) {
       return SubcategorySchema.findById(id);
+    },
+    subcategoryCount() {
+      return SubcategorySchema.count();
     },
     ratings() {
       return SubcategorySchema.find();
