@@ -1,9 +1,16 @@
 export default `
 type Query {
   users: [User]
-  user(id: ID!): User
+  user(
+    id: ID
+    ad: ID
+    ): User
   userCount: Int
-  ads: [Ad]
+  ads(
+    ids: [ID]
+    categories: [ID]
+    subcategories: [ID]
+    ): [Ad]
   ad(id: ID!): Ad
   adCount: Int
   categories: [Category]
@@ -24,6 +31,10 @@ type Query {
   messages: [Message]
   message(id: ID!): Message
   messageCount: Int
+}
+
+type Mutation {
+  deleteAd(id: ID): String
 }
 
 type Location {

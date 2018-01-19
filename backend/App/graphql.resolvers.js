@@ -6,20 +6,32 @@ import { RatingSchema } from './Rating/rating.mongoose.model';
 import { NotificationSchema } from './Notification/notification.mongoose.model';
 import { ThreadSchema } from './Thread/thread.mongoose.model';
 import { MessageSchema } from './Message/message.mongoose.model';
-
+import mongoose from 'mongoose';
 
 export default {
   Query: {
     users() {
       return UserSchema.find();
     },
-    user(_, {id}) {
-      return UserSchema.findById(id);
+    async user(_, {id, ad}) {
+      if (id) {
+        return await UserSchema.findById(id)
+      } else if (ad) {
+        const doc = await AdSchema.findById(ad);
+        return await UserSchema.findById(doc.user);
+      }
     },
     userCount() {
       return UserSchema.count();
     },
-    ads() {
+    ads(_, {ids, categories, subcategories}) {
+      if (ids) {
+        return Promise.all(ids.map(id => AdSchema.findById(id)));
+      } else if (categories) {
+        return AdSchema.find({category: {$in: categories}})
+      } else if (subcategories) {
+        return AdSchema.find({subcategory: {$in: subcategories}})
+      }
       return AdSchema.find();
     },
     ad(_, {id}) {
@@ -81,6 +93,13 @@ export default {
     },
     messageCount() {
       return MessageSchema.count();
+    }
+  },
+
+  Mutation: {
+    async deleteAd(_, {id}) {
+      const result = await AdSchema.findByIdAndRemove(id);
+      return result ? `Deleted an Ad with ID: ${id}` : `Can't find an Ad with given ID`;
     }
   },
 
