@@ -52,11 +52,17 @@ export default {
     rating(_, {id}) {
       return SubcategorySchema.findById(id);
     },
+    ratingCount() {
+      return RatingSchema.count();
+    },
     notifications() {
       return SubcategorySchema.find();
     },
     notification(_, {id}) {
       return SubcategorySchema.findById(id);
+    },
+    notificationCount() {
+      return NotificationSchema.count();
     },
     threads() {
       return SubcategorySchema.find();
@@ -64,12 +70,18 @@ export default {
     thread(_, {id}) {
       return SubcategorySchema.findById(id);
     },
+    threadCount() {
+      return ThreadSchema.count();
+    },
     messages() {
       return SubcategorySchema.find();
     },
     message(_, {id}) {
       return SubcategorySchema.findById(id);
     },
+    messageCount() {
+      return MessageSchema.count();
+    }
   },
 
   User: {
