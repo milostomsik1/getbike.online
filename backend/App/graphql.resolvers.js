@@ -168,9 +168,14 @@ export default {
       await UserSchema.findByIdAndUpdate(user._id, user);
       return newNotification;
     },
-    deleteNotification(_, {id}) {
-      // add code to remove notification from user
-      return NotificationSchema.findByIdAndRemove(id);
+    async deleteNotification(_, {id}) {
+      const deletedNotification = await NotificationSchema.findByIdAndRemove(id);
+      if (deletedNotification) {
+        const user = await UserSchema.findById(deletedNotification.user);
+        user.notifications = user.notifications.filter(notification => notification != id);
+        await UserSchema.findByIdAndUpdate(user._id, user);
+      }
+      return deletedNotification;
     }
   },
 
