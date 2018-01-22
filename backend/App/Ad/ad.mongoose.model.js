@@ -56,7 +56,7 @@ export const AdSchema = mongoose.model('Ad', new mongoose.Schema({
     maxlength: 2000
   },
   specifications: {
-    type: Object,
+    type: String,
     required: true
   },
   thumbnail: {

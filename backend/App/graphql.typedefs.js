@@ -34,10 +34,47 @@ type Query {
 }
 
 type Mutation {
-  deleteAd(id: ID): String
+  createUser(
+    name: String!
+    email: String!
+    password: String!
+    location: LocationInput!
+  ): User
+  deleteUser(id: ID!): User
+  createAd(
+    user: ID!
+    title: String!
+    views: Int
+    availability: String
+    price: PriceInput!
+    status: String
+    category: ID!
+    subcategory: ID!
+    description: String!
+    specifications: String!
+    thumbnail: String
+    images: [String!]
+    tradable: Boolean
+    tradeMethods: [String!]!
+    type: AdTypeInput
+    isRated: Boolean
+  ): Ad
+  deleteAd(id: ID!): Ad
+  createCategory(name: String!): Category
+  deleteCategory(id: ID!): Category
+  createSubcategory(
+    name: String!
+    category: ID!
+  ): Subcategory
+  deleteSubcategory(id: ID!): Subcategory
 }
 
 type Location {
+  country: String
+  city: String
+}
+
+input LocationInput {
   country: String
   city: String
 }
@@ -48,9 +85,9 @@ type Contact {
 
 type User {
   id: ID
-  name: String
-  email: String
-  password: String
+  name: String!
+  email: String!
+  password: String!
   ads: [Ad]
   canCreateAds: Boolean
   favorites: [Ad]
@@ -68,7 +105,17 @@ type Price {
   currency: String
 }
 
+input PriceInput {
+  amount: Int
+  currency: String
+}
+
 type AdType {
+  name: String
+  expires: String
+}
+
+input AdTypeInput {
   name: String
   expires: String
 }
@@ -84,9 +131,11 @@ type Ad {
   category: Category
   subcategory: Subcategory
   description: String
+  specifications: String
   thumbnail: String
-  images: [String]
+  images: [String!]
   tradable: Boolean
+  tradeMethods: [String]
   type: AdType
   isRated: Boolean
   created: String

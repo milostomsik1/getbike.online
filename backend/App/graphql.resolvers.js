@@ -97,9 +97,33 @@ export default {
   },
 
   Mutation: {
-    async deleteAd(_, {id}) {
-      const result = await AdSchema.findByIdAndRemove(id);
-      return result ? `Deleted an Ad with ID: ${id}` : `Can't find an Ad with given ID`;
+    createUser(_, args) {
+      return UserSchema.create(args);
+    },
+    deleteUser(_, {id}) {
+      return UserSchema.findByIdAndRemove(id);
+    },
+    createAd(_, args) {
+      return AdSchema.create(args);
+    },
+    deleteAd(_, {id}) {
+      return AdSchema.findByIdAndRemove(id);
+    },
+    createCategory(_, {name}) {
+      return CategorySchema.create({name});
+    },
+    deleteCategory(_, {id}) {
+      return CategorySchema.findByIdAndRemove(id);
+    },
+    async createSubcategory(_, args) {
+      const newSubcategory = await SubcategorySchema.create(args);
+      const category = await CategorySchema.findById(args.category);
+      category.subcategories.push(newSubcategory._id);
+      await CategorySchema.findByIdAndUpdate(category._id, category);
+      return newSubcategory;
+    },
+    deleteSubcategory(_, {id}) {
+      return SubcategorySchema.findByIdAndRemove(id);
     }
   },
 
