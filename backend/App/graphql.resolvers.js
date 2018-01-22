@@ -59,37 +59,37 @@ export default {
       return SubcategorySchema.count();
     },
     ratings() {
-      return SubcategorySchema.find();
+      return RatingSchema.find();
     },
     rating(_, {id}) {
-      return SubcategorySchema.findById(id);
+      return RatingSchema.findById(id);
     },
     ratingCount() {
       return RatingSchema.count();
     },
     notifications() {
-      return SubcategorySchema.find();
+      return NotificationSchema.find();
     },
     notification(_, {id}) {
-      return SubcategorySchema.findById(id);
+      return NotificationSchema.findById(id);
     },
     notificationCount() {
       return NotificationSchema.count();
     },
     threads() {
-      return SubcategorySchema.find();
+      return ThreadSchema.find();
     },
     thread(_, {id}) {
-      return SubcategorySchema.findById(id);
+      return ThreadSchema.findById(id);
     },
     threadCount() {
       return ThreadSchema.count();
     },
     messages() {
-      return SubcategorySchema.find();
+      return MessageSchema.find();
     },
     message(_, {id}) {
-      return SubcategorySchema.findById(id);
+      return MessageSchema.findById(id);
     },
     messageCount() {
       return MessageSchema.count();
@@ -101,9 +101,11 @@ export default {
       return UserSchema.create(args);
     },
     deleteUser(_, {id}) {
+      // add code to delete all related info (ads, ratings, notifications, threads, messages)
       return UserSchema.findByIdAndRemove(id);
     },
     createAd(_, args) {
+      // add code to insert created ad into user that created it
       return AdSchema.create(args);
     },
     deleteAd(_, {id}) {
@@ -113,6 +115,7 @@ export default {
       return CategorySchema.create({name});
     },
     deleteCategory(_, {id}) {
+      // add code to remove respective subcategories
       return CategorySchema.findByIdAndRemove(id);
     },
     async createSubcategory(_, args) {
@@ -123,7 +126,51 @@ export default {
       return newSubcategory;
     },
     deleteSubcategory(_, {id}) {
+      // add code to remove deleted subcategory from category
       return SubcategorySchema.findByIdAndRemove(id);
+    },
+    createThread(_, args) {
+      // add code to add thread to user messages array
+      // check if user already has a thread with given recipient
+    },
+    deleteThread(_, {id}) {
+      // problem: deletes thread for both users
+    },
+    createMessage(_, args) {
+      // add code
+    },
+    deleteMessage(_, {id}) {
+      // problem: deletes message for both users
+    },
+    deleteMessages(_, {ids}) {
+      // problem: deletes messages for both users
+    },
+    async createRating(_, args) {
+      const newRating = await RatingSchema.create(args);
+      const user = await UserSchema.findById(args.user);
+      user.ratings.push(newRating._id);
+      await UserSchema.findByIdAndUpdate(user._id, user);
+      return newRating;
+    },
+    async deleteRating(_, {id}) {
+      const deletedRating = await RatingSchema.findByIdAndRemove(id);
+      if (deletedRating) {
+        const user = await UserSchema.findById(deletedRating.user);
+        user.ratings = user.ratings.filter(rating => rating != id);
+        await UserSchema.findByIdAndUpdate(user._id, user);
+      }
+      return deletedRating;
+    },
+    async createNotification(_, args) {
+      const newNotification = await NotificationSchema.create(args);
+      const user = await UserSchema.findById(args.user);
+      user.notifications.push(newNotification._id);
+      await UserSchema.findByIdAndUpdate(user._id, user);
+      return newNotification;
+    },
+    deleteNotification(_, {id}) {
+      // add code to remove notification from user
+      return NotificationSchema.findByIdAndRemove(id);
     }
   },
 
@@ -171,7 +218,7 @@ export default {
       return UserSchema.findById(user);
     },
     ad({ad}) {
-      return UserSchema.findById(ad);
+      return AdSchema.findById(ad);
     }
   },
 
@@ -195,7 +242,7 @@ export default {
       return Promise.all(participants.map(participant => UserSchema.findById(participant)));
     },
     ad({ad}) {
-      return UserSchema.findById(ad);
+      return AdSchema.findById(ad);
     },
     messages({messages}) {
       return Promise.all(messages.map(message => MessageSchema.findById(message)));

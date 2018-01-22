@@ -67,6 +67,35 @@ type Mutation {
     category: ID!
   ): Subcategory
   deleteSubcategory(id: ID!): Subcategory
+  createThread(
+    participants: [ID!]!
+    ad: ID!
+    messages: [ID!]
+  ): Thread
+  deleteThread(id: ID!): Thread
+  createMessage(
+    sender: ID!
+    recipient: ID!
+    content: String!
+  ): Message
+  deleteMessage(id: ID!): Message
+  deleteMessages(ids: [ID!]!): [Message]
+  createRating(
+    user: ID!
+    ad: ID!
+    type: String
+    description: Int
+    communication: Int!
+    trade: Int!
+    comment: String!
+  ): Rating
+  deleteRating(id: ID!): Rating
+  createNotification(
+    user: ID!
+    title: String!
+    content: String!
+  ): Notification
+  deleteNotification(id: ID!): Notification
 }
 
 type Location {
