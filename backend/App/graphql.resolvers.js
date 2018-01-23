@@ -160,7 +160,7 @@ export default {
       }
     },
     async softDeleteMessage(_, {id, user, thread: threadId}) {
-      // if soft deleted by both users hard delete the message
+      // buggy, leaving null values for thread
       const message = await MessageSchema.findById(id);
       if (message) {
         message.deletedBy = message.deletedBy.map(user => user.toString());
@@ -175,12 +175,13 @@ export default {
             const deletedThread = await ThreadSchema.findByIdAndRemove(thread._id);
             for (const participant of thread.participants) {
               const user = await UserSchema.findById(participant);
-              user.messages = user.messages.filter(thread => thread != deletedThread._id);
+              user.threads = user.threads.filter(thread => thread != deletedThread._id);
               await UserSchema.findByIdAndUpdate(user._id, user);
             }
           } else {
             await ThreadSchema.findByIdAndUpdate(thread._id, thread);
           }
+          deletedMessage.deletedBy.push(user);
           return deletedMessage;
         }
         if (userNotInDeletedBy) {
@@ -197,10 +198,23 @@ export default {
     async softDeleteMessages(_, {ids}) {
 
     },
-    async deleteMessage(_, {id}) {
-      // delete message
-      // remove message from thread
-      // if thread empty, delete thread
+    async deleteMessage(_, {message: messageId, thread: threadId}) {
+      const deletedMessage = await MessageSchema.findByIdAndRemove(messageId);
+      const thread = await ThreadSchema.findById(threadId);
+      if (thread.messages.length <= 1) {
+        const deletedThread = await ThreadSchema.findByIdAndRemove(threadId);
+        for (const participant of deletedThread.participants) {
+          const user = await UserSchema.findById(participant);
+          console.log(user.threads.length);
+          user.threads = user.threads.filter(thread => thread != threadId);
+          console.log(user.threads.length);
+          await UserSchema.findByIdAndUpdate(user._id, user);
+        }
+      } else {
+        thread.messages = thread.messages.filter(message => message != messageId);
+        await ThreadSchema.findByIdAndUpdate(thread._id, thread);
+      }
+      return deletedMessage;
     },
     async deleteMessages(_, {ids}) {
       // delete message

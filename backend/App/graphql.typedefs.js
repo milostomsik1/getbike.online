@@ -89,8 +89,14 @@ type Mutation {
     user: ID!
     thread: ID!
   ): [Message]
-  deleteMessage(id: ID!): Message
-  deleteMessages(ids: [ID!]!): [Message]
+  deleteMessage(
+    message: ID!
+    thread: ID!
+  ): Message
+  deleteMessages(
+    ids: [ID!]!
+    thread: ID!
+  ): [Message]
   createRating(
     user: ID!
     ad: ID!
