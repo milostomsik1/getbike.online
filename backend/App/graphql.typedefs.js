@@ -7,9 +7,9 @@ type Query {
     ): User
   userCount: Int
   ads(
-    ids: [ID]
-    categories: [ID]
-    subcategories: [ID]
+    ids: [ID!]
+    categories: [ID!]
+    subcategories: [ID!]
     ): [Ad]
   ad(id: ID!): Ad
   adCount: Int
@@ -79,6 +79,16 @@ type Mutation {
     recipient: ID!
     content: String!
   ): Message
+  softDeleteMessage(
+    id: ID!
+    user: ID!
+    thread: ID!
+  ): Message
+  softDeleteMessages(
+    ids: [ID!]!
+    user: ID!
+    thread: ID!
+  ): [Message]
   deleteMessage(id: ID!): Message
   deleteMessages(ids: [ID!]!): [Message]
   createRating(
@@ -122,7 +132,7 @@ type User {
   canCreateAds: Boolean
   favorites: [Ad]
   ratings: [Rating]
-  messages: [Thread]
+  threads: [Thread]
   notifications: [Notification]
   location: Location
   contact: Contact
@@ -174,7 +184,7 @@ type Ad {
 }
 
 type Category {
-  id: String
+  id: ID
   name: String
   subcategories: [Subcategory]
 }
@@ -186,7 +196,7 @@ type Subcategory {
 }
 
 type Rating {
-  id: String
+  id: ID
   user: User
   ad: Ad
   type: String
@@ -198,7 +208,7 @@ type Rating {
 }
 
 type Notification {
-  id: String
+  id: ID
   user: User
   title: String
   content: String
@@ -206,15 +216,16 @@ type Notification {
 }
 
 type Message {
-  id: String
+  id: ID
   sender: User
   recipient: User
   content: String
+  deletedBy: [User]
   created: String
 }
 
 type Thread {
-  id: String
+  id: ID
   participants: [User]
   ad: Ad
   messages: [Message]

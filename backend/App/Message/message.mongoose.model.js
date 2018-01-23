@@ -17,6 +17,10 @@ export const MessageSchema = mongoose.model('Message', new mongoose.Schema({
     minlength: 3,
     maxlength: 500
   },
+  deletedBy: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'User'
+  },
   created: {
     type: Date,
     default: Date.now()

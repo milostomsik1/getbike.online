@@ -37,7 +37,7 @@ export const UserSchema = mongoose.model('User', new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Rating'
   },
-  messages: {
+  threads: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Thread'
   },

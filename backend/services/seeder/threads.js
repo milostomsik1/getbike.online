@@ -40,23 +40,26 @@ const transformMessages = (messages, uniqueParticipantPairs) => {
   return transformedMsgs;
 }
 
-const insertCreatedThreadsIntoUsers = (docs) => {
+const insertCreatedThreadsIntoUsers = (createdThreads) => {
   return new Promise((resolve, reject) => {
     console.log('** Inserting created threads into users...')
-    const transformedThreads = docs.map(doc => {
+    let transformedThreads = createdThreads.map(thread => {
       return {
-        user: doc.participants[0],
-        messages: doc.messages
-      }
-    }).concat(docs.map(doc => {
+        id: thread._id,
+        user: thread.participants[0]
+      };
+    }).concat(createdThreads.map(thread => {
       return {
-        user: doc.participants[1],
-        messages: doc.messages
-      }
+        id: thread._id,
+        user: thread.participants[1]
+      };
     }));
+    transformedThreads = transformDocuments(transformedThreads, 'user', 'id');
     const toBeUpdated = [];
-    transformedThreads.forEach(doc => {
-      toBeUpdated.push(UserSchema.findByIdAndUpdate(doc.user, {messages: doc.messages}));
+    transformedThreads.forEach(tThread => {
+      const user = Object.keys(tThread)[0];
+      const threads = tThread[user];
+      toBeUpdated.push(UserSchema.findByIdAndUpdate(user, {threads}));
     });
     Promise.all(toBeUpdated).then(() => resolve(true));
   });

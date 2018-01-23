@@ -50,7 +50,7 @@ const generateAds = (ad, amount) => {
 }
 
 // -- generate ads
-const ads = generateAds(ad, 1000);
+const ads = generateAds(ad, 100);
 
 const addUserToAds = (ads, user) => {
   return ads.map(ad => {

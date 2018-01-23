@@ -148,17 +148,64 @@ export default {
       // problem: deletes thread for both users
     },
     async createMessage(_, args) {
-      const newMessage = await MessageSchema.create(args);
-      const thread = await ThreadSchema.findById(args.threadId);
-      thread.messages.push(newMessage._id);
-      await ThreadSchema.findByIdAndUpdate(thread._id, thread);
-      return newMessage;
+      const {sender, recipient} = args;
+      if (sender !== recipient) {
+        const newMessage = await MessageSchema.create(args);
+        const thread = await ThreadSchema.findById(args.threadId);
+        thread.messages.push(newMessage._id);
+        await ThreadSchema.findByIdAndUpdate(thread._id, thread);
+        return newMessage;
+      } else {
+        throw new Error(`User can't send message to himself.`);
+      }
     },
-    deleteMessage(_, {id}) {
-      // problem: deletes message for both users
+    async softDeleteMessage(_, {id, user, thread: threadId}) {
+      // if soft deleted by both users hard delete the message
+      const message = await MessageSchema.findById(id);
+      if (message) {
+        message.deletedBy = message.deletedBy.map(user => user.toString());
+        const userNotInDeletedBy = message.deletedBy.indexOf(user) === -1;
+        const bothUsersSoftDeletedMessage = message.deletedBy.length >= 1 && userNotInDeletedBy;
+        if (bothUsersSoftDeletedMessage) {
+          const deletedMessage = await MessageSchema.findByIdAndRemove(id);
+          const thread = await ThreadSchema.findById(threadId);
+          thread.messages = thread.messages.filter(message => message != id);
+          const threadHasNoMessages = thread.messages.length === 0;
+          if (threadHasNoMessages) {
+            const deletedThread = await ThreadSchema.findByIdAndRemove(thread._id);
+            for (const participant of thread.participants) {
+              const user = await UserSchema.findById(participant);
+              user.messages = user.messages.filter(thread => thread != deletedThread._id);
+              await UserSchema.findByIdAndUpdate(user._id, user);
+            }
+          } else {
+            await ThreadSchema.findByIdAndUpdate(thread._id, thread);
+          }
+          return deletedMessage;
+        }
+        if (userNotInDeletedBy) {
+          message.deletedBy.push(user);
+          await MessageSchema.findByIdAndUpdate(message._id, message);
+          return message;
+        } else {
+          throw new Error('Given user has already deleted the message.')
+        }
+      } else {
+        throw new Error(`Can't find message with given ID`);
+      }
     },
-    deleteMessages(_, {ids}) {
-      // problem: deletes messages for both users
+    async softDeleteMessages(_, {ids}) {
+
+    },
+    async deleteMessage(_, {id}) {
+      // delete message
+      // remove message from thread
+      // if thread empty, delete thread
+    },
+    async deleteMessages(_, {ids}) {
+      // delete message
+      // remove message from thread
+      // if thread empty, delete thread
     },
     async createRating(_, args) {
       const newRating = await RatingSchema.create(args);
@@ -204,9 +251,12 @@ export default {
     ratings({ratings}) {
       return Promise.all(ratings.map(rating => RatingSchema.findById(rating)));
     },
+    threads({threads}) {
+      return Promise.all(threads.map(thread => ThreadSchema.findById(thread)));
+    },
     notifications({notifications}) {
       return Promise.all(notifications.map(notification => NotificationSchema.findById(notification)));
-    }
+    },
   },
 
   Ad: {
@@ -254,6 +304,9 @@ export default {
     },
     recipient({recipient}) {
       return UserSchema.findById(recipient);
+    },
+    deletedBy({deletedBy}) {
+      return UserSchema.find({_id: {$in: deletedBy}});
     }
   },
 

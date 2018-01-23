@@ -33,7 +33,7 @@ const generateRatings = (rating, amount) => {
 }
 
 // -- generate ratings
-const ratings = generateRatings(rating, 1000);
+const ratings = generateRatings(rating, 100);
 
 
 const addUserToRatings = (ratings, user) => {
