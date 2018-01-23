@@ -173,9 +173,9 @@ export default {
           const threadHasNoMessages = thread.messages.length === 0;
           if (threadHasNoMessages) {
             const deletedThread = await ThreadSchema.findByIdAndRemove(thread._id);
-            for (const participant of thread.participants) {
+            for (const participant of deletedThread.participants) {
               const user = await UserSchema.findById(participant);
-              user.threads = user.threads.filter(thread => thread != deletedThread._id);
+              user.threads = user.threads.filter(thread => thread != threadId);
               await UserSchema.findByIdAndUpdate(user._id, user);
             }
           } else {
@@ -201,13 +201,12 @@ export default {
     async deleteMessage(_, {message: messageId, thread: threadId}) {
       const deletedMessage = await MessageSchema.findByIdAndRemove(messageId);
       const thread = await ThreadSchema.findById(threadId);
-      if (thread.messages.length <= 1) {
+      const threadHasLessThanOneMessage = thread.messages.length <= 1;
+      if (threadHasLessThanOneMessage) {
         const deletedThread = await ThreadSchema.findByIdAndRemove(threadId);
         for (const participant of deletedThread.participants) {
           const user = await UserSchema.findById(participant);
-          console.log(user.threads.length);
           user.threads = user.threads.filter(thread => thread != threadId);
-          console.log(user.threads.length);
           await UserSchema.findByIdAndUpdate(user._id, user);
         }
       } else {
@@ -216,10 +215,26 @@ export default {
       }
       return deletedMessage;
     },
-    async deleteMessages(_, {ids}) {
-      // delete message
-      // remove message from thread
-      // if thread empty, delete thread
+    async deleteMessages(_, {messages: messageIds, thread: threadId}) {
+      const deletedMessages = [];
+      for (const messageId of messageIds) {
+        const deletedMessage = await MessageSchema.findByIdAndRemove(messageId);
+        const thread = await ThreadSchema.findById(threadId);
+        const threadHasLessThanOneMessage = thread.messages.length <= 1;
+        if (threadHasLessThanOneMessage) {
+          const deletedThread = await ThreadSchema.findByIdAndRemove(threadId);
+          for (const participant of deletedThread.participants) {
+            const user = await UserSchema.findById(participant);
+            user.threads = user.threads.filter(thread => thread != threadId);
+            await UserSchema.findByIdAndUpdate(user._id, user);
+          }
+        } else {
+          thread.messages = thread.messages.filter(message => message != messageId);
+          await ThreadSchema.findByIdAndUpdate(thread._id, thread);
+        }
+        deletedMessages.push(deletedMessage);
+      }
+      return deletedMessages;
     },
     async createRating(_, args) {
       const newRating = await RatingSchema.create(args);

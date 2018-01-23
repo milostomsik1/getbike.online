@@ -94,7 +94,7 @@ type Mutation {
     thread: ID!
   ): Message
   deleteMessages(
-    ids: [ID!]!
+    messages: [ID!]!
     thread: ID!
   ): [Message]
   createRating(
