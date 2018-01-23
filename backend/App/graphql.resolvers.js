@@ -147,8 +147,12 @@ export default {
     deleteThread(_, {id}) {
       // problem: deletes thread for both users
     },
-    createMessage(_, args) {
-      // add code
+    async createMessage(_, args) {
+      const newMessage = await MessageSchema.create(args);
+      const thread = await ThreadSchema.findById(args.threadId);
+      thread.messages.push(newMessage._id);
+      await ThreadSchema.findByIdAndUpdate(thread._id, thread);
+      return newMessage;
     },
     deleteMessage(_, {id}) {
       // problem: deletes message for both users

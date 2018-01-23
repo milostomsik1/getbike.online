@@ -74,6 +74,7 @@ type Mutation {
   ): Thread
   deleteThread(id: ID!): Thread
   createMessage(
+    threadId: ID!
     sender: ID!
     recipient: ID!
     content: String!
