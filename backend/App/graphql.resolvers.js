@@ -104,9 +104,12 @@ export default {
       // add code to delete all related info (ads, ratings, notifications, threads, messages)
       return UserSchema.findByIdAndRemove(id);
     },
-    createAd(_, args) {
-      // add code to insert created ad into user that created it
-      return AdSchema.create(args);
+    async createAd(_, args) {
+      const newAd = await AdSchema.create(args);
+      const user = await UserSchema.findById(args.id);
+      user.ads.push(newAd._id);
+      await UserSchema.findByIdAndUpdate(user._id, user);
+      return newAd;
     },
     deleteAd(_, {id}) {
       return AdSchema.findByIdAndRemove(id);
