@@ -114,9 +114,14 @@ export default {
     createCategory(_, {name}) {
       return CategorySchema.create({name});
     },
-    deleteCategory(_, {id}) {
-      // add code to remove respective subcategories
-      return CategorySchema.findByIdAndRemove(id);
+    async deleteCategory(_, {id}) {
+      const deletedCategory = await CategorySchema.findByIdAndRemove(id);
+      if (deletedCategory) {
+        for (const subcategory of deletedCategory.subcategories) {
+          await SubcategorySchema.findByIdAndRemove(subcategory);
+        }
+      }
+      return deletedCategory;
     },
     async createSubcategory(_, args) {
       const newSubcategory = await SubcategorySchema.create(args);
@@ -125,9 +130,12 @@ export default {
       await CategorySchema.findByIdAndUpdate(category._id, category);
       return newSubcategory;
     },
-    deleteSubcategory(_, {id}) {
-      // add code to remove deleted subcategory from category
-      return SubcategorySchema.findByIdAndRemove(id);
+    async deleteSubcategory(_, {id}) {
+      const deletedSubcategory = await SubcategorySchema.findByIdAndRemove(id);
+      const category = await CategorySchema.findById(deletedSubcategory.category);
+      category.subcategories = category.subcategories.filter(subcategory => subcategory != id);
+      await CategorySchema.findByIdAndUpdate(category._id, category);
+      return deletedSubcategory;
     },
     createThread(_, args) {
       // add code to add thread to user messages array

@@ -28,9 +28,7 @@ const ad = () => {
     // category: later added in code
     // subcategory: later added in code
     description: faker.lorem.words(25),
-    specifications: {
-      groupset: 'Ultegra 6800'
-    },
+    specifications: 'Dura Ace 9100',
     thumbnail: faker.image.imageUrl(),
     images: [faker.image.imageUrl()],
     tradable: Boolean(Math.round(Math.random())) ? true : false,
