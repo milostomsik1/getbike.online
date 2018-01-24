@@ -80,12 +80,12 @@ type Mutation {
     content: String!
   ): Message
   softDeleteMessage(
-    id: ID!
+    message: ID!
     user: ID!
     thread: ID!
   ): Message
   softDeleteMessages(
-    ids: [ID!]!
+    messages: [ID!]!
     user: ID!
     thread: ID!
   ): [Message]

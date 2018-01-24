@@ -159,29 +159,27 @@ export default {
         throw new Error(`User can't send message to himself.`);
       }
     },
-    async softDeleteMessage(_, {id, user, thread: threadId}) {
-      // buggy, leaving null values for thread
-      const message = await MessageSchema.findById(id);
+    async softDeleteMessage(_, {message: messageId, user, thread: threadId}) {
+      const message = await MessageSchema.findById(messageId);
       if (message) {
         message.deletedBy = message.deletedBy.map(user => user.toString());
         const userNotInDeletedBy = message.deletedBy.indexOf(user) === -1;
         const bothUsersSoftDeletedMessage = message.deletedBy.length >= 1 && userNotInDeletedBy;
         if (bothUsersSoftDeletedMessage) {
-          const deletedMessage = await MessageSchema.findByIdAndRemove(id);
+          const deletedMessage = await MessageSchema.findByIdAndRemove(messageId);
           const thread = await ThreadSchema.findById(threadId);
-          thread.messages = thread.messages.filter(message => message != id);
-          const threadHasNoMessages = thread.messages.length === 0;
-          if (threadHasNoMessages) {
-            const deletedThread = await ThreadSchema.findByIdAndRemove(thread._id);
+          const threadHasLessThanOneMessage = thread.messages.length <= 1;
+          if (threadHasLessThanOneMessage) {
+            const deletedThread = await ThreadSchema.findByIdAndRemove(threadId);
             for (const participant of deletedThread.participants) {
               const user = await UserSchema.findById(participant);
               user.threads = user.threads.filter(thread => thread != threadId);
               await UserSchema.findByIdAndUpdate(user._id, user);
             }
           } else {
+            thread.messages = thread.messages.filter(message => message != messageId);
             await ThreadSchema.findByIdAndUpdate(thread._id, thread);
           }
-          deletedMessage.deletedBy.push(user);
           return deletedMessage;
         }
         if (userNotInDeletedBy) {
@@ -195,8 +193,42 @@ export default {
         throw new Error(`Can't find message with given ID`);
       }
     },
-    async softDeleteMessages(_, {ids}) {
+    async softDeleteMessages(_, {messages: messageIds, user, thread: threadId}) {
+      const deletedMessages = [];
 
+      const message = await MessageSchema.findById(messageId);
+      if (message) {
+        message.deletedBy = message.deletedBy.map(user => user.toString());
+        const userNotInDeletedBy = message.deletedBy.indexOf(user) === -1;
+        const bothUsersSoftDeletedMessage = message.deletedBy.length >= 1 && userNotInDeletedBy;
+        if (bothUsersSoftDeletedMessage) {
+          const deletedMessage = await MessageSchema.findByIdAndRemove(messageId);
+          const thread = await ThreadSchema.findById(threadId);
+          const threadHasLessThanOneMessage = thread.messages.length <= 1;
+          if (threadHasLessThanOneMessage) {
+            const deletedThread = await ThreadSchema.findByIdAndRemove(threadId);
+            for (const participant of deletedThread.participants) {
+              const user = await UserSchema.findById(participant);
+              user.threads = user.threads.filter(thread => thread != threadId);
+              await UserSchema.findByIdAndUpdate(user._id, user);
+            }
+          } else {
+            thread.messages = thread.messages.filter(message => message != messageId);
+            await ThreadSchema.findByIdAndUpdate(thread._id, thread);
+          }
+          deletedMessages.push(deletedMessage);
+        }
+        if (userNotInDeletedBy) {
+          message.deletedBy.push(user);
+          await MessageSchema.findByIdAndUpdate(message._id, message);
+          deletedMessages.push(message);
+        } else {
+          throw new Error('Given user has already deleted the message.')
+        }
+      } else {
+        throw new Error(`Can't find message with given ID`);
+      }
+      return deletedMessages;
     },
     async deleteMessage(_, {message: messageId, thread: threadId}) {
       const deletedMessage = await MessageSchema.findByIdAndRemove(messageId);
