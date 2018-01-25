@@ -11,7 +11,7 @@ export default (sequelize, DataTypes) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      // allowNull: false
     },
     views: {
       type: DataTypes.INTEGER,
@@ -23,7 +23,7 @@ export default (sequelize, DataTypes) => {
     },
     priceAmount: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      // allowNull: false
     },
     priceCurrency: {
       type: DataTypes.STRING,
@@ -42,11 +42,9 @@ export default (sequelize, DataTypes) => {
     },
     tradeMethods: {
       type: DataTypes.ARRAY(DataTypes.STRING)
-      // add type: ARRAY here
     },
     images: {
-      type: DataTypes.STRING
-      // add type: ARRAY here
+      type: DataTypes.ARRAY(DataTypes.STRING)
     },
     type: {
       type: DataTypes.STRING,
@@ -56,10 +54,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    refreshedAt: {
-      type: DataTypes.DATE
-      // default date now
-    }
+    // refreshedAt: {
+    //   type: DataTypes.DATE
+    //   // default date now
+    // }
 
     // category
     // subcategory

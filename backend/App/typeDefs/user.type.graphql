@@ -1,0 +1,30 @@
+type User {
+  id: ID
+  name: String
+  email: String
+  password: String
+  ads: [Ad]
+  canCreateAds: Boolean
+  country: String
+  city: String
+}
+
+type Query {
+  users: [User]
+  user(id: ID!): User
+  userCount: Int
+}
+
+type Mutation {
+  createUser(
+    name: String!
+    email: String!
+    password: String!
+    country: String!
+    city: String!
+  ): User
+  updateUser(
+    id: ID!
+  ): User
+  deleteUser(id: ID!): User
+}

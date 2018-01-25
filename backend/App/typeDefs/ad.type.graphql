@@ -1,0 +1,42 @@
+type Ad {
+  id: ID
+  userId: User
+  title: String
+  views: Int
+  availability: String
+  priceAmount: Int
+  priceCurrency: String
+  status: String
+  description: String
+  specifications: String
+  images: [String!]
+  tradable: Boolean
+  tradeMethods: [String]
+  type: String
+  isRated: Boolean
+}
+
+type Query {
+  ads(ids: [ID!]): [Ad]
+  ad(id: ID!): Ad
+  adCount: Int
+}
+
+type Mutation {
+  createAd(
+    userId: ID!
+    title: String!
+    availability: String
+    priceAmount: Int
+    priceCurrency: String
+    status: String
+    description: String!
+    specifications: String
+    images: [String!]
+    tradable: Boolean
+    tradeMethods: [String]
+    type: String
+    isRated: Boolean
+  ): Ad
+  deleteAd(id: ID!): Ad
+}

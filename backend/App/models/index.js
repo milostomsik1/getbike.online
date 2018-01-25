@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import config from '../../config/db';
 
+
 const sequelize = new Sequelize(
   config.db.dbName,
   config.db.username,
@@ -11,12 +12,10 @@ const sequelize = new Sequelize(
   }
 );
 
-
 const models = {
-  User: sequelize.import('./user'),
-  Ad: sequelize.import('./ad'),
+  User: sequelize.import('./user.model'),
+  Ad: sequelize.import('./ad.model'),
 };
-
 
 Object.keys(models).forEach(modelName => {
   if (models[modelName].associate) {
@@ -26,5 +25,6 @@ Object.keys(models).forEach(modelName => {
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;
+
 
 export default models;
