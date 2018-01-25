@@ -1,7 +1,12 @@
 export default {
-    databaseUrl: 'mongodb://localhost/getbike',
-    port: 4000,
-    bodyLimit: '250kb',
-    secretKey: 'getbike',
-    GraphQLEndpoint: '/graphql'
+  port: 4000,
+  // secretKey: 'getbike',
+  GraphQLEndpoint: '/graphql',
+  db: {
+    dbName: 'getbike',
+    username: 'milostomsik',
+    password: null,
+    host: 'localhost',
+    dialect: 'postgres'
   }
+}
