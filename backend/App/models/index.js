@@ -16,6 +16,7 @@ const models = {
   User: sequelize.import('./user.model'),
   Ad: sequelize.import('./ad.model'),
   Category: sequelize.import('./category.model'),
+  Subcategory: sequelize.import('./subcategory.model'),
 };
 
 Object.keys(models).forEach(modelName => {

@@ -1,7 +1,7 @@
 // https://dbdesigner.net/designer/schema/142871 <- DB Schema
 
 export default (sequelize, DataTypes) => {
-  const Category = sequelize.define('category', {
+  const Subcategory = sequelize.define('subcategory', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -23,15 +23,5 @@ export default (sequelize, DataTypes) => {
     freezeTableName: true
   });
 
-
-  Category.associate = models => {
-    models.Category.hasMany(models.Subcategory, {
-      onDelete: 'CASCADE',
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  }
-
-  return Category;
+  return Subcategory;
 };

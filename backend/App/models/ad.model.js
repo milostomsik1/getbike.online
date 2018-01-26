@@ -77,5 +77,15 @@ export default (sequelize, DataTypes) => {
     timestamps: false
   });
 
+
+  Ad.associate = models => {
+    models.Ad.belongsTo(models.Category, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
+
   return Ad;
 };
