@@ -1,3 +1,5 @@
+// https://dbdesigner.net/designer/schema/142871 <- DB Schema
+
 export default (sequelize, DataTypes) => {
   const Ad = sequelize.define('ad', {
     id: {
@@ -11,59 +13,66 @@ export default (sequelize, DataTypes) => {
     },
     description: {
       type: DataTypes.TEXT,
-      // allowNull: false
+      allowNull: false
     },
-    views: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    availability: {
+    specifications: {
       type: DataTypes.STRING,
-      defaultValue: 'Available'
+      allowNull: false
     },
     priceAmount: {
       type: DataTypes.INTEGER,
-      // allowNull: false
+      allowNull: false
     },
     priceCurrency: {
       type: DataTypes.STRING,
       defaultValue: 'EUR'
     },
+    availability: {
+      type: DataTypes.STRING,
+      defaultValue: 'Available'
+    },
     status: {
       type: DataTypes.STRING,
       defaultValue: 'Second Hand'
     },
-    specifications: {
-      type: DataTypes.STRING
+    typeName: {
+      type: DataTypes.STRING,
+      defaultValue: 'Free'
     },
-    tradable: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    tradeMethods: {
-      type: DataTypes.ARRAY(DataTypes.STRING)
+    typeExpireDate: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
     images: {
       type: DataTypes.ARRAY(DataTypes.STRING)
     },
-    type: {
-      type: DataTypes.STRING,
-      defaultValue: 'Regular'
+    shippingMethods: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
+    },
+    isTradable: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     isRated: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    // refreshedAt: {
-    //   type: DataTypes.DATE
-    //   // default date now
-    // }
-
-    // category
-    // subcategory
-    // user
-    // createdAt
-    // updatedAt
+    views: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    refreshedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
   }, {
     timestamps: false
   });

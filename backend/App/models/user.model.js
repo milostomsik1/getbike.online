@@ -1,9 +1,11 @@
+// https://dbdesigner.net/designer/schema/142871 <- DB Schema
+
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true,
+      primaryKey: true
     },
     name: {
       type: DataTypes.STRING,
@@ -17,10 +19,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    canCreateAds: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
-    },
     country: {
       type: DataTypes.STRING,
       allowNull: false
@@ -28,22 +26,34 @@ export default (sequelize, DataTypes) => {
     city: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    phone: {
+      type: DataTypes.INTEGER
+    },
+    canCreateAds: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
-    // ads
-    // favorites
-    // ratings
-    // conversations
-    // notifications
-    // contact { phone, ... }
-    // createdAt
-    // updatedAt
   },
 {
   timestamps: false
 });
 
   User.associate = models => {
-    models.User.hasMany(models.Ad);
+    models.User.hasMany(models.Ad, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false
+      }
+    });
   }
 
   return User;

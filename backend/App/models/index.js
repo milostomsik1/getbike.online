@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 import config from '../../config/db';
-
+// https://dbdesigner.net/designer/schema/142871 <- DB Schema
 
 const sequelize = new Sequelize(
   config.db.dbName,

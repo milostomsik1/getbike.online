@@ -9,8 +9,8 @@ export default {
   },
 
   Mutation: {
-    createAd(parentValue, args, context) {
-      return null;
+    createAd(parentValue, args, {Ad}) {
+      return Ad.create(args);
     },
     // updateAd(parentValue, args, context) {
     //   return null;
@@ -19,4 +19,8 @@ export default {
       return null;
     },
   },
+
+  Ad: {
+
+  }
 }

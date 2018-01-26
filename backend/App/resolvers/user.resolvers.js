@@ -9,8 +9,8 @@ export default {
   },
 
   Mutation: {
-    createUser(parentValue, args, context) {
-      return null;
+    createUser(parentValue, args, {User}) {
+      return User.create(args);
     },
     // updateUser(parentValue, args, context) {
     //   return null;
@@ -27,8 +27,8 @@ export default {
   },
 
   User: {
-    ads(parentValue, args, context) {
-      return ['1'];
+    ads({id}, args, {Ad}) {
+      return Ad.findAll({where: {userId: id}});
     }
   }
 }
