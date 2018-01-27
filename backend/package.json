@@ -5,19 +5,9 @@
   "author": "Miloš Tomšik",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --exec babel-node",
-    "build": "babel server.js -d dist",
-    "serve": "node dist/server.js",
-    "seed:users": "babel-node ./services/seeder/executables/users.js",
-    "seed:categories": "babel-node ./services/seeder/executables/categories.js",
-    "seed:subcategories": "babel-node ./services/seeder/executables/subcategories.js",
-    "seed:ads": "babel-node ./services/seeder/executables/ads.js",
-    "seed:ratings": "babel-node ./services/seeder/executables/ratings.js",
-    "seed:notifications": "babel-node ./services/seeder/executables/notifications.js",
-    "seed:messages": "babel-node ./services/seeder/executables/messages.js",
-    "seed:threads": "babel-node ./services/seeder/executables/threads.js",
-    "seed:all": "babel-node ./services/seeder/executables/all.js",
-    "seed": "babel-node ./services/seeder/executables/all.js"
+    "server": "nodemon server.js --exec babel-node",
+    "server:test": "TEST_DB_NAME=getbike_test babel-node server.js",
+    "test": "jest"
   },
   "dependencies": {
     "apollo-server-express": "^1.3.2",

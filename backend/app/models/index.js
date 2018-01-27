@@ -4,7 +4,7 @@ import config from '../../config/db';
 
 
 const sequelize = new Sequelize(
-  config.db.dbName,
+  process.env.TEST_DB_NAME || config.db.dbName,
   config.db.username,
   config.db.password,
   {

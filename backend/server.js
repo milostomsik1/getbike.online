@@ -21,7 +21,7 @@ server.use(morgan('dev'));
 server.use(config.GraphQLEndpoint, bodyParser.json(), graphqlExpress({ schema, context: models }));
 server.get('/graphiql', graphiqlExpress({ endpointURL: config.GraphQLEndpoint }));
 
-models.sequelize.sync().then(() => {
+models.sequelize.sync({force: !!process.env.TEST_DB_NAME}).then(() => {
   // -- Listen to requests
   server.listen(process.env.port || config.port, () => {
     console.log(`Listening for requests on localhost:${config.port}`)
