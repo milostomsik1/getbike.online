@@ -6,9 +6,9 @@ import express from 'express';
 import morgan from 'morgan';
 import config from './config/db';
 import bodyParser from 'body-parser';
-import schema from './App/graphql.schema';
+import schema from './app/graphql.schema';
 import Sequelize from 'sequelize';
-import models from './App/models/index';
+import models from './app/models/index';
 
 // -- Setup Express
 const server = express();

@@ -15,15 +15,6 @@ export default {
     createUser(parentValue, args, {User}) {
       return User.create(args);
     },
-    // updateUser(parentValue, args, context) {
-    //   return null;
-    // },
-    // activateUser(parentValue, args, context) {
-    //   return null;
-    // },
-    // deactivateUser(parentValue, args, context) {
-    //   return null;
-    // },
     async deleteUser(parentValue, {id}, {User}) {
       const user = await User.findOne({where: {id}});
       await User.destroy({where: {id}});

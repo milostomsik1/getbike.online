@@ -20,9 +20,6 @@ export default {
         subcategoryId: args.subcategory
       });
     },
-    // updateAd(parentValue, args, context) {
-    //   return null;
-    // },
     async deleteAd(parentValue, {id}, {Ad}) {
       const ad = await Ad.findOne({where: {id}});
       await Ad.destroy({where: {id}});
