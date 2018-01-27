@@ -4,6 +4,7 @@ export default {
   GraphQLEndpoint: '/graphql',
   db: {
     dbName: 'getbike',
+    testDbName: 'getbike_test',
     username: 'milostomsik',
     password: null,
     host: 'localhost',
