@@ -1,6 +1,8 @@
 type Ad {
   id: ID
-  userId: User
+  user: User
+  category: Category
+  subcategory: Subcategory
   title: String
   views: Int
   availability: String
@@ -26,7 +28,9 @@ type Query {
 
 type Mutation {
   createAd(
-    userId: ID!
+    user: ID!
+    category: ID!
+    subcategory: ID!
     title: String!
     description: String!
     availability: String

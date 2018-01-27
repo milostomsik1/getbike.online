@@ -7,15 +7,15 @@ type Subcategory {
 }
 
 type Query {
-  categories: [Subcategory]
-  category(id: ID!): Subcategory
-  categoryCount: Int
+  subcategories: [Subcategory]
+  subcategory(id: ID!): Subcategory
+  subcategoryCount: Int
 }
 
 type Mutation {
   createSubcategory(
     name: String!
-    description: String!
+    description: String
     category: ID!
   ): Subcategory
   updateSubcategory(id: ID!): Subcategory

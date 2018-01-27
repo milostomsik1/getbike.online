@@ -23,5 +23,15 @@ export default (sequelize, DataTypes) => {
     freezeTableName: true
   });
 
+  // SHADY BUSINESS - correct it
+  Subcategory.associate = models => {
+    models.Subcategory.hasOne(models.Ad, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  }
+
   return Subcategory;
 };

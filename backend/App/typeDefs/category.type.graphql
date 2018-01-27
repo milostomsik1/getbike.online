@@ -15,7 +15,7 @@ type Query {
 type Mutation {
   createCategory(
     name: String!
-    description: String!
+    description: String
   ): Category
   updateCategory(id: ID!): Category
   deleteCategory(id: ID!): Category
