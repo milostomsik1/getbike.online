@@ -1,6 +1,7 @@
 import axios from 'axios';
 const URL = 'http://localhost:4000/graphql'
 
+let createdCategoryId;
 
 describe('Category resolvers work as intended', () => {
   test('Create a category', async () => {
@@ -11,6 +12,7 @@ describe('Category resolvers work as intended', () => {
           name:"New Category"
           description:"New Category Description"
         ) {
+          id
           name
           description
         }
@@ -18,9 +20,11 @@ describe('Category resolvers work as intended', () => {
     });
 
     const { data } = newCategory;
+    createdCategoryId = data.data.createCategory.id;
     expect(data).toMatchObject({
       "data": {
         "createCategory": {
+          "id": createdCategoryId,
           "name": "New Category",
           "description": "New Category Description"
         }
@@ -32,7 +36,7 @@ describe('Category resolvers work as intended', () => {
     const foundCategory = await axios.post(URL, {
       query: `
       {
-        category(id:1) {
+        category(id:${createdCategoryId}) {
           name
           description
         }
@@ -71,7 +75,7 @@ describe('Category resolvers work as intended', () => {
         updateCategory(
           id:1
           name:"Updated Category"
-          description:"Updated Category Name"
+          description:"Updated Category Description"
         ){
           name
           description
@@ -85,7 +89,7 @@ describe('Category resolvers work as intended', () => {
       "data": {
         "updateCategory": {
           "name": "Updated Category",
-          "description": "Updated Category Name"
+          "description": "Updated Category Description"
         }
       }
     });

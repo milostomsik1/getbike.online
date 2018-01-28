@@ -19,7 +19,8 @@ export default {
       });
     },
     async updateSubcategory(parentValue, args, {Subcategory}) {
-      return null; // UPDATE HERE
+      await Subcategory.update(args, {where: {id: args.id}});
+      return Subcategory.findOne({where: {id: args.id}});
     },
     async deleteSubcategory(parentValue, {id}, {Subcategory}) {
       const subcategory = await Subcategory.findOne({where: {id}});

@@ -19,6 +19,10 @@ type Mutation {
     name: String!
     description: String
   ): Subcategory
-  updateSubcategory(id: ID!): Subcategory
+  updateSubcategory(
+    id: ID!
+    name: String
+    description: String
+  ): Subcategory
   deleteSubcategory(id: ID!): Subcategory
 }
