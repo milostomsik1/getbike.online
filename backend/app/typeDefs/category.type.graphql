@@ -18,6 +18,10 @@ type Mutation {
     name: String!
     description: String
   ): Category
-  updateCategory(id: ID!): Category
+  updateCategory(
+    id: ID!
+    name: String
+    description: String
+  ): Category
   deleteCategory(id: ID!): Category
 }

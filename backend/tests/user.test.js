@@ -2,7 +2,7 @@ import axios from 'axios';
 const URL = 'http://localhost:4000/graphql'
 
 
-// describe('User resolvers work as intended', () => {
+describe('User resolvers work as intended', () => {
   test('Create a user', async () => {
     const newUser = await axios.post(URL, {
       query: `
@@ -78,7 +78,7 @@ const URL = 'http://localhost:4000/graphql'
       }`
     });
 
-    const users = foundUsers.data.data.users;
+    const { users } = foundUsers.data.data;
     expect(users.length).toBeGreaterThan(0);
   });
 
@@ -93,7 +93,7 @@ const URL = 'http://localhost:4000/graphql'
           password:"Updated"
           country:"Updated Country"
           city:"Updated City"
-        ) {
+        ){
           id
           name
           email
@@ -139,5 +139,4 @@ const URL = 'http://localhost:4000/graphql'
     });
   });
 
-
-// });
+});

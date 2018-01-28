@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js --exec babel-node",
-    "server:test": "TEST_DB_NAME=getbike_test babel-node server.js",
+    "server:test": "TEST_DB_NAME=getbike_test nodemon server.js --exec babel-node",
     "test": "TEST_DB_NAME=getbike_test jest"
   },
   "dependencies": {

@@ -18,6 +18,9 @@ export default {
         categoryId: args.category
       });
     },
+    async updateSubcategory(parentValue, args, {Subcategory}) {
+      return null; // UPDATE HERE
+    },
     async deleteSubcategory(parentValue, {id}, {Subcategory}) {
       const subcategory = await Subcategory.findOne({where: {id}});
       await Subcategory.destroy({where: {id}});
