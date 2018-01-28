@@ -4,6 +4,7 @@ type Category {
   description: String
   subcategories: [Subcategory]
   createdAt: String
+  updatedAt: String
 }
 
 type Query {

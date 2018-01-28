@@ -14,13 +14,8 @@ export default (sequelize, DataTypes) => {
     },
     description: {
       type: DataTypes.STRING
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
     }
   }, {
-    timestamps: false,
     freezeTableName: true
   });
 

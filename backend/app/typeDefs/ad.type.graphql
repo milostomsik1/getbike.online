@@ -18,6 +18,7 @@ type Ad {
   isRated: Boolean
   createdAt: String
   updatedAt: String
+  refreshedAt: String
 }
 
 type Query {
@@ -44,5 +45,6 @@ type Mutation {
     type: String
     isRated: Boolean
   ): Ad
+  updateAd(id: ID!): Ad
   deleteAd(id: ID!): Ad
 }

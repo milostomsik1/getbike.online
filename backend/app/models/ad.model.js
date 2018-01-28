@@ -61,20 +61,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    },
     refreshedAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     }
-  }, {
-    timestamps: false
   });
 
 

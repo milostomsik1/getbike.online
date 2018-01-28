@@ -4,6 +4,7 @@ type Subcategory {
   description: String
   category: Category
   createdAt: String
+  updatedAt: String
 }
 
 type Query {
@@ -14,9 +15,9 @@ type Query {
 
 type Mutation {
   createSubcategory(
+    category: ID!
     name: String!
     description: String
-    category: ID!
   ): Subcategory
   updateSubcategory(id: ID!): Subcategory
   deleteSubcategory(id: ID!): Subcategory
