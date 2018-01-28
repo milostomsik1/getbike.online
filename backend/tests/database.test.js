@@ -66,43 +66,43 @@ describe('Tests db connection and table existance', () => {
     expect(success).toEqual(true);
   });
 
-  test('Checks if ratings table exists', async () => {
-    let success = true;
-    try {
-      await sequelize.query(`SELECT * FROM "ratings"`);
-    } catch (err) {
-      success = false;
-    }
-    expect(success).toEqual(true);
-  });
+  // test('Checks if ratings table exists', async () => {
+  //   let success = true;
+  //   try {
+  //     await sequelize.query(`SELECT * FROM "ratings"`);
+  //   } catch (err) {
+  //     success = false;
+  //   }
+  //   expect(success).toEqual(true);
+  // });
 
-  test('Checks if notifications table exists', async () => {
-    let success = true;
-    try {
-      await sequelize.query(`SELECT * FROM "notifications"`);
-    } catch (err) {
-      success = false;
-    }
-    expect(success).toEqual(true);
-  });
+  // test('Checks if notifications table exists', async () => {
+  //   let success = true;
+  //   try {
+  //     await sequelize.query(`SELECT * FROM "notifications"`);
+  //   } catch (err) {
+  //     success = false;
+  //   }
+  //   expect(success).toEqual(true);
+  // });
 
-  test('Checks if conversations table exists', async () => {
-    let success = true;
-    try {
-      await sequelize.query(`SELECT * FROM "conversations"`);
-    } catch (err) {
-      success = false;
-    }
-    expect(success).toEqual(true);
-  });
+  // test('Checks if conversations table exists', async () => {
+  //   let success = true;
+  //   try {
+  //     await sequelize.query(`SELECT * FROM "conversations"`);
+  //   } catch (err) {
+  //     success = false;
+  //   }
+  //   expect(success).toEqual(true);
+  // });
 
-  test('Checks if messages table exists', async () => {
-    let success = true;
-    try {
-      await sequelize.query(`SELECT * FROM "messages"`);
-    } catch (err) {
-      success = false;
-    }
-    expect(success).toEqual(true);
-  });
+  // test('Checks if messages table exists', async () => {
+  //   let success = true;
+  //   try {
+  //     await sequelize.query(`SELECT * FROM "messages"`);
+  //   } catch (err) {
+  //     success = false;
+  //   }
+  //   expect(success).toEqual(true);
+  // });
 });

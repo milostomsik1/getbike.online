@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = 'http://localhost:4000/graphql'
+const URL = 'http://localhost:4000/graphql';
 
 let createdSubcategoryId;
 
@@ -139,5 +139,8 @@ describe('Subcategory resolvers work as intended', () => {
       }
     });
   });
+
+  // TEST CASCADE DELETE
+  // TEST CASCADE UPDATE
 
 });

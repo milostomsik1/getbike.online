@@ -26,8 +26,9 @@ Official repo of getbike.online - second hand bikes, equipment, tools and servic
 
 ## Development:
 #### Backend:
-`cd ./backend`  to move to backend directory  
-`yarn` to install the dependencies  
-`yarn server` to start the development server  
-`yarn server:test` and `yarn test` to run the tests  
+* Create databases named 'getbike' and 'getbike_test'  
+* `cd ./backend`  to move to backend directory  
+* `yarn` to install the dependencies  
+* `yarn server` to start the development server  
+* `yarn server:test` and `yarn test` to run the tests  
 To repeat testing both `yarn server:test` and `yarn test` should be executed again.

@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = 'http://localhost:4000/graphql'
+const URL = 'http://localhost:4000/graphql';
 
 
 describe('User resolvers work as intended', () => {
