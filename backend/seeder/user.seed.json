@@ -1,0 +1,19 @@
+{
+  "modelName": "User",
+  "data": [
+    {
+      "name": "User 1",
+      "email": "user1@gmail.com",
+      "password": "password1",
+      "country": "Country 1",
+      "city": "City 1"
+    },
+    {
+      "name": "User 2",
+      "email": "user2@gmail.com",
+      "password": "password2",
+      "country": "Country 2",
+      "city": "City 2"
+    }
+  ]
+}
