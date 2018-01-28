@@ -4,6 +4,7 @@ import {
 } from 'apollo-server-express';
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import config from './config/db';
 import bodyParser from 'body-parser';
 import schema from './app/graphql.schema';
@@ -12,10 +13,12 @@ import db from './app/models/index';
 
 // -- Setup Express
 const server = express();
-// process.env.SECRET_KEY = config.secretKey;
 
 // -- Console Logging
 server.use(morgan('dev'));
+
+// -- Enable CORS
+server.use(cors());
 
 // -- Apollo GraphQL setup
 server.use(config.GraphQLEndpoint, bodyParser.json(), graphqlExpress({ schema, context: db }));

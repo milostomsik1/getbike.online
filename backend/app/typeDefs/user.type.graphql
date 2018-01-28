@@ -27,6 +27,11 @@ type Mutation {
   ): User
   updateUser(
     id: ID!
+    name: String
+    email: String
+    password: String
+    country: String
+    city: String
   ): User
   deleteUser(id: ID!): User
 }
