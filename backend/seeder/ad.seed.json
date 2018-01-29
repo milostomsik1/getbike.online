@@ -1,0 +1,19 @@
+{
+  "modelName": "Ad",
+  "dependsOn": [
+    "User",
+    "Category",
+    "Subcategory"
+  ],
+  "data": [
+    {
+      "userId": 1,
+      "categoryId": 1,
+      "subcategoryId": 1,
+      "title": "Ad 1",
+      "description": "Description 1",
+      "specifications": "Specifications 1",
+      "priceAmount": 100
+    }
+  ]
+}

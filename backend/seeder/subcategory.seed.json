@@ -1,0 +1,216 @@
+{
+  "modelName": "Subcategory",
+  "dependsOn": ["Category"],
+  "data": [
+    {
+      "name": "Road",
+      "description": "Road",
+      "categoryId": 1
+    },
+    {
+      "name": "MTB",
+      "description": "MTB",
+      "categoryId": 1
+    },
+    {
+      "name": "BMX",
+      "description": "BMX",
+      "categoryId": 1
+    },
+    {
+      "name": "Urban",
+      "description": "Urban",
+      "categoryId": 1
+    },
+    {
+      "name": "Electric",
+      "description": "Electric",
+      "categoryId": 1
+    },
+    {
+      "name": "Kids",
+      "description": "Kids",
+      "categoryId": 1
+    },
+    {
+      "name": "Fixie",
+      "description": "Fixie",
+      "categoryId": 1
+    },
+    {
+      "name": "Foldable",
+      "description": "Foldable",
+      "categoryId": 1
+    },
+    {
+      "name": "Recumbent",
+      "description": "Recumbent",
+      "categoryId": 1
+    },
+    {
+      "name": "Frames",
+      "description": "Frames",
+      "categoryId": 2
+    },
+    {
+      "name": "Wheels",
+      "description": "Wheels",
+      "categoryId": 2
+    },
+    {
+      "name": "Handlebars",
+      "description": "Handlebars",
+      "categoryId": 2
+    },
+    {
+      "name": "Forks",
+      "description": "Forks",
+      "categoryId": 2
+    },
+    {
+      "name": "Groupsets",
+      "description": "Groupsets",
+      "categoryId": 2
+    },
+    {
+      "name": "Cranksets",
+      "description": "Cranksets",
+      "categoryId": 2
+    },
+    {
+      "name": "Shifters",
+      "description": "Shifters",
+      "categoryId": 2
+    },
+    {
+      "name": "Pedals",
+      "description": "Pedals",
+      "categoryId": 2
+    },
+    {
+      "name": "Brakes",
+      "description": "Brakes",
+      "categoryId": 2
+    },
+    {
+      "name": "Seats",
+      "description": "Seats",
+      "categoryId": 2
+    },
+    {
+      "name": "Other",
+      "description": "Other",
+      "categoryId": 2
+    },
+    {
+      "name": "Headwear",
+      "description": "Headwear",
+      "categoryId": 3
+    },
+    {
+      "name": "Sets",
+      "description": "Sets",
+      "categoryId": 3
+    },
+    {
+      "name": "Bibs",
+      "description": "Bibs",
+      "categoryId": 3
+    },
+    {
+      "name": "Jerseys",
+      "description": "Jerseys",
+      "categoryId": 3
+    },
+    {
+      "name": "Gloves",
+      "description": "Gloves",
+      "categoryId": 3
+    },
+    {
+      "name": "Footwear",
+      "description": "Footwear",
+      "categoryId": 3
+    },
+    {
+      "name": "Other",
+      "description": "Other",
+      "categoryId": 3
+    },
+    {
+      "name": "Bottles",
+      "description": "Bottles",
+      "categoryId": 4
+    },
+    {
+      "name": "Bottle Cages",
+      "description": "Bottle Cages",
+      "categoryId": 4
+    },
+    {
+      "name": "Lights",
+      "description": "Lights",
+      "categoryId": 4
+    },
+    {
+      "name": "Pumps",
+      "description": "Pumps",
+      "categoryId": 4
+    },
+    {
+      "name": "Electronics",
+      "description": "Electronics",
+      "categoryId": 4
+    },
+    {
+      "name": "Helmets",
+      "description": "Helmets",
+      "categoryId": 4
+    },
+    {
+      "name": "Glasses",
+      "description": "Glasses",
+      "categoryId": 4
+    },
+    {
+      "name": "Trainers",
+      "description": "Trainers",
+      "categoryId": 4
+    },
+    {
+      "name": "Bags",
+      "description": "Bags",
+      "categoryId": 4
+    },
+    {
+      "name": "Cleaning",
+      "description": "Cleaning",
+      "categoryId": 5
+    },
+    {
+      "name": "Lubrication",
+      "description": "Lubrication",
+      "categoryId": 5
+    },
+    {
+      "name": "Pocket Tools",
+      "description": "Pocket Tools",
+      "categoryId": 5
+    },
+    {
+      "name": "Tire Tools",
+      "description": "Tire Tools",
+      "categoryId": 5
+    },
+    {
+      "name": "Service Tools",
+      "description": "Service Tools",
+      "categoryId": 5
+    },
+    {
+      "name": "Service Hardware",
+      "description": "Service Hardware",
+      "categoryId": 5
+    }
+  ]
+}

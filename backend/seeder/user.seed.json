@@ -1,5 +1,6 @@
 {
   "modelName": "User",
+  "dependsOn": [],
   "data": [
     {
       "name": "User 1",

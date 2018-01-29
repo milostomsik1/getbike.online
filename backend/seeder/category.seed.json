@@ -1,0 +1,30 @@
+{
+  "modelName": "Category",
+  "dependsOn": [],
+  "data": [
+    {
+      "name": "Bicycles",
+      "description": "Bicycles"
+    },
+    {
+      "name": "Parts",
+      "description": "Parts"
+    },
+    {
+      "name": "Clothes",
+      "description": "Clothes"
+    },
+    {
+      "name": "Equipment",
+      "description": "Equipment"
+    },
+    {
+      "name": "Tools",
+      "description": "Tools"
+    },
+    {
+      "name": "Services",
+      "description": "Services"
+    }
+  ]
+}
