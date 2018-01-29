@@ -65,7 +65,6 @@ export default (sequelize, DataTypes) => {
     }
   });
 
-
   Ad.associate = models => {
     models.Ad.belongsTo(models.Category, {
       onDelete: 'CASCADE',

@@ -17,7 +17,6 @@ export default (sequelize, DataTypes) => {
     freezeTableName: true
   });
 
-
   Category.associate = models => {
     models.Category.hasMany(models.Subcategory, {
       onDelete: 'CASCADE',
