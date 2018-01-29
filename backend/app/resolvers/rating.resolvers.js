@@ -27,6 +27,11 @@ export default {
   },
 
   Rating: {
-    // add resolvers for rating
+    user({userId}, args, {User}) {
+      return User.findOne({where: {id: userId}});
+    },
+    ad({adId}, args, {Ad}) {
+      return User.findOne({where: {id: adId}});
+    },
   }
 }

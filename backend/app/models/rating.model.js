@@ -1,5 +1,3 @@
-// https://dbdesigner.net/designer/schema/142871 <- DB Schema
-
 export default (sequelize, DataTypes) => {
   const Rating = sequelize.define('rating', {
     id: {

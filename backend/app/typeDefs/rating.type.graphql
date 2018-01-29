@@ -1,5 +1,7 @@
 type Rating {
   id: ID
+  user: User
+  ad: Ad
   type: String
   adDescription: Int
   userCommunication: Int

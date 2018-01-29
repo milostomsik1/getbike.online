@@ -1,0 +1,31 @@
+{
+  "modelName": "Notification",
+  "dependsOn": ["User"],
+  "data": [
+    {
+      "userId": 1,
+      "title": "Notification Title 1",
+      "content": "This is a notification for user 1"
+    },
+    {
+      "userId": 2,
+      "title": "Notification Title 2",
+      "content": "This is a notification for user 2"
+    },
+    {
+      "userId": 3,
+      "title": "Notification Title 3",
+      "content": "This is a notification for user 3"
+    },
+    {
+      "userId": 4,
+      "title": "Notification Title 4",
+      "content": "This is a notification for user 4"
+    },
+    {
+      "userId": 5,
+      "title": "Notification Title 5",
+      "content": "This is a notification for user 5"
+    }
+  ]
+}

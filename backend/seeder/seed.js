@@ -34,18 +34,18 @@ const findOne = (toCheck, search) => {
 };
 
 const sortByDependencies = files => {
-  const proper = [];
-  const properModels = [];
+  const orderedFiles = [];
+  const modelNames = [];
   while (files.length > 0) {
     files.forEach((file, i) => {
-      if (file.dependsOn.length === 0 || findOne(properModels, file.dependsOn)) {
-        proper.push(file);
-        properModels.push(file.modelName);
+      if (file.dependsOn.length === 0 || findOne(modelNames, file.dependsOn)) {
+        orderedFiles.push(file);
+        modelNames.push(file.modelName);
         files.splice(i, 1);
       }
     });
   }
-  return proper;
+  return orderedFiles;
 }
 
 const seed = async () => {

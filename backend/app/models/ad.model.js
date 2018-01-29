@@ -1,5 +1,3 @@
-// https://dbdesigner.net/designer/schema/142871 <- DB Schema
-
 export default (sequelize, DataTypes) => {
   const Ad = sequelize.define('ad', {
     id: {

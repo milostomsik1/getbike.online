@@ -1,5 +1,3 @@
-// https://dbdesigner.net/designer/schema/142871 <- DB Schema
-
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     id: {
@@ -41,6 +39,11 @@ export default (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       foreignKey: {
         allowNull: false
+      }
+    });
+    models.User.belongsToMany(models.Conversation, {
+      through: {
+        model: 'user_conversation'
       }
     });
   }

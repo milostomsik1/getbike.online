@@ -20,6 +20,9 @@ const models = {
   Category: sequelize.import('./category.model'),
   Subcategory: sequelize.import('./subcategory.model'),
   Rating: sequelize.import('./rating.model'),
+  Notification: sequelize.import('./notification.model'),
+  Conversation: sequelize.import('./conversation.model'),
+  UserConversation: sequelize.import('./user-conversation.model'),
 };
 
 Object.keys(models).forEach(modelName => {

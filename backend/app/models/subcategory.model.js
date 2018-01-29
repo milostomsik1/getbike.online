@@ -1,5 +1,3 @@
-// https://dbdesigner.net/designer/schema/142871 <- DB Schema
-
 export default (sequelize, DataTypes) => {
   const Subcategory = sequelize.define('subcategory', {
     id: {
@@ -17,16 +15,6 @@ export default (sequelize, DataTypes) => {
   }, {
     freezeTableName: true
   });
-
-  // // SHADY BUSINESS - correct it
-  // Subcategory.associate = models => {
-  //   models.Subcategory.hasOne(models.Ad, {
-  //     onDelete: 'CASCADE',
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // }
 
   return Subcategory;
 };
