@@ -1,0 +1,28 @@
+type Rating {
+  id: ID
+  type: String
+  adDescription: Int
+  userCommunication: Int
+  itemTrade: Int
+  comment: String
+  createdAt: String
+}
+
+type Query {
+  ratings: [Rating]
+  rating(id: ID!): Rating
+  ratingCount: Int
+}
+
+type Mutation {
+  createRating(
+    user: ID!
+    ad: ID!
+    type: String!
+    adDescription: Int
+    userCommunication: Int!
+    itemTrade: Int!
+    comment: String!
+  ): Rating
+  deleteRating(id: ID!): Rating
+}

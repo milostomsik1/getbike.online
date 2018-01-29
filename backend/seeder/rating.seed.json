@@ -1,0 +1,51 @@
+{
+  "modelName": "Rating",
+  "dependsOn": ["Ad", "User"],
+  "data": [
+    {
+      "adId": 1,
+      "userId": 1,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "This is a comment for ad 1 by user 1"
+    },
+    {
+      "adId": 2,
+      "userId": 2,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "This is a comment for ad 2 by user 2"
+    },
+    {
+      "adId": 3,
+      "userId": 3,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "This is a comment for ad 3 by user 3"
+    },
+    {
+      "adId": 4,
+      "userId": 4,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "This is a comment for ad 4 by user 4"
+    },
+    {
+      "adId": 5,
+      "userId": 5,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "This is a comment for ad 5 by user 5"
+    }
+  ]
+}

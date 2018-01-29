@@ -7,13 +7,27 @@ export default (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    description: {
-      type: DataTypes.STRING
+    adDescription: {
+      type: DataTypes.INTEGER
+    },
+    userCommunication: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    itemTrade: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    comment: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
+  }, {
+    updatedAt: false
   });
 
   Rating.associate = models => {
@@ -23,7 +37,6 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       }
     });
-
     models.Rating.belongsTo(models.Ad, {
       onDelete: 'CASCADE',
       foreignKey: {
