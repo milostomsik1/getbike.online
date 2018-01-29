@@ -41,7 +41,14 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       }
     });
+    models.User.hasMany(models.Message, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false
+      }
+    });
     models.User.belongsToMany(models.Conversation, {
+      onDelete: 'CASCADE',
       through: {
         model: 'user_conversation'
       }

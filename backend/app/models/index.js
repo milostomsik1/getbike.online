@@ -23,6 +23,7 @@ const models = {
   Notification: sequelize.import('./notification.model'),
   Conversation: sequelize.import('./conversation.model'),
   UserConversation: sequelize.import('./user-conversation.model'),
+  Message: sequelize.import('./message.model'),
 };
 
 Object.keys(models).forEach(modelName => {
