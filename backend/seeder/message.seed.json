@@ -1,0 +1,106 @@
+{
+  "modelName": "Message",
+  "dependsOn": ["User", "Conversation"],
+  "data": [
+    {
+      "userId": 1,
+      "conversationId": 1,
+      "content": "Message 1 from user 1"
+    },
+    {
+      "userId": 2,
+      "conversationId": 1,
+      "content": "Message 1 from user 2"
+    },
+    {
+      "userId": 1,
+      "conversationId": 1,
+      "content": "Message 2 from user 1"
+    },
+    {
+      "userId": 2,
+      "conversationId": 1,
+      "content": "Message 2 from user 2"
+    },
+    {
+      "userId": 2,
+      "conversationId": 2,
+      "content": "Message 1 from user 2"
+    },
+    {
+      "userId": 3,
+      "conversationId": 2,
+      "content": "Message 1 from user 3"
+    },
+    {
+      "userId": 2,
+      "conversationId": 2,
+      "content": "Message 2 from user 2"
+    },
+    {
+      "userId": 3,
+      "conversationId": 2,
+      "content": "Message 2 from user 3"
+    },
+    {
+      "userId": 3,
+      "conversationId": 3,
+      "content": "Message 1 from user 3"
+    },
+    {
+      "userId": 4,
+      "conversationId": 3,
+      "content": "Message 1 from user 4"
+    },
+    {
+      "userId": 3,
+      "conversationId": 3,
+      "content": "Message 2 from user 3"
+    },
+    {
+      "userId": 4,
+      "conversationId": 3,
+      "content": "Message 2 from user 4"
+    },
+    {
+      "userId": 4,
+      "conversationId": 4,
+      "content": "Message 1 from user 4"
+    },
+    {
+      "userId": 5,
+      "conversationId": 4,
+      "content": "Message 1 from user 5"
+    },
+    {
+      "userId": 4,
+      "conversationId": 4,
+      "content": "Message 2 from user 4"
+    },
+    {
+      "userId": 5,
+      "conversationId": 4,
+      "content": "Message 2 from user 5"
+    },
+    {
+      "userId": 5,
+      "conversationId": 5,
+      "content": "Message 1 from user 5"
+    },
+    {
+      "userId": 1,
+      "conversationId": 5,
+      "content": "Message 1 from user 1"
+    },
+    {
+      "userId": 5,
+      "conversationId": 5,
+      "content": "Message 2 from user 5"
+    },
+    {
+      "userId": 1,
+      "conversationId": 5,
+      "content": "Message 2 from user 1"
+    }
+  ]
+}
