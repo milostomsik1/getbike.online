@@ -19,6 +19,7 @@ const models = {
   Ad: sequelize.import('./ad.model'),
   Category: sequelize.import('./category.model'),
   Subcategory: sequelize.import('./subcategory.model'),
+  Rating: sequelize.import('./rating.model'),
 };
 
 Object.keys(models).forEach(modelName => {

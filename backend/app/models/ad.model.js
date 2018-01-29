@@ -75,16 +75,13 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
     });
+    models.Ad.belongsTo(models.Subcategory, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false
+      }
+    });
   }
-
-  // Ad.associate = models => {
-  //   models.Ad.belongsTo(models.Subcategory, {
-  //     onDelete: 'CASCADE',
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // }
 
   return Ad;
 };
