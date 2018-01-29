@@ -1,6 +1,5 @@
 export default {
-  port: 4000,
-  // secretKey: 'getbike',
+  port: process.env.PORT || 4000,
   GraphQLEndpoint: '/graphql',
   db: {
     dbName: 'getbike',

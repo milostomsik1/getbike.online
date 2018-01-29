@@ -14,6 +14,177 @@
       "description": "Description 1",
       "specifications": "Specifications 1",
       "priceAmount": 100
+    },
+    {
+      "userId": 2,
+      "categoryId": 1,
+      "subcategoryId": 2,
+      "title": "Ad 2",
+      "description": "Description 2",
+      "specifications": "Specifications 2",
+      "priceAmount": 100
+    },
+    {
+      "userId": 3,
+      "categoryId": 1,
+      "subcategoryId": 3,
+      "title": "Ad 3",
+      "description": "Description 3",
+      "specifications": "Specifications 3",
+      "priceAmount": 100
+    },
+    {
+      "userId": 4,
+      "categoryId": 1,
+      "subcategoryId": 4,
+      "title": "Ad 4",
+      "description": "Description 4",
+      "specifications": "Specifications 4",
+      "priceAmount": 100
+    },
+    {
+      "userId": 5,
+      "categoryId": 1,
+      "subcategoryId": 5,
+      "title": "Ad 5",
+      "description": "Description 5",
+      "specifications": "Specifications 5",
+      "priceAmount": 100
+    },
+    {
+      "userId": 1,
+      "categoryId": 1,
+      "subcategoryId": 6,
+      "title": "Ad 6",
+      "description": "Description 6",
+      "specifications": "Specifications 6",
+      "priceAmount": 100
+    },
+    {
+      "userId": 2,
+      "categoryId": 1,
+      "subcategoryId": 7,
+      "title": "Ad 7",
+      "description": "Description 7",
+      "specifications": "Specifications 7",
+      "priceAmount": 100
+    },
+    {
+      "userId": 3,
+      "categoryId": 1,
+      "subcategoryId": 8,
+      "title": "Ad 8",
+      "description": "Description 8",
+      "specifications": "Specifications 8",
+      "priceAmount": 100
+    },
+    {
+      "userId": 4,
+      "categoryId": 1,
+      "subcategoryId": 9,
+      "title": "Ad 9",
+      "description": "Description 9",
+      "specifications": "Specifications 9",
+      "priceAmount": 100
+    },
+    {
+      "userId": 5,
+      "categoryId": 2,
+      "subcategoryId": 10,
+      "title": "Ad 10",
+      "description": "Description 10",
+      "specifications": "Specifications 10",
+      "priceAmount": 100
+    },
+    {
+      "userId": 1,
+      "categoryId": 2,
+      "subcategoryId": 11,
+      "title": "Ad 11",
+      "description": "Description 11",
+      "specifications": "Specifications 11",
+      "priceAmount": 100
+    },
+    {
+      "userId": 2,
+      "categoryId": 2,
+      "subcategoryId": 12,
+      "title": "Ad 12",
+      "description": "Description 12",
+      "specifications": "Specifications 12",
+      "priceAmount": 100
+    },
+    {
+      "userId": 3,
+      "categoryId": 2,
+      "subcategoryId": 13,
+      "title": "Ad 13",
+      "description": "Description 13",
+      "specifications": "Specifications 13",
+      "priceAmount": 100
+    },
+    {
+      "userId": 4,
+      "categoryId": 2,
+      "subcategoryId": 14,
+      "title": "Ad 14",
+      "description": "Description 14",
+      "specifications": "Specifications 14",
+      "priceAmount": 100
+    },
+    {
+      "userId": 5,
+      "categoryId": 2,
+      "subcategoryId": 15,
+      "title": "Ad 15",
+      "description": "Description 15",
+      "specifications": "Specifications 15",
+      "priceAmount": 100
+    },
+    {
+      "userId": 1,
+      "categoryId": 2,
+      "subcategoryId": 16,
+      "title": "Ad 16",
+      "description": "Description 16",
+      "specifications": "Specifications 16",
+      "priceAmount": 100
+    },
+    {
+      "userId": 2,
+      "categoryId": 2,
+      "subcategoryId": 17,
+      "title": "Ad 17",
+      "description": "Description 17",
+      "specifications": "Specifications 17",
+      "priceAmount": 100
+    },
+    {
+      "userId": 3,
+      "categoryId": 2,
+      "subcategoryId": 18,
+      "title": "Ad 18",
+      "description": "Description 18",
+      "specifications": "Specifications 18",
+      "priceAmount": 100
+    },
+    {
+      "userId": 4,
+      "categoryId": 2,
+      "subcategoryId": 19,
+      "title": "Ad 19",
+      "description": "Description 19",
+      "specifications": "Specifications 19",
+      "priceAmount": 100
+    },
+    {
+      "userId": 5,
+      "categoryId": 2,
+      "subcategoryId": 20,
+      "title": "Ad 20",
+      "description": "Description 20",
+      "specifications": "Specifications 20",
+      "priceAmount": 100
     }
   ]
 }

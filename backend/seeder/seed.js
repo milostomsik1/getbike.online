@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 const sequelize = db.sequelize;
 
+
 const isFileSeedable = fileName => {
   const regex = RegExp(/.+(\.seed.json)$/);
   return regex.test(fileName);
@@ -13,7 +14,6 @@ const getAllSeedableFiles = () => {
   return files.filter(file => isFileSeedable(file))
               .map(file => require(`./${file}`));
 };
-
 
 const findOne = (toCheck, search) => {
   if (search.length > toCheck.length) {
@@ -32,7 +32,6 @@ const findOne = (toCheck, search) => {
     }
   }
 };
-
 
 const sortByDependencies = files => {
   const proper = [];
@@ -60,7 +59,9 @@ const seed = async () => {
       console.log(err);
     }
   }
-  sequelize.close();
+  if (process.env.ONLY_SEEDING) {
+    sequelize.close();
+  }
 };
 
 sequelize.sync({force: true}).then(() => {

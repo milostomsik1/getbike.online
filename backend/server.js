@@ -24,9 +24,13 @@ server.use(cors());
 server.use(config.GraphQLEndpoint, bodyParser.json(), graphqlExpress({ schema, context: db }));
 server.get('/graphiql', graphiqlExpress({ endpointURL: config.GraphQLEndpoint }));
 
-db.sequelize.sync({force: !!process.env.TEST_DB_NAME}).then(() => {
+db.sequelize.sync().then(() => {
+  // -- Run seeder if test db
+  if (process.env.TEST_DB_NAME) {
+    const seed = require('./seeder/seed');
+  }
   // -- Listen to requests
-  server.listen(process.env.port || config.port, () => {
+  server.listen(config.port, () => {
     console.log(`Listening for requests on localhost:${config.port}`)
   });
 });

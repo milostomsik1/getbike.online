@@ -15,6 +15,27 @@
       "password": "password2",
       "country": "Country 2",
       "city": "City 2"
+    },
+    {
+      "name": "User 3",
+      "email": "user3@gmail.com",
+      "password": "password3",
+      "country": "Country 3",
+      "city": "City 3"
+    },
+    {
+      "name": "User 4",
+      "email": "user4@gmail.com",
+      "password": "password4",
+      "country": "Country 4",
+      "city": "City 4"
+    },
+    {
+      "name": "User 5",
+      "email": "user5@gmail.com",
+      "password": "password5",
+      "country": "Country 5",
+      "city": "City 5"
     }
   ]
 }
