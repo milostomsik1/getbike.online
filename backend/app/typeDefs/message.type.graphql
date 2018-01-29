@@ -1,0 +1,22 @@
+type Message {
+  id: ID
+  user: User
+  conversation: Conversation
+  content: String
+  createdAt: String
+}
+
+type Query {
+  messages: [Message]
+  message(id: ID!): Message
+  messageCount: Int
+}
+
+type Mutation {
+  createMessage(
+    user: ID!
+    conversation: ID!
+    content: String!
+  ): Message
+  deleteMessage(id: ID!): Message
+}

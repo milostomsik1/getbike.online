@@ -1,0 +1,14 @@
+type Conversation {
+  id: ID
+}
+
+type Query {
+  conversations: [Conversation]
+  conversation(id: ID!): Conversation
+  conversationCount: Int
+}
+
+type Mutation {
+  createConversation: Conversation
+  deleteConversation(id: ID!): Conversation
+}

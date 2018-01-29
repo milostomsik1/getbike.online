@@ -13,7 +13,8 @@
       "title": "Road Bicycle",
       "description": "Description of a road bicycle",
       "specifications": "Specifications of a road bicycle",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "isRated": true
     },
     {
       "userId": 2,
@@ -22,7 +23,8 @@
       "title": "MTB Bicycle",
       "description": "Description of an MTB bicycle",
       "specifications": "Specifications of an MTB bicycle",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "isRated": true
     },
     {
       "userId": 3,
@@ -31,7 +33,8 @@
       "title": "Ad 3",
       "description": "Description 3",
       "specifications": "Specifications 3",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "isRated": true
     },
     {
       "userId": 4,
@@ -40,7 +43,8 @@
       "title": "Ad 4",
       "description": "Description 4",
       "specifications": "Specifications 4",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "isRated": true
     },
     {
       "userId": 5,
@@ -49,7 +53,8 @@
       "title": "Ad 5",
       "description": "Description 5",
       "specifications": "Specifications 5",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "isRated": true
     },
     {
       "userId": 1,
