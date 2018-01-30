@@ -22,9 +22,15 @@ type Ad {
 }
 
 type Query {
-  ads(ids: [ID!]): [Ad]
+  ads(
+    title: String
+    category: ID
+    subcategory: ID
+  ): [Ad]
   ad(id: ID!): Ad
   adCount: Int
+  featuredAds: [Ad]
+  premiumAds: [Ad]
 }
 
 type Mutation {

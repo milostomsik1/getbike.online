@@ -63,7 +63,8 @@
       "title": "Ad 6",
       "description": "Description 6",
       "specifications": "Specifications 6",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 2,
@@ -72,7 +73,8 @@
       "title": "Ad 7",
       "description": "Description 7",
       "specifications": "Specifications 7",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 3,
@@ -81,7 +83,8 @@
       "title": "Ad 8",
       "description": "Description 8",
       "specifications": "Specifications 8",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 4,
@@ -90,7 +93,8 @@
       "title": "Ad 9",
       "description": "Description 9",
       "specifications": "Specifications 9",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 5,
@@ -99,7 +103,8 @@
       "title": "Ad 10",
       "description": "Description 10",
       "specifications": "Specifications 10",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 1,
@@ -108,7 +113,8 @@
       "title": "Ad 11",
       "description": "Description 11",
       "specifications": "Specifications 11",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 2,
@@ -117,7 +123,8 @@
       "title": "Ad 12",
       "description": "Description 12",
       "specifications": "Specifications 12",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 3,
@@ -126,7 +133,8 @@
       "title": "Ad 13",
       "description": "Description 13",
       "specifications": "Specifications 13",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Featured"
     },
     {
       "userId": 4,
@@ -135,7 +143,8 @@
       "title": "Ad 14",
       "description": "Description 14",
       "specifications": "Specifications 14",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Premium"
     },
     {
       "userId": 5,
@@ -144,7 +153,8 @@
       "title": "Ad 15",
       "description": "Description 15",
       "specifications": "Specifications 15",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Premium"
     },
     {
       "userId": 1,
@@ -153,7 +163,8 @@
       "title": "Ad 16",
       "description": "Description 16",
       "specifications": "Specifications 16",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Premium"
     },
     {
       "userId": 2,
@@ -162,7 +173,8 @@
       "title": "Ad 17",
       "description": "Description 17",
       "specifications": "Specifications 17",
-      "priceAmount": 100
+      "priceAmount": 100,
+      "typeName": "Premium"
     },
     {
       "userId": 3,

@@ -1,13 +1,23 @@
 export default {
   Query: {
-    ads(parentValue, args, {Ad}) {
-      return Ad.findAll();
+    ads(parentValue, {title, category, subcategory}, {Ad, Sequelize}) {
+      const filters = {};
+      if (title) filters.title = {[Sequelize.Op.iLike]: `%${title}%`};
+      if (category) filters.categoryId = category;
+      if (subcategory) filters.subcategoryId = subcategory;
+      return Ad.findAll({where: filters});
     },
     ad(parentValue, {id}, {Ad}) {
       return Ad.findOne({where: {id}});
     },
     adCount(parentValue, args, {Ad}) {
       return Ad.count();
+    },
+    featuredAds(parentValue, args, {Ad}) {
+      return Ad.findAll({where: {typeName: 'Featured'}});
+    },
+    premiumAds(parentValue, args, {Ad}) {
+      return Ad.findAll({where: {typeName: 'Premium'}});
     }
   },
 

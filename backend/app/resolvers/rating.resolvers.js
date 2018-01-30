@@ -31,7 +31,7 @@ export default {
       return User.findOne({where: {id: userId}});
     },
     ad({adId}, args, {Ad}) {
-      return User.findOne({where: {id: adId}});
-    },
+      return Ad.findOne({where: {id: adId}});
+    }
   }
 }
