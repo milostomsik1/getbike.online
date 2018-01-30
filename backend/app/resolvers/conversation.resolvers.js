@@ -23,6 +23,13 @@ export default {
   },
 
   Conversation: {
-
+    messages({id}, args, {Message}) {
+      return Message.findAll({where: {conversationId: id}});
+    },
+    async users({id}, args, {UserConversation, User}) {
+      const userConversations = await UserConversation.findAll({where: {conversationId: id}});
+      const users = userConversations.map(item => item.dataValues.userId);
+      return Promise.all(users.map(user => User.findOne({where: {id: user}})));
+    }
   }
 }

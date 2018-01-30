@@ -1,5 +1,7 @@
 type Conversation {
   id: ID
+  messages: [Message]
+  users: [User]
 }
 
 type Query {

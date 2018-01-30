@@ -23,11 +23,11 @@ export default {
   },
 
   Message: {
-    user({id}, args, {User}) {
-      return User.findAll({where: {messageId: id}});
+    user({userId}, args, {User}) {
+      return User.findOne({where: {id: userId}});
     },
-    conversation({id}, args, {Conversation}) {
-      return Conversation.findAll({where: {messageId: id}});
-    },
+    conversation({conversationId}, args, {Conversation}) {
+      return Conversation.findOne({where: {id: conversationId}});
+    }
   }
 }

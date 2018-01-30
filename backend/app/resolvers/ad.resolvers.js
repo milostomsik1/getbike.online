@@ -21,7 +21,8 @@ export default {
       });
     },
     async updateAd(parentValue, args, {Ad}) {
-      return null; // UPDATE HERE
+      await Ad.update(args, {where: {id: args.id}});
+      return Ad.findOne({where: {id: args.id}});
     },
     async deleteAd(parentValue, {id}, {Ad}) {
       const ad = await Ad.findOne({where: {id}});
