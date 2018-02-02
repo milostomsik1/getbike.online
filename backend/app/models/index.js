@@ -18,7 +18,6 @@ const models = {
   User: sequelize.import('./user.model'),
   Ad: sequelize.import('./ad.model'),
   Category: sequelize.import('./category.model'),
-  Subcategory: sequelize.import('./subcategory.model'),
   Rating: sequelize.import('./rating.model'),
   Notification: sequelize.import('./notification.model'),
   Conversation: sequelize.import('./conversation.model'),

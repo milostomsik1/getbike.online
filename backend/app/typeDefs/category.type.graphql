@@ -2,7 +2,6 @@ type Category {
   id: ID
   name: String
   description: String
-  subcategories: [Subcategory]
   createdAt: String
   updatedAt: String
 }

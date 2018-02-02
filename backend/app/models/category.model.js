@@ -20,9 +20,9 @@ export default (sequelize, DataTypes) => {
   Category.associate = models => {
     models.Category.hasMany(models.Category, {
       // onDelete: 'CASCADE',
-      foreignKey: {
-        allowNull: false
-      }
+      // foreignKey: {
+      //   allowNull: true
+      // }
     });
   }
 
