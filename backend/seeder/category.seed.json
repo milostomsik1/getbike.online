@@ -25,6 +25,11 @@
     {
       "name": "Services",
       "description": "Services"
+    },
+    {
+      "categoryId": 1,
+      "name": "Road",
+      "description": "Bicycles: Road"
     }
   ]
 }
