@@ -47,5 +47,8 @@ export default {
     category({categoryId}, args, {Category}) {
       return Category.findOne({where: {id: categoryId}});
     },
+    specifications({id}, args, {AdSpecification}) {
+      return AdSpecification.findAll({where: {adId: id}});
+    }
   }
 }

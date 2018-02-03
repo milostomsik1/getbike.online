@@ -1,0 +1,18 @@
+{
+  "modelName": "Specification",
+  "dependsOn": ["Category"],
+  "data": [
+    {
+      "categoryId": 1,
+      "name": "Wheel Size"
+    },
+    {
+      "categoryId": 1,
+      "name": "Frame Size"
+    },
+    {
+      "categoryId": 1,
+      "name": "Frame Material"
+    }
+  ]
+}

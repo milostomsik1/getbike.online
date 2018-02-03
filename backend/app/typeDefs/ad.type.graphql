@@ -9,7 +9,7 @@ type Ad {
   priceCurrency: String
   status: String
   description: String
-  specifications: String
+  specifications: [Specification]
   images: [String!]
   tradable: Boolean
   tradeMethods: [String]
@@ -41,7 +41,6 @@ type Mutation {
     priceAmount: Int
     priceCurrency: String
     status: String
-    specifications: String
     images: [String!]
     tradable: Boolean
     tradeMethods: [String]

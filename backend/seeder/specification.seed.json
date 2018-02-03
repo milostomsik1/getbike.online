@@ -1,0 +1,21 @@
+{
+  "modelName": "AdSpecification",
+  "dependsOn": ["Ad", "Specification"],
+  "data": [
+    {
+      "adId": 1,
+      "specificationId": 1,
+      "value": "700C"
+    },
+    {
+      "adId": 1,
+      "specificationId": 2,
+      "value": "S"
+    },
+    {
+      "adId": 1,
+      "specificationId": 3,
+      "value": "Carbon"
+    }
+  ]
+}
