@@ -46,6 +46,7 @@ export default {
     },
     async updateSpecification(parentValue, args, {AdSpecification}) {
       // await AdSpecification.update()
+      //
     },
     async deleteSpecification(parentValue, {id}, {AdSpecification}) {
       const specification = await AdSpecification.findOne({where: {id}});
