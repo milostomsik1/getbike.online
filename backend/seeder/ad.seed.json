@@ -7,7 +7,7 @@
   "data": [
     {
       "userId": 1,
-      "categoryId": 1,
+      "categoryId": 7,
       "title": "Road Bicycle",
       "description": "Description of a road bicycle",
       "specifications": "Specifications of a road bicycle",
@@ -16,7 +16,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 1,
+      "categoryId": 8,
       "title": "MTB Bicycle",
       "description": "Description of an MTB bicycle",
       "specifications": "Specifications of an MTB bicycle",
@@ -25,7 +25,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 1,
+      "categoryId": 9,
       "title": "Ad 3",
       "description": "Description 3",
       "specifications": "Specifications 3",
@@ -34,7 +34,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 1,
+      "categoryId": 10,
       "title": "Ad 4",
       "description": "Description 4",
       "specifications": "Specifications 4",
@@ -43,7 +43,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 1,
+      "categoryId": 11,
       "title": "Ad 5",
       "description": "Description 5",
       "specifications": "Specifications 5",
@@ -52,7 +52,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 1,
+      "categoryId": 12,
       "title": "Ad 6",
       "description": "Description 6",
       "specifications": "Specifications 6",
@@ -61,7 +61,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 1,
+      "categoryId": 13,
       "title": "Ad 7",
       "description": "Description 7",
       "specifications": "Specifications 7",
@@ -70,7 +70,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 1,
+      "categoryId": 14,
       "title": "Ad 8",
       "description": "Description 8",
       "specifications": "Specifications 8",
@@ -79,7 +79,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 1,
+      "categoryId": 15,
       "title": "Ad 9",
       "description": "Description 9",
       "specifications": "Specifications 9",
@@ -88,7 +88,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 2,
+      "categoryId": 16,
       "title": "Ad 10",
       "description": "Description 10",
       "specifications": "Specifications 10",
@@ -97,7 +97,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 2,
+      "categoryId": 17,
       "title": "Ad 11",
       "description": "Description 11",
       "specifications": "Specifications 11",
@@ -106,7 +106,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 2,
+      "categoryId": 18,
       "title": "Ad 12",
       "description": "Description 12",
       "specifications": "Specifications 12",
@@ -115,7 +115,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 2,
+      "categoryId": 19,
       "title": "Ad 13",
       "description": "Description 13",
       "specifications": "Specifications 13",
@@ -124,7 +124,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 2,
+      "categoryId": 20,
       "title": "Ad 14",
       "description": "Description 14",
       "specifications": "Specifications 14",
@@ -133,7 +133,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 2,
+      "categoryId": 21,
       "title": "Ad 15",
       "description": "Description 15",
       "specifications": "Specifications 15",
@@ -142,7 +142,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 2,
+      "categoryId": 22,
       "title": "Ad 16",
       "description": "Description 16",
       "specifications": "Specifications 16",
@@ -151,7 +151,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 2,
+      "categoryId": 23,
       "title": "Ad 17",
       "description": "Description 17",
       "specifications": "Specifications 17",
@@ -160,7 +160,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 2,
+      "categoryId": 24,
       "title": "Ad 18",
       "description": "Description 18",
       "specifications": "Specifications 18",
@@ -168,7 +168,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 2,
+      "categoryId": 25,
       "title": "Ad 19",
       "description": "Description 19",
       "specifications": "Specifications 19",
@@ -176,7 +176,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 2,
+      "categoryId": 26,
       "title": "Ad 20",
       "description": "Description 20",
       "specifications": "Specifications 20",
@@ -184,7 +184,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 3,
+      "categoryId": 27,
       "title": "Ad 21",
       "description": "Description 21",
       "specifications": "Specifications 21",
@@ -192,7 +192,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 3,
+      "categoryId": 28,
       "title": "Ad 22",
       "description": "Description 22",
       "specifications": "Specifications 22",
@@ -200,7 +200,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 3,
+      "categoryId": 29,
       "title": "Ad 23",
       "description": "Description 23",
       "specifications": "Specifications 23",
@@ -208,7 +208,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 3,
+      "categoryId": 30,
       "title": "Ad 24",
       "description": "Description 24",
       "specifications": "Specifications 24",
@@ -216,7 +216,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 3,
+      "categoryId": 31,
       "title": "Ad 25",
       "description": "Description 25",
       "specifications": "Specifications 25",
@@ -224,7 +224,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 3,
+      "categoryId": 32,
       "title": "Ad 26",
       "description": "Description 26",
       "specifications": "Specifications 26",
@@ -232,7 +232,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 3,
+      "categoryId": 33,
       "title": "Ad 27",
       "description": "Description 27",
       "specifications": "Specifications 27",
@@ -240,7 +240,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 4,
+      "categoryId": 34,
       "title": "Ad 28",
       "description": "Description 28",
       "specifications": "Specifications 28",
@@ -248,7 +248,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 4,
+      "categoryId": 35,
       "title": "Ad 29",
       "description": "Description 29",
       "specifications": "Specifications 29",
@@ -256,7 +256,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 4,
+      "categoryId": 36,
       "title": "Ad 30",
       "description": "Description 30",
       "specifications": "Specifications 30",
@@ -264,7 +264,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 4,
+      "categoryId": 37,
       "title": "Ad 31",
       "description": "Description 31",
       "specifications": "Specifications 31",
@@ -272,7 +272,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 4,
+      "categoryId": 38,
       "title": "Ad 32",
       "description": "Description 32",
       "specifications": "Specifications 32",
@@ -280,7 +280,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 4,
+      "categoryId": 39,
       "title": "Ad 33",
       "description": "Description 33",
       "specifications": "Specifications 33",
@@ -288,7 +288,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 4,
+      "categoryId": 40,
       "title": "Ad 34",
       "description": "Description 34",
       "specifications": "Specifications 34",
@@ -296,7 +296,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 4,
+      "categoryId": 41,
       "title": "Ad 35",
       "description": "Description 35",
       "specifications": "Specifications 35",
@@ -304,7 +304,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 4,
+      "categoryId": 42,
       "title": "Ad 36",
       "description": "Description 36",
       "specifications": "Specifications 36",
@@ -312,7 +312,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 5,
+      "categoryId": 43,
       "title": "Ad 37",
       "description": "Description 37",
       "specifications": "Specifications 37",
@@ -320,7 +320,7 @@
     },
     {
       "userId": 3,
-      "categoryId": 5,
+      "categoryId": 44,
       "title": "Ad 38",
       "description": "Description 38",
       "specifications": "Specifications 38",
@@ -328,7 +328,7 @@
     },
     {
       "userId": 4,
-      "categoryId": 5,
+      "categoryId": 45,
       "title": "Ad 39",
       "description": "Description 39",
       "specifications": "Specifications 39",
@@ -336,7 +336,7 @@
     },
     {
       "userId": 5,
-      "categoryId": 5,
+      "categoryId": 46,
       "title": "Ad 40",
       "description": "Description 40",
       "specifications": "Specifications 40",
@@ -344,7 +344,7 @@
     },
     {
       "userId": 1,
-      "categoryId": 5,
+      "categoryId": 47,
       "title": "Ad 41",
       "description": "Description 41",
       "specifications": "Specifications 41",
@@ -352,7 +352,7 @@
     },
     {
       "userId": 2,
-      "categoryId": 5,
+      "categoryId": 48,
       "title": "Ad 42",
       "description": "Description 42",
       "specifications": "Specifications 42",

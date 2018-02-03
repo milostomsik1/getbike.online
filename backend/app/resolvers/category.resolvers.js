@@ -16,8 +16,8 @@ export default {
       return Category.create(args);
     },
     async updateCategory(parentValue, args, {Category}) {
-      await Category.update(args, {where: {id: args.id}});
-      return Category.findOne({where: {id: args.id}});
+      // await Category.update(args, {where: {id: args.id}});
+      // return Category.findOne({where: {id: args.id}});
     },
     async deleteCategory(parentValue, {id}, {Category}) {
       const category = await Category.findOne({where: {id}});

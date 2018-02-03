@@ -16,8 +16,8 @@ export default {
       return User.create(args);
     },
     async updateUser(parentValue, args, {User}) {
-      await User.update(args, {where: {id: args.id}});
-      return User.findOne({where: {id: args.id}});
+      // await User.update(args, {where: {id: args.id}});
+      // return User.findOne({where: {id: args.id}});
     },
     async deleteUser(parentValue, {id}, {User}) {
       const user = await User.findOne({where: {id}});

@@ -13,10 +13,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    specifications: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     priceAmount: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -71,6 +67,12 @@ export default (sequelize, DataTypes) => {
       foreignKey: {
         allowNull: false
       },
+    });
+    models.Ad.belongsToMany(models.Specification, {
+      onDelete: 'CASCADE',
+      through: {
+        model: 'ad_specification'
+      }
     });
   }
 
