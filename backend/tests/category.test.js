@@ -1,7 +1,6 @@
 import axios from 'axios';
 const URL = 'http://localhost:4000/graphql';
 
-let createdCategoryId;
 
 describe('Category resolvers work as intended', () => {
   test('Create a category', async () => {
@@ -9,9 +8,31 @@ describe('Category resolvers work as intended', () => {
       query: `
       mutation {
         createCategory(
-          name:"New Category"
-          description:"New Category Description"
+          name:"Category Test Create"
+          description:"Category Test Create Description"
         ) {
+          name
+          description
+        }
+      }`
+    });
+
+    const {data} = newCategory;
+    expect(data).toMatchObject({
+      "data": {
+        "createCategory": {
+          "name": "Category Test Create",
+          "description": "Category Test Create Description"
+        }
+      }
+    });
+  });
+
+  test('Find a category', async () => {
+    const foundCategory = await axios.post(URL, {
+      query: `
+      {
+        category(id:49) {
           id
           name
           description
@@ -19,36 +40,12 @@ describe('Category resolvers work as intended', () => {
       }`
     });
 
-    const { data } = newCategory;
-    createdCategoryId = data.data.createCategory.id;
-    expect(data).toMatchObject({
-      "data": {
-        "createCategory": {
-          "id": createdCategoryId,
-          "name": "New Category",
-          "description": "New Category Description"
-        }
-      }
-    });
-  });
-
-  test('Find created category', async () => {
-    const foundCategory = await axios.post(URL, {
-      query: `
-      {
-        category(id:${createdCategoryId}) {
-          name
-          description
-        }
-      }`
-    });
-
-    const { data } = foundCategory;
+    const {data} = foundCategory;
     expect(data).toMatchObject({
       "data": {
         "category": {
-          "name": "New Category",
-          "description": "New Category Description"
+          "name": "Category Test Find One",
+          "description": "Category Test Find One"
         }
       }
     });
@@ -64,7 +61,7 @@ describe('Category resolvers work as intended', () => {
       }`
     });
 
-    const { categories } = foundCategories.data.data;
+    const {categories} = foundCategories.data.data;
     expect(categories.length).toBeGreaterThan(0);
   });
 
@@ -73,21 +70,22 @@ describe('Category resolvers work as intended', () => {
       query: `
       mutation {
         updateCategory(
-          id:1
+          id:50
           name:"Updated Category"
           description:"Updated Category Description"
         ){
+          id
           name
           description
         }
-      }
-      `
+      }`
     });
 
-    const { data } = updatedCategory;
+    const {data} = updatedCategory;
     expect(data).toMatchObject({
       "data": {
         "updateCategory": {
+          "id": "50",
           "name": "Updated Category",
           "description": "Updated Category Description"
         }
@@ -99,17 +97,21 @@ describe('Category resolvers work as intended', () => {
     const deletedCategory = await axios.post(URL, {
       query: `
       mutation {
-        deleteCategory(id:1) {
+        deleteCategory(id:51) {
           id
+          name
+          description
         }
       }`
     });
 
-    const { data } = deletedCategory;
+    const {data} = deletedCategory;
     expect(data).toMatchObject({
       "data": {
         "deleteCategory": {
-          "id": "1"
+          "id": "51",
+          "name": "Category Test Delete",
+          "description": "Category Test Delete"
         }
       }
     });

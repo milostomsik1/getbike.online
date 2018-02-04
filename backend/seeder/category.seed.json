@@ -235,6 +235,18 @@
       "name": "Service Hardware",
       "description": "Tools: Service Hardware",
       "categoryId": 5
+    },
+    {
+      "name": "Category Test Find One",
+      "description": "Category Test Find One"
+    },
+    {
+      "name": "Category Test Update",
+      "description": "Category Test Update"
+    },
+    {
+      "name": "Category Test Delete",
+      "description": "Category Test Delete"
     }
   ]
 }

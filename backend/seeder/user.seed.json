@@ -3,27 +3,6 @@
   "dependsOn": [],
   "data": [
     {
-      "name": "User Test Find One",
-      "email": "usertestfindone@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "User Test Update",
-      "email": "usertestupdate@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "User Test Delete",
-      "email": "usertestdelete@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
       "name": "User 1",
       "email": "user1@gmail.com",
       "password": "password1",
@@ -57,6 +36,27 @@
       "password": "password5",
       "country": "Country 5",
       "city": "City 5"
+    },
+    {
+      "name": "User Test Find One",
+      "email": "usertestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User Test Update",
+      "email": "usertestupdate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User Test Delete",
+      "email": "usertestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
     }
   ]
 }

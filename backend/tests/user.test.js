@@ -23,7 +23,7 @@ describe('User resolvers work as intended', () => {
         }
       }`
     });
-    const { data } = newUser;
+    const {data} = newUser;
     expect(data).toMatchObject({
       "data": {
         "createUser": {
@@ -42,7 +42,8 @@ describe('User resolvers work as intended', () => {
     const foundUser = await axios.post(URL, {
       query: `
       {
-        user(id:1) {
+        user(id:6) {
+          id
           name
           email
           password
@@ -53,10 +54,11 @@ describe('User resolvers work as intended', () => {
       }`
     });
 
-    const { data } = foundUser;
+    const {data} = foundUser;
     expect(data).toMatchObject({
       "data": {
         "user": {
+          "id": "6",
           "name": "User Test Find One",
           "email": "usertestfindone@gmail.com",
           "password": "password123",
@@ -87,7 +89,7 @@ describe('User resolvers work as intended', () => {
       query: `
       mutation {
         updateUser(
-          id:2
+          id:7
           name:"Updated Name"
           email:"updated@email.com"
           password:"updatedPassword"
@@ -104,11 +106,11 @@ describe('User resolvers work as intended', () => {
       }`
     });
 
-    const { data } = updatedUser;
+    const {data} = updatedUser;
     expect(data).toMatchObject({
       "data": {
         "updateUser": {
-          "id": "2",
+          "id": "7",
           "name": "Updated Name",
           "email": "updated@email.com",
           "password": "updatedPassword",
@@ -123,7 +125,7 @@ describe('User resolvers work as intended', () => {
     const deletedUser = await axios.post(URL, {
       query: `
       mutation {
-        deleteUser(id:3) {
+        deleteUser(id:8) {
           id
           name
           email
@@ -135,11 +137,11 @@ describe('User resolvers work as intended', () => {
       }`
     });
 
-    const { data } = deletedUser;
+    const {data} = deletedUser;
     expect(data).toMatchObject({
       "data": {
         "deleteUser": {
-          "id": "3",
+          "id": "8",
           "name": "User Test Delete",
           "email": "usertestdelete@gmail.com",
           "password": "password123",
