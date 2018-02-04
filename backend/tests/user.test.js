@@ -8,9 +8,9 @@ describe('User resolvers work as intended', () => {
       query: `
       mutation {
         createUser(
-          name:"Test User"
-          email:"testuser@gmail.com"
-          password:"123123"
+          name:"User Test Create"
+          email:"usertestcreate@gmail.com"
+          password:"password123"
           country:"Serbia"
           city:"Belgrade"
         ) {
@@ -27,9 +27,9 @@ describe('User resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "createUser": {
-          "name": "Test User",
-          "email": "testuser@gmail.com",
-          "password": "123123",
+          "name": "User Test Create",
+          "email": "usertestcreate@gmail.com",
+          "password": "password123",
           "canCreateAds": true,
           "country": "Serbia",
           "city": "Belgrade"
@@ -38,7 +38,7 @@ describe('User resolvers work as intended', () => {
     });
   });
 
-  test('Get created user', async () => {
+  test('Get a user', async () => {
     const foundUser = await axios.post(URL, {
       query: `
       {
@@ -57,12 +57,12 @@ describe('User resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "user": {
-          "name": "Test User",
-          "email": "testuser@gmail.com",
-          "password": "123123",
+          "name": "User Test Find One",
+          "email": "usertestfindone@gmail.com",
+          "password": "password123",
           "canCreateAds": true,
-          "country": "Serbia",
-          "city": "Belgrade"
+          "country": "Country",
+          "city": "City"
         }
       }
     });
@@ -87,10 +87,10 @@ describe('User resolvers work as intended', () => {
       query: `
       mutation {
         updateUser(
-          id:1
+          id:2
           name:"Updated Name"
-          email:"updated@gmail.com"
-          password:"Updated"
+          email:"updated@email.com"
+          password:"updatedPassword"
           country:"Updated Country"
           city:"Updated City"
         ){
@@ -108,10 +108,10 @@ describe('User resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "updateUser": {
-          "id": "1",
+          "id": "2",
           "name": "Updated Name",
-          "email": "updated@gmail.com",
-          "password": "Updated",
+          "email": "updated@email.com",
+          "password": "updatedPassword",
           "country": "Updated Country",
           "city": "Updated City"
         }
@@ -123,8 +123,14 @@ describe('User resolvers work as intended', () => {
     const deletedUser = await axios.post(URL, {
       query: `
       mutation {
-        deleteUser(id:1) {
+        deleteUser(id:3) {
           id
+          name
+          email
+          password
+          canCreateAds
+          country
+          city
         }
       }`
     });
@@ -133,7 +139,13 @@ describe('User resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "deleteUser": {
-          "id": "1"
+          "id": "3",
+          "name": "User Test Delete",
+          "email": "usertestdelete@gmail.com",
+          "password": "password123",
+          "canCreateAds": true,
+          "country": "Country",
+          "city": "City"
         }
       }
     });
