@@ -8,9 +8,9 @@ describe('Notification resolvers work as intended', () => {
       query: `
       mutation {
         createNotification(
-          user:9
-          title:"Notification Test Create"
-          content:"Notification Test Create Content"
+          user:4
+          title:"Notification Test: Create"
+          content:"Notification Test: Create - Content"
         ){
           user {
             id
@@ -25,10 +25,10 @@ describe('Notification resolvers work as intended', () => {
       "data": {
         "createNotification": {
           "user": {
-            "id": "9"
+            "id": "4"
           },
-          "title": "Notification Test Create",
-          "content": "Notification Test Create Content"
+          "title": "Notification Test: Create",
+          "content": "Notification Test: Create - Content"
         }
       }
     });
@@ -37,7 +37,7 @@ describe('Notification resolvers work as intended', () => {
   test('Get a notification', async () => {
     const foundNotification = await axios.post(URL, {
       query: `{
-        notification(id:6) {
+        notification(id:1) {
           id
           user {
             id
@@ -52,12 +52,12 @@ describe('Notification resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "notification": {
-          "id": "6",
+          "id": "1",
           "user": {
-            "id": "10"
+            "id": "5"
           },
-          "title": "Notification Test Find One",
-          "content": "Notification Test Find One Content"
+          "title": "Notification Test: Find One",
+          "content": "Notification Test: Find One - Content"
         }
       }
     });
@@ -81,7 +81,7 @@ describe('Notification resolvers work as intended', () => {
     const deletedNotification = await axios.post(URL, {
       query: `
       mutation{
-        deleteNotification(id:7) {
+        deleteNotification(id:2) {
           id
           user {
             id
@@ -96,12 +96,12 @@ describe('Notification resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "deleteNotification": {
-          "id": "7",
+          "id": "2",
           "user": {
-            "id": "11"
+            "id": "6"
           },
-          "title": "Notification Test Delete",
-          "content": "Notification Test Delete Content"
+          "title": "Notification Test: Delete",
+          "content": "Notification Test: Delete - Content"
         }
       }
     });

@@ -1,42 +1,43 @@
 {
   "modelName": "Notification",
   "dependsOn": ["User"],
-  "testData": [],
+  "testData": [
+    {
+      "userId": 5,
+      "title": "Notification Test: Find One",
+      "content": "Notification Test: Find One - Content"
+    },
+    {
+      "userId": 6,
+      "title": "Notification Test: Delete",
+      "content": "Notification Test: Delete - Content"
+    }
+  ],
   "data": [
     {
       "userId": 1,
       "title": "Notification Title 1",
-      "content": "This is a notification for user 1"
+      "content": "This is a notification for User 1"
     },
     {
       "userId": 2,
       "title": "Notification Title 2",
-      "content": "This is a notification for user 2"
+      "content": "This is a notification for User 2"
     },
     {
       "userId": 3,
       "title": "Notification Title 3",
-      "content": "This is a notification for user 3"
+      "content": "This is a notification for User 3"
     },
     {
       "userId": 4,
       "title": "Notification Title 4",
-      "content": "This is a notification for user 4"
+      "content": "This is a notification for User 4"
     },
     {
       "userId": 5,
       "title": "Notification Title 5",
-      "content": "This is a notification for user 5"
-    },
-    {
-      "userId": 10,
-      "title": "Notification Test Find One",
-      "content": "Notification Test Find One Content"
-    },
-    {
-      "userId": 11,
-      "title": "Notification Test Delete",
-      "content": "Notification Test Delete Content"
+      "content": "This is a notification for User 5"
     }
   ]
 }
