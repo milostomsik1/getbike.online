@@ -13,6 +13,22 @@
     {
       "name": "Category Test: Delete",
       "description": "Category Test: Delete - Description"
+    },
+    {
+      "name": "Category | Ad Test: Create",
+      "description": "Category | Ad Test: Create - Description"
+    },
+    {
+      "name": "Category | Ad Test: Find One",
+      "description": "Category | Ad Test: Find One - Description"
+    },
+    {
+      "name": "Category | Ad Test: Update",
+      "description": "Category | Ad Test: Update - Description"
+    },
+    {
+      "name": "Category | Ad Test: Delete",
+      "description": "Category | Ad Test: Delete - Description"
     }
   ],
   "data": [

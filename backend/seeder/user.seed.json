@@ -50,6 +50,27 @@
       "password": "password123",
       "country": "Country",
       "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Find One",
+      "email": "adtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Update",
+      "email": "adtestupdate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Delete",
+      "email": "adtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
     }
   ],
   "data": [

@@ -25,13 +25,16 @@ export default {
       return Ad.create({
         ...args,
         userId: args.user,
-        categoryId: args.category,
-        subcategoryId: args.subcategory
+        categoryId: args.category
       });
     },
     async updateAd(parentValue, args, {Ad}) {
-      // await Ad.update(args, {where: {id: args.id}});
-      // return Ad.findOne({where: {id: args.id}});
+      if (args.user) args.userId = args.user;
+      if (args.category) args.categoryId = args.category;
+
+      console.log(args);
+      await Ad.update(args, {where: {id: args.id}});
+      return Ad.findOne({where: {id: args.id}});
     },
     async deleteAd(parentValue, {id}, {Ad}) {
       const ad = await Ad.findOne({where: {id}});
