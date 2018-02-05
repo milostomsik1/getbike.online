@@ -8,7 +8,7 @@ describe('Category resolvers work as intended', () => {
       query: `
       mutation {
         createCategory(
-          name:"Category Test Create"
+          name:"Category Test: Create"
           description:"Category Test Create Description"
         ) {
           name
@@ -21,7 +21,7 @@ describe('Category resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "createCategory": {
-          "name": "Category Test Create",
+          "name": "Category Test: Create",
           "description": "Category Test Create Description"
         }
       }
@@ -32,7 +32,7 @@ describe('Category resolvers work as intended', () => {
     const foundCategory = await axios.post(URL, {
       query: `
       {
-        category(id:49) {
+        category(id:1) {
           id
           name
           description
@@ -44,8 +44,9 @@ describe('Category resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "category": {
-          "name": "Category Test Find One",
-          "description": "Category Test Find One"
+          "id": "1",
+          "name": "Category Test: Find One",
+          "description": "Category Test: Find One - Description"
         }
       }
     });
@@ -70,9 +71,9 @@ describe('Category resolvers work as intended', () => {
       query: `
       mutation {
         updateCategory(
-          id:50
-          name:"Updated Category"
-          description:"Updated Category Description"
+          id:2
+          name:"Category Test: Updated"
+          description:"Category Test: Updated - Description"
         ){
           id
           name
@@ -85,9 +86,9 @@ describe('Category resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "updateCategory": {
-          "id": "50",
-          "name": "Updated Category",
-          "description": "Updated Category Description"
+          "id": "2",
+          "name": "Category Test: Updated",
+          "description": "Category Test: Updated - Description"
         }
       }
     });
@@ -97,7 +98,7 @@ describe('Category resolvers work as intended', () => {
     const deletedCategory = await axios.post(URL, {
       query: `
       mutation {
-        deleteCategory(id:51) {
+        deleteCategory(id:3) {
           id
           name
           description
@@ -109,9 +110,9 @@ describe('Category resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "deleteCategory": {
-          "id": "51",
-          "name": "Category Test Delete",
-          "description": "Category Test Delete"
+          "id": "3",
+          "name": "Category Test: Delete",
+          "description": "Category Test: Delete - Description"
         }
       }
     });

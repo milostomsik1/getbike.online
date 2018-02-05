@@ -22,6 +22,7 @@ describe('User resolvers work as intended', () => {
         }
       }`
     });
+
     const {data} = newUser;
     expect(data).toMatchObject({
       "data": {
