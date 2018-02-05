@@ -57,6 +57,27 @@
       "password": "password123",
       "country": "Country",
       "city": "City"
+    },
+    {
+      "name": "Notification Test Create",
+      "email": "notificationtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "Notification Test Find One",
+      "email": "notificationtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "Notification Test Delete",
+      "email": "notificationtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
     }
   ]
 }

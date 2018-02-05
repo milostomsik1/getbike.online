@@ -14,7 +14,7 @@ type Query {
 
 type Mutation {
   createNotification(
-    userId: ID!
+    user: ID!
     title: String!
     content: String!
   ): Notification

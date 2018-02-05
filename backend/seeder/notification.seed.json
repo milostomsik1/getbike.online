@@ -26,6 +26,16 @@
       "userId": 5,
       "title": "Notification Title 5",
       "content": "This is a notification for user 5"
+    },
+    {
+      "userId": 10,
+      "title": "Notification Test Find One",
+      "content": "Notification Test Find One Content"
+    },
+    {
+      "userId": 11,
+      "title": "Notification Test Delete",
+      "content": "Notification Test Delete Content"
     }
   ]
 }
