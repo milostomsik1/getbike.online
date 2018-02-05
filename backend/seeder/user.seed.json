@@ -1,7 +1,57 @@
 {
   "modelName": "User",
   "dependsOn": [],
-  "testData": [],
+  "testData": [
+    {
+      "name": "User Test: Find One",
+      "email": "usertestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User Test: Update",
+      "email": "usertestupdate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User Test: Delete",
+      "email": "usertestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Notification Test: Create",
+      "email": "notificationtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Notification Test: Find One",
+      "email": "notificationtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Notification Test: Delete",
+      "email": "notificationtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Create",
+      "email": "adtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    }
+  ],
   "data": [
     {
       "name": "User 1",
@@ -37,55 +87,6 @@
       "password": "password5",
       "country": "Country 5",
       "city": "City 5"
-    },
-    {
-      "name": "User Test Find One",
-      "email": "usertestfindone@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "User Test Update",
-      "email": "usertestupdate@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "User Test Delete",
-      "email": "usertestdelete@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "Notification Test Create",
-      "email": "notificationtestcreate@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "Notification Test Find One",
-      "email": "notificationtestfindone@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "Notification Test Delete",
-      "email": "notificationtestdelete@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
-    },
-    {
-      "name": "Ad Test Create",
-      "email": "adtestcreate@gmail.com",
-      "password": "password123",
-      "country": "Country",
-      "city": "City"
     }
   ]
 }
