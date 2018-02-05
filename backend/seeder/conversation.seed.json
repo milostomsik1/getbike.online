@@ -1,5 +1,6 @@
 {
   "modelName": "Conversation",
   "dependsOn": [],
+  "testData": [],
   "data": [{}, {}, {}, {}, {}]
 }

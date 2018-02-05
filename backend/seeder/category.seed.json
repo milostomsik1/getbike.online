@@ -1,6 +1,7 @@
 {
   "modelName": "Category",
   "dependsOn": [],
+  "testData": [],
   "data": [
     {
       "name": "Bicycles",

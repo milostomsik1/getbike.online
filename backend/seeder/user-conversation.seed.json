@@ -1,6 +1,7 @@
 {
   "modelName": "UserConversation",
   "dependsOn": ["User", "Conversation"],
+  "testData": [],
   "data": [
     {
       "userId": 1,

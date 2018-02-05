@@ -4,10 +4,11 @@ const URL = 'http://localhost:4000/graphql';
 
 describe('Ad resolvers work as intended', () => {
   test('Create an ad', async () => {
-    // create user
-    // create category
-    // create subcategory
-    // create ad
+    // const newAd = await axios.post(URL, {
+    //   query: ``
+    // });
+    // const {data} = newAd;
+    // expect(data).toMatchObject();
   });
 
   test('Find created ad', async () => {

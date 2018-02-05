@@ -53,8 +53,13 @@ const seed = async () => {
   for (const file of files) {
     const model = file.modelName;
     const { data } = file;
+    const { testData } = file;
     try {
-      await db[model].bulkCreate(data);
+      if (process.env.TEST_DB_NAME) {
+        await db[model].bulkCreate(testData);
+      } else {
+        await db[model].bulkCreate(data);
+      }
     } catch (err) {
       console.log(err);
     }

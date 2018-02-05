@@ -1,6 +1,7 @@
 {
   "modelName": "Notification",
   "dependsOn": ["User"],
+  "testData": [],
   "data": [
     {
       "userId": 1,

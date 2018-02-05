@@ -1,6 +1,7 @@
 {
   "modelName": "User",
   "dependsOn": [],
+  "testData": [],
   "data": [
     {
       "name": "User 1",
@@ -75,6 +76,13 @@
     {
       "name": "Notification Test Delete",
       "email": "notificationtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "Ad Test Create",
+      "email": "adtestcreate@gmail.com",
       "password": "password123",
       "country": "Country",
       "city": "City"

@@ -1,6 +1,7 @@
 {
   "modelName": "AdSpecification",
   "dependsOn": ["Ad", "Specification"],
+  "testData": [],
   "data": [
     {
       "adId": 1,

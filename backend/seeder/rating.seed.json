@@ -1,6 +1,7 @@
 {
   "modelName": "Rating",
   "dependsOn": ["Ad", "User"],
+  "testData": [],
   "data": [
     {
       "adId": 1,

@@ -1,6 +1,7 @@
 {
   "modelName": "Specification",
   "dependsOn": ["Category"],
+  "testData": [],
   "data": [
     {
       "categoryId": 1,
