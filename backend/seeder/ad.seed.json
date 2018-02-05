@@ -25,6 +25,27 @@
       "title": "Ad Test: Delete",
       "description": "Ad Test: Delete - Description",
       "priceAmount": 100
+    },
+    {
+      "userId": 11,
+      "categoryId": 8,
+      "title": "Ad | Rating Test: Create",
+      "description": "Ad | Rating Test: Create - Description",
+      "priceAmount": 100
+    },
+    {
+      "userId": 12,
+      "categoryId": 9,
+      "title": "Ad | Rating Test: Find One",
+      "description": "Ad | Rating Test: Find One - Description",
+      "priceAmount": 100
+    },
+    {
+      "userId": 12,
+      "categoryId": 10,
+      "title": "Ad | Rating Test: Delete",
+      "description": "Ad | Rating Test: Delete - Description",
+      "priceAmount": 100
     }
   ],
   "data": [

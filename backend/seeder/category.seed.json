@@ -29,6 +29,18 @@
     {
       "name": "Category | Ad Test: Delete",
       "description": "Category | Ad Test: Delete - Description"
+    },
+    {
+      "name": "Category | Rating Test: Create",
+      "description": "Category | Rating Test: Create - Description"
+    },
+    {
+      "name": "Category | Rating Test: Find One",
+      "description": "Category | Rating Test: Find One - Description"
+    },
+    {
+      "name": "Category | Rating Test: Delete",
+      "description": "Category | Rating Test: Delete - Description"
     }
   ],
   "data": [

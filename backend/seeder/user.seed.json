@@ -71,6 +71,27 @@
       "password": "password123",
       "country": "Country",
       "city": "City"
+    },
+    {
+      "name": "User | Rating Test: Create",
+      "email": "ratingtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Rating Test: Find One",
+      "email": "ratingtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Rating Test: Delete",
+      "email": "ratingtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
     }
   ],
   "data": [
