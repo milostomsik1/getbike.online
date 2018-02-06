@@ -27,8 +27,5 @@ export default {
   },
 
   Category: {
-    subcategories({id}, args, {Subcategory}) {
-      return Subcategory.findAll({where: {categoryId: id}});
-    }
   }
 }

@@ -2,6 +2,8 @@ type Conversation {
   id: ID
   messages: [Message]
   users: [User]
+  createdAt: String
+  updatedAt: String
 }
 
 type Query {
@@ -12,5 +14,6 @@ type Query {
 
 type Mutation {
   createConversation: Conversation
+  updateConversation(id: ID!): Conversation
   deleteConversation(id: ID!): Conversation
 }

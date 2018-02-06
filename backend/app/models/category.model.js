@@ -8,7 +8,6 @@ export default (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
     },
     description: {
       type: DataTypes.STRING
@@ -18,8 +17,8 @@ export default (sequelize, DataTypes) => {
   });
 
   Category.associate = models => {
-    models.Category.hasMany(models.Subcategory, {
-      // onDelete: 'CASCADE',
+    models.Category.hasMany(models.Category);
+    models.Category.hasMany(models.Specification, {
       foreignKey: {
         allowNull: false
       }

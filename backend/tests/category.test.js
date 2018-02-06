@@ -1,7 +1,6 @@
 import axios from 'axios';
 const URL = 'http://localhost:4000/graphql';
 
-let createdCategoryId;
 
 describe('Category resolvers work as intended', () => {
   test('Create a category', async () => {
@@ -9,9 +8,31 @@ describe('Category resolvers work as intended', () => {
       query: `
       mutation {
         createCategory(
-          name:"New Category"
-          description:"New Category Description"
+          name:"Category Test: Create"
+          description:"Category Test Create Description"
         ) {
+          name
+          description
+        }
+      }`
+    });
+
+    const {data} = newCategory;
+    expect(data).toMatchObject({
+      "data": {
+        "createCategory": {
+          "name": "Category Test: Create",
+          "description": "Category Test Create Description"
+        }
+      }
+    });
+  });
+
+  test('Get a category', async () => {
+    const foundCategory = await axios.post(URL, {
+      query: `
+      {
+        category(id:1) {
           id
           name
           description
@@ -19,36 +40,13 @@ describe('Category resolvers work as intended', () => {
       }`
     });
 
-    const { data } = newCategory;
-    createdCategoryId = data.data.createCategory.id;
-    expect(data).toMatchObject({
-      "data": {
-        "createCategory": {
-          "id": createdCategoryId,
-          "name": "New Category",
-          "description": "New Category Description"
-        }
-      }
-    });
-  });
-
-  test('Find created category', async () => {
-    const foundCategory = await axios.post(URL, {
-      query: `
-      {
-        category(id:${createdCategoryId}) {
-          name
-          description
-        }
-      }`
-    });
-
-    const { data } = foundCategory;
+    const {data} = foundCategory;
     expect(data).toMatchObject({
       "data": {
         "category": {
-          "name": "New Category",
-          "description": "New Category Description"
+          "id": "1",
+          "name": "Category Test: Find One",
+          "description": "Category Test: Find One - Description"
         }
       }
     });
@@ -64,7 +62,7 @@ describe('Category resolvers work as intended', () => {
       }`
     });
 
-    const { categories } = foundCategories.data.data;
+    const {categories} = foundCategories.data.data;
     expect(categories.length).toBeGreaterThan(0);
   });
 
@@ -73,23 +71,24 @@ describe('Category resolvers work as intended', () => {
       query: `
       mutation {
         updateCategory(
-          id:1
-          name:"Updated Category"
-          description:"Updated Category Description"
+          id:2
+          name:"Category Test: Updated"
+          description:"Category Test: Updated - Description"
         ){
+          id
           name
           description
         }
-      }
-      `
+      }`
     });
 
-    const { data } = updatedCategory;
+    const {data} = updatedCategory;
     expect(data).toMatchObject({
       "data": {
         "updateCategory": {
-          "name": "Updated Category",
-          "description": "Updated Category Description"
+          "id": "2",
+          "name": "Category Test: Updated",
+          "description": "Category Test: Updated - Description"
         }
       }
     });
@@ -99,17 +98,21 @@ describe('Category resolvers work as intended', () => {
     const deletedCategory = await axios.post(URL, {
       query: `
       mutation {
-        deleteCategory(id:1) {
+        deleteCategory(id:3) {
           id
+          name
+          description
         }
       }`
     });
 
-    const { data } = deletedCategory;
+    const {data} = deletedCategory;
     expect(data).toMatchObject({
       "data": {
         "deleteCategory": {
-          "id": "1"
+          "id": "3",
+          "name": "Category Test: Delete",
+          "description": "Category Test: Delete - Description"
         }
       }
     });

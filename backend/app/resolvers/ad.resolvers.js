@@ -1,10 +1,9 @@
 export default {
   Query: {
-    ads(parentValue, {title, category, subcategory}, {Ad, Sequelize}) {
+    ads(parentValue, {title, category}, {Ad, Sequelize}) {
       const filters = {};
       if (title) filters.title = {[Sequelize.Op.iLike]: `%${title}%`};
       if (category) filters.categoryId = category;
-      if (subcategory) filters.subcategoryId = subcategory;
       return Ad.findAll({where: filters});
     },
     ad(parentValue, {id}, {Ad}) {
@@ -26,11 +25,13 @@ export default {
       return Ad.create({
         ...args,
         userId: args.user,
-        categoryId: args.category,
-        subcategoryId: args.subcategory
+        categoryId: args.category
       });
     },
     async updateAd(parentValue, args, {Ad}) {
+      if (args.user) args.userId = args.user;
+      if (args.category) args.categoryId = args.category;
+
       await Ad.update(args, {where: {id: args.id}});
       return Ad.findOne({where: {id: args.id}});
     },
@@ -48,8 +49,8 @@ export default {
     category({categoryId}, args, {Category}) {
       return Category.findOne({where: {id: categoryId}});
     },
-    subcategory({subcategoryId}, args, {Subcategory}) {
-      return Subcategory.findOne({where: {id: subcategoryId}});
+    specifications({id}, args, {AdSpecification}) {
+      return AdSpecification.findAll({where: {adId: id}});
     }
   }
 }

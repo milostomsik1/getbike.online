@@ -1,6 +1,120 @@
 {
   "modelName": "User",
   "dependsOn": [],
+  "testData": [
+    {
+      "name": "User Test: Find One",
+      "email": "usertestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User Test: Update",
+      "email": "usertestupdate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User Test: Delete",
+      "email": "usertestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Notification Test: Create",
+      "email": "notificationtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Notification Test: Find One",
+      "email": "notificationtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Notification Test: Delete",
+      "email": "notificationtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Create",
+      "email": "adtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Find One",
+      "email": "adtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Update",
+      "email": "adtestupdate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Ad Test: Delete",
+      "email": "adtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Rating Test: Create",
+      "email": "ratingtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Rating Test: Find One",
+      "email": "ratingtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Rating Test: Delete",
+      "email": "ratingtestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Message Test: Create",
+      "email": "messagetestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Message Test: Find One",
+      "email": "messagetestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Message Test: Delete",
+      "email": "messagetestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    }
+  ],
   "data": [
     {
       "name": "User 1",

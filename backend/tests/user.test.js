@@ -1,18 +1,17 @@
 import axios from 'axios';
 const URL = 'http://localhost:4000/graphql';
 
-
 describe('User resolvers work as intended', () => {
   test('Create a user', async () => {
     const newUser = await axios.post(URL, {
       query: `
       mutation {
         createUser(
-          name:"Test User"
-          email:"testuser@gmail.com"
-          password:"123123"
-          country:"Serbia"
-          city:"Belgrade"
+          name:"User Test: Create"
+          email:"usertestcreate@gmail.com"
+          password:"password123"
+          country:"Country"
+          city:"City"
         ) {
           name
           email
@@ -23,26 +22,28 @@ describe('User resolvers work as intended', () => {
         }
       }`
     });
-    const { data } = newUser;
+
+    const {data} = newUser;
     expect(data).toMatchObject({
       "data": {
         "createUser": {
-          "name": "Test User",
-          "email": "testuser@gmail.com",
-          "password": "123123",
+          "name": "User Test: Create",
+          "email": "usertestcreate@gmail.com",
+          "password": "password123",
           "canCreateAds": true,
-          "country": "Serbia",
-          "city": "Belgrade"
+          "country": "Country",
+          "city": "City"
         }
       }
     });
   });
 
-  test('Get created user', async () => {
+  test('Get a user', async () => {
     const foundUser = await axios.post(URL, {
       query: `
       {
         user(id:1) {
+          id
           name
           email
           password
@@ -53,16 +54,17 @@ describe('User resolvers work as intended', () => {
       }`
     });
 
-    const { data } = foundUser;
+    const {data} = foundUser;
     expect(data).toMatchObject({
       "data": {
         "user": {
-          "name": "Test User",
-          "email": "testuser@gmail.com",
-          "password": "123123",
+          "id": "1",
+          "name": "User Test: Find One",
+          "email": "usertestfindone@gmail.com",
+          "password": "password123",
           "canCreateAds": true,
-          "country": "Serbia",
-          "city": "Belgrade"
+          "country": "Country",
+          "city": "City"
         }
       }
     });
@@ -87,10 +89,10 @@ describe('User resolvers work as intended', () => {
       query: `
       mutation {
         updateUser(
-          id:1
-          name:"Updated Name"
-          email:"updated@gmail.com"
-          password:"Updated"
+          id:2
+          name:"User Test: Update Name"
+          email:"usertestupdatename@email.com"
+          password:"updatedPassword123"
           country:"Updated Country"
           city:"Updated City"
         ){
@@ -104,14 +106,14 @@ describe('User resolvers work as intended', () => {
       }`
     });
 
-    const { data } = updatedUser;
+    const {data} = updatedUser;
     expect(data).toMatchObject({
       "data": {
         "updateUser": {
-          "id": "1",
-          "name": "Updated Name",
-          "email": "updated@gmail.com",
-          "password": "Updated",
+          "id": "2",
+          "name": "User Test: Update Name",
+          "email": "usertestupdatename@email.com",
+          "password": "updatedPassword123",
           "country": "Updated Country",
           "city": "Updated City"
         }
@@ -123,17 +125,29 @@ describe('User resolvers work as intended', () => {
     const deletedUser = await axios.post(URL, {
       query: `
       mutation {
-        deleteUser(id:1) {
+        deleteUser(id:3) {
           id
+          name
+          email
+          password
+          canCreateAds
+          country
+          city
         }
       }`
     });
 
-    const { data } = deletedUser;
+    const {data} = deletedUser;
     expect(data).toMatchObject({
       "data": {
         "deleteUser": {
-          "id": "1"
+          "id": "3",
+          "name": "User Test: Delete",
+          "email": "usertestdelete@gmail.com",
+          "password": "password123",
+          "canCreateAds": true,
+          "country": "Country",
+          "city": "City"
         }
       }
     });

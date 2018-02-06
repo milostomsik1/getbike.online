@@ -1,20 +1,19 @@
 export default (sequelize, DataTypes) => {
-  const Subcategory = sequelize.define('subcategory', {
+  const AdSpecification = sequelize.define('ad_specification', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    value: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    description: {
-      type: DataTypes.STRING
     }
-  }, {
+  },
+  {
     freezeTableName: true
-  });
+  }
+);
 
-  return Subcategory;
+  return AdSpecification;
 };

@@ -18,12 +18,13 @@ const models = {
   User: sequelize.import('./user.model'),
   Ad: sequelize.import('./ad.model'),
   Category: sequelize.import('./category.model'),
-  Subcategory: sequelize.import('./subcategory.model'),
   Rating: sequelize.import('./rating.model'),
   Notification: sequelize.import('./notification.model'),
   Conversation: sequelize.import('./conversation.model'),
   UserConversation: sequelize.import('./user-conversation.model'),
   Message: sequelize.import('./message.model'),
+  Specification: sequelize.import('./specification.model'),
+  AdSpecification: sequelize.import('./ad-specification.model'),
 };
 
 Object.keys(models).forEach(modelName => {

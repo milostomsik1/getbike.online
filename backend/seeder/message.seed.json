@@ -1,6 +1,18 @@
 {
   "modelName": "Message",
   "dependsOn": ["User", "Conversation"],
+  "testData": [
+    {
+      "userId": 15,
+      "conversationId": 2,
+      "content": "Message Test: Find One"
+    },
+    {
+      "userId": 16,
+      "conversationId": 3,
+      "content": "Message Test: Delete"
+    }
+  ],
   "data": [
     {
       "userId": 1,

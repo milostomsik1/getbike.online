@@ -1,6 +1,26 @@
 {
   "modelName": "Rating",
   "dependsOn": ["Ad", "User"],
+  "testData": [
+    {
+      "adId": 5,
+      "userId": 12,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "Rating Test: Find One"
+    },
+    {
+      "adId": 6,
+      "userId": 13,
+      "type": "Seller",
+      "adDescription": 5,
+      "userCommunication": 5,
+      "itemTrade": 5,
+      "comment": "Rating Test: Delete"
+    }
+  ],
   "data": [
     {
       "adId": 1,
