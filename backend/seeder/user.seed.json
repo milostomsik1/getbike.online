@@ -92,6 +92,27 @@
       "password": "password123",
       "country": "Country",
       "city": "City"
+    },
+    {
+      "name": "User | Message Test: Create",
+      "email": "messagetestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Message Test: Find One",
+      "email": "messagetestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Message Test: Delete",
+      "email": "messagetestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
     }
   ],
   "data": [

@@ -45,7 +45,7 @@ describe('Ad resolvers work as intended', () => {
     });
   });
 
-  test('Find an ad', async () => {
+  test('Get an ad', async () => {
     const foundAd = await axios.post(URL, {
       query: `
       {

@@ -14,7 +14,7 @@ describe('Rating resolvers work as intended', () => {
           adDescription:5
           userCommunication:5
           itemTrade:5
-          comment:"Rating Test: Create - Comment"
+          comment:"Rating Test: Create"
         ){
           user {
             id
@@ -45,7 +45,7 @@ describe('Rating resolvers work as intended', () => {
           "adDescription": 5,
           "userCommunication": 5,
           "itemTrade": 5,
-          "comment": "Rating Test: Create - Comment"
+          "comment": "Rating Test: Create"
         }
       }
     });
@@ -86,7 +86,7 @@ describe('Rating resolvers work as intended', () => {
           "adDescription": 5,
           "userCommunication": 5,
           "itemTrade": 5,
-          "comment": "Rating Test: Find One - Comment"
+          "comment": "Rating Test: Find One"
         }
       }
     });
@@ -142,7 +142,7 @@ describe('Rating resolvers work as intended', () => {
           "adDescription": 5,
           "userCommunication": 5,
           "itemTrade": 5,
-          "comment": "Rating Test: Delete - Comment"
+          "comment": "Rating Test: Delete"
         }
       }
     });

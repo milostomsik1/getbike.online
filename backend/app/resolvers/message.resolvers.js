@@ -13,7 +13,11 @@ export default {
 
   Mutation: {
     createMessage(parentValue, args, {Message}) {
-      return Message.create(args);
+      return Message.create({
+        ...args,
+        userId: args.user,
+        conversationId: args.conversation
+      });
     },
     async deleteMessage(parentValue, {id}, {Message}) {
       const message = await Message.findOne({where: {id}});

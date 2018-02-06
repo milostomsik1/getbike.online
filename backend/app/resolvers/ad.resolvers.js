@@ -32,7 +32,6 @@ export default {
       if (args.user) args.userId = args.user;
       if (args.category) args.categoryId = args.category;
 
-      console.log(args);
       await Ad.update(args, {where: {id: args.id}});
       return Ad.findOne({where: {id: args.id}});
     },

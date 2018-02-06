@@ -28,7 +28,7 @@ describe('Category resolvers work as intended', () => {
     });
   });
 
-  test('Find a category', async () => {
+  test('Get a category', async () => {
     const foundCategory = await axios.post(URL, {
       query: `
       {
