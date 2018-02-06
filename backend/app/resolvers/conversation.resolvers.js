@@ -15,6 +15,10 @@ export default {
     createConversation(parentValue, args, {Conversation}) {
       return Conversation.create({});
     },
+    async updateConversation(parentValue, args, {Conversation}) {
+      await Conversation.update(args, {where: {id: args.id}});
+      return Conversation.findOne({where: {id: args.id}});
+    },
     async deleteConversation(parentValue, {id}, {Conversation}) {
       const conversation = await Conversation.findOne({where: {id}});
       await Conversation.destroy({where: {id}});
