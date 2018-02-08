@@ -1,6 +1,28 @@
 {
   "modelName": "Conversation",
   "dependsOn": [],
-  "testData": [{}, {}, {}, {}, {}, {}],
+  "testData": [
+    {
+      "name": "Conversation | Message Test: Create"
+    },
+    {
+      "name": "Conversation | Message Test: Find One"
+    },
+    {
+      "name": "Conversation | Message Test: Delete"
+    },
+    {
+      "name": "Conversation | UserConversation Test: Create"
+    },
+    {
+      "name": "Conversation | UserConversation Test: Find One"
+    },
+    {
+      "name": "Conversation | UserConversation Test: Update"
+    },
+    {
+      "name": "Conversation | UserConversation Test: Delete"
+    }
+  ],
   "data": [{}, {}, {}, {}, {}]
 }

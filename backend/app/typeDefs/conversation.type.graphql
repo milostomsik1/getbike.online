@@ -13,7 +13,10 @@ type Query {
 }
 
 type Mutation {
-  createConversation: Conversation
+  createConversation(
+    user1: ID!
+    user2: ID!
+  ): Conversation
   updateConversation(id: ID!): Conversation
   deleteConversation(id: ID!): Conversation
 }
