@@ -24,11 +24,12 @@ export default {
     createSpecificationKey(parentValue, args, {Specification}) {
       return Specification.create({
         ...args,
-        categoryId: args.category,
-        name: args.name
+        categoryId: args.category
       });
     },
     async updateSpecificationKey(parentValue, args, {Specification}) {
+      if (args.category) args.categoryId = args.category;
+
       await Specification.update(args, {where: {id: args.id}});
       return Specification.findOne({where: {id: args.id}});
     },
@@ -45,8 +46,11 @@ export default {
       });
     },
     async updateSpecification(parentValue, args, {AdSpecification}) {
-      // await AdSpecification.update()
-      //
+      if (args.ad) args.adId = args.ad;
+      if (args.specificationKey) args.specificationId = args.specificationKey;
+
+      await AdSpecification.update(args, {where: {id: args.id}});
+      return AdSpecification.findOne({where: {id: args.id}});
     },
     async deleteSpecification(parentValue, {id}, {AdSpecification}) {
       const specification = await AdSpecification.findOne({where: {id}});

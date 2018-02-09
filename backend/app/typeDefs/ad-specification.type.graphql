@@ -1,0 +1,29 @@
+type Specification {
+  id: ID
+  ad: Ad
+  name: String
+  value: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Query {
+  specifications: [Specification]
+  specification(id: ID!): Specification
+  specificationCount: Int
+}
+
+type Mutation {
+  createSpecification(
+    ad: ID!
+    specificationKey: ID!
+    value: String!
+  ): Specification
+  updateSpecification(
+    id: ID!
+    ad: ID
+    specificationKey: ID
+    value: String
+  ): Specification
+  deleteSpecification(id: ID!): Specification
+}
