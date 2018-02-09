@@ -29,8 +29,8 @@ export default {
       });
     },
     async updateSpecificationKey(parentValue, args, {Specification}) {
-      // await Specification.update(args, {where: {id: args.id}});
-      // return Specification.findOne({where: {id: args.id}});
+      await Specification.update(args, {where: {id: args.id}});
+      return Specification.findOne({where: {id: args.id}});
     },
     async deleteSpecificationKey(parentValue, {id}, {Specification}) {
       const specificationKey = await Specification.findOne({where: {id}});
