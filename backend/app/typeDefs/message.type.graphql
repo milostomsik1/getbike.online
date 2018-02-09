@@ -1,7 +1,7 @@
 type Message {
   id: ID
-  user: User
-  conversation: Conversation
+  sender: User
+  recipient: User
   content: String
   createdAt: String
 }
@@ -14,8 +14,8 @@ type Query {
 
 type Mutation {
   createMessage(
-    user: ID!
-    conversation: ID!
+    sender: ID!
+    recipient: ID!
     content: String!
   ): Message
   deleteMessage(id: ID!): Message

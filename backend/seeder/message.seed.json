@@ -1,118 +1,33 @@
 {
   "modelName": "Message",
-  "dependsOn": ["User", "Conversation"],
+  "dependsOn": ["User"],
   "testData": [
     {
-      "userId": 15,
-      "conversationId": 2,
+      "senderId": 14,
+      "recipientId": 16,
       "content": "Message Test: Find One"
     },
     {
-      "userId": 16,
-      "conversationId": 3,
+      "senderId": 14,
+      "recipientId": 17,
       "content": "Message Test: Delete"
     }
   ],
   "data": [
     {
-      "userId": 1,
-      "conversationId": 1,
-      "content": "Message 1 from user 1"
+      "senderId": 1,
+      "recipientId": 2,
+      "content": "Message from user 1 to user 2"
     },
     {
-      "userId": 2,
-      "conversationId": 1,
-      "content": "Message 1 from user 2"
+      "senderId": 2,
+      "recipientId": 3,
+      "content": "Message from user 2 to user 3"
     },
     {
-      "userId": 1,
-      "conversationId": 1,
-      "content": "Message 2 from user 1"
-    },
-    {
-      "userId": 2,
-      "conversationId": 1,
-      "content": "Message 2 from user 2"
-    },
-    {
-      "userId": 2,
-      "conversationId": 2,
-      "content": "Message 1 from user 2"
-    },
-    {
-      "userId": 3,
-      "conversationId": 2,
-      "content": "Message 1 from user 3"
-    },
-    {
-      "userId": 2,
-      "conversationId": 2,
-      "content": "Message 2 from user 2"
-    },
-    {
-      "userId": 3,
-      "conversationId": 2,
-      "content": "Message 2 from user 3"
-    },
-    {
-      "userId": 3,
-      "conversationId": 3,
-      "content": "Message 1 from user 3"
-    },
-    {
-      "userId": 4,
-      "conversationId": 3,
-      "content": "Message 1 from user 4"
-    },
-    {
-      "userId": 3,
-      "conversationId": 3,
-      "content": "Message 2 from user 3"
-    },
-    {
-      "userId": 4,
-      "conversationId": 3,
-      "content": "Message 2 from user 4"
-    },
-    {
-      "userId": 4,
-      "conversationId": 4,
-      "content": "Message 1 from user 4"
-    },
-    {
-      "userId": 5,
-      "conversationId": 4,
-      "content": "Message 1 from user 5"
-    },
-    {
-      "userId": 4,
-      "conversationId": 4,
-      "content": "Message 2 from user 4"
-    },
-    {
-      "userId": 5,
-      "conversationId": 4,
-      "content": "Message 2 from user 5"
-    },
-    {
-      "userId": 5,
-      "conversationId": 5,
-      "content": "Message 1 from user 5"
-    },
-    {
-      "userId": 1,
-      "conversationId": 5,
-      "content": "Message 1 from user 1"
-    },
-    {
-      "userId": 5,
-      "conversationId": 5,
-      "content": "Message 2 from user 5"
-    },
-    {
-      "userId": 1,
-      "conversationId": 5,
-      "content": "Message 2 from user 1"
+      "senderId": 3,
+      "recipientId": 1,
+      "content": "Message from user 3 to user 1"
     }
   ]
 }

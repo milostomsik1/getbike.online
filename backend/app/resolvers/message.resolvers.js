@@ -15,8 +15,8 @@ export default {
     createMessage(parentValue, args, {Message}) {
       return Message.create({
         ...args,
-        userId: args.user,
-        conversationId: args.conversation
+        senderId: args.sender,
+        recipientId: args.recipient,
       });
     },
     async deleteMessage(parentValue, {id}, {Message}) {
@@ -27,11 +27,11 @@ export default {
   },
 
   Message: {
-    user({userId}, args, {User}) {
-      return User.findOne({where: {id: userId}});
+    sender({senderId}, args, {User}) {
+      return User.findOne({where: {id: senderId}});
     },
-    conversation({conversationId}, args, {Conversation}) {
-      return Conversation.findOne({where: {id: conversationId}});
-    }
+    recipient({recipientId}, args, {User}) {
+      return User.findOne({where: {id: recipientId}});
+    },
   }
 }

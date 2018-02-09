@@ -1,7 +1,23 @@
 {
   "modelName": "AdSpecification",
   "dependsOn": ["Ad", "Specification"],
-  "testData": [],
+  "testData": [
+    {
+      "adId": 8,
+      "specificationId": 5,
+      "value": "Specification Test: Find One"
+    },
+    {
+      "adId": 9,
+      "specificationId": 6,
+      "value": "Specification Test: Update"
+    },
+    {
+      "adId": 10,
+      "specificationId": 7,
+      "value": "Specification Test: Delete"
+    }
+  ],
   "data": [
     {
       "adId": 1,

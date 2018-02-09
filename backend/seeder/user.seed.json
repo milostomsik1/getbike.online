@@ -94,6 +94,13 @@
       "city": "City"
     },
     {
+      "name": "User | Message Test: Sender",
+      "email": "messagetestsender@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
       "name": "User | Message Test: Create",
       "email": "messagetestcreate@gmail.com",
       "password": "password123",
@@ -110,6 +117,34 @@
     {
       "name": "User | Message Test: Delete",
       "email": "messagetestdelete@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Specification Test: Create",
+      "email": "specificationtestcreate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Specification Test: Find One",
+      "email": "specificationtestfindone@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Specification Test: Update",
+      "email": "specificationtestupdate@gmail.com",
+      "password": "password123",
+      "country": "Country",
+      "city": "City"
+    },
+    {
+      "name": "User | Specification Test: Delete",
+      "email": "specificationtestdelete@gmail.com",
       "password": "password123",
       "country": "Country",
       "city": "City"
