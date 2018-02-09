@@ -7,14 +7,15 @@ describe('Message resolvers work as intended', () => {
       query: `
       mutation {
         createMessage(
-          user:14
-          conversation:1
+          sender:14
+          recipient:15
           content:"Message Test: Create"
         ) {
-          user {
+          id
+          sender {
             id
           }
-          conversation {
+          recipient {
             id
           }
           content
@@ -26,13 +27,14 @@ describe('Message resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "createMessage": {
-          "user": {
+          "id": "3",
+          "sender": {
             "id": "14"
           },
-          "conversation": {
-            "id": "1"
+          "recipient": {
+            "id": "15"
           },
-          "content": "Message Test: Create"
+          "content": "Message Test: Create",
         }
       }
     });
@@ -43,10 +45,10 @@ describe('Message resolvers work as intended', () => {
       query: `{
         message(id:1) {
           id
-          user {
+          sender {
             id
           }
-          conversation {
+          recipient {
             id
           }
           content
@@ -59,11 +61,11 @@ describe('Message resolvers work as intended', () => {
       "data": {
         "message": {
           "id": "1",
-          "user": {
-            "id": "15"
+          "sender": {
+            "id": "14"
           },
-          "conversation": {
-            "id": "2"
+          "recipient": {
+            "id": "16"
           },
           "content": "Message Test: Find One"
         }
@@ -90,10 +92,11 @@ describe('Message resolvers work as intended', () => {
       query: `
       mutation {
         deleteMessage(id:2) {
-          user {
+          id
+          sender {
             id
           }
-          conversation {
+          recipient {
             id
           }
           content
@@ -105,11 +108,12 @@ describe('Message resolvers work as intended', () => {
     expect(data).toMatchObject({
       "data": {
         "deleteMessage": {
-          "user": {
-            "id": "16"
+          "id": "2",
+          "sender": {
+            "id": "14"
           },
-          "conversation": {
-            "id": "3"
+          "recipient": {
+            "id": "17"
           },
           "content": "Message Test: Delete"
         }
