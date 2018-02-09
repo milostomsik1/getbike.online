@@ -80,16 +80,16 @@
     {
       "userId": 1,
       "categoryId": 7,
-      "title": "Road Bicycle",
-      "description": "Description of a road bicycle",
+      "title": "Ad 1",
+      "description": "Description 1",
       "priceAmount": 100,
       "isRated": true
     },
     {
       "userId": 2,
       "categoryId": 8,
-      "title": "MTB Bicycle",
-      "description": "Description of an MTB bicycle",
+      "title": "Ad 2",
+      "description": "Description 2",
       "priceAmount": 100,
       "isRated": true
     },

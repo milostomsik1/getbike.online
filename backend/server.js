@@ -28,6 +28,7 @@ db.sequelize.sync().then(() => {
   // -- Run seeder if test db
   if (process.env.TEST_DB_NAME) {
     const seed = require('./seeder/seed');
+    console.log('seeding')
   }
   // -- Listen to requests
   server.listen(config.port, () => {
