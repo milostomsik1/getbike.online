@@ -10,6 +10,7 @@ import bodyParser from 'body-parser';
 import schema from './app/graphql.schema';
 import Sequelize from 'sequelize';
 import db from './app/models/index';
+import jwt from 'jsonwebtoken';
 
 // -- Setup Express
 const server = express();
@@ -19,6 +20,22 @@ server.use(morgan('dev'));
 
 // -- Enable CORS
 server.use(cors());
+
+
+const authenticate = (isAuthenticated) => {
+  if (!isAuthenticated) {
+    throw new Error('Not authorized.');
+  }
+}
+
+// -- Authorize User
+server.use('/graphql', (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader ? authHeader.slice(7) : null;
+  const isAuthenticated = authHeader ? Boolean(jwt.verify(token, config.secret)) : false;
+  db.authenticate = () => authenticate(isAuthenticated);
+  next();
+});
 
 // -- Apollo GraphQL setup
 server.use(config.GraphQLEndpoint, bodyParser.json(), graphqlExpress({ schema, context: db }));

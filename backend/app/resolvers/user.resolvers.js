@@ -1,6 +1,12 @@
+import jwt from 'jsonwebtoken';
+import config from '../../config/db';
+
+
 export default {
   Query: {
-    users(parentValue, args, {User}) {
+    users(parentValue, args, {User, authenticate}) {
+      // authenticate(isAuthenticated);
+      authenticate();
       return User.findAll();
     },
     user(parentValue, {id}, {User}) {
@@ -12,6 +18,20 @@ export default {
   },
 
   Mutation: {
+    async login(parentValue, {email, password}, {User}) {
+      const userExists = await User.findOne({where: {email}});
+      if (!userExists) {
+        throw new Error(`Invalid email.`);
+      }
+      const user = userExists.dataValues;
+      if (user.password !== password) {
+        throw new Error(`Invalid password.`);
+      }
+      return jwt.sign(email, config.secret);
+    },
+    register(parentValue, args, {User}) {
+      return User.create(args);
+    },
     createUser(parentValue, args, {User}) {
       return User.create(args);
     },

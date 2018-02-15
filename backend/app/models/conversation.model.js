@@ -7,20 +7,5 @@ export default (sequelize, DataTypes) => {
     }
   });
 
-  Conversation.associate = models => {
-    models.Conversation.belongsToMany(models.User, {
-      onDelete: 'CASCADE',
-      through: {
-        model: 'user_conversation'
-      }
-    });
-    models.Conversation.hasMany(models.Message, {
-      onDelete: 'CASCADE',
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  }
-
   return Conversation;
 };

@@ -41,6 +41,38 @@
     {
       "name": "Category | Rating Test: Delete",
       "description": "Category | Rating Test: Delete - Description"
+    },
+    {
+      "name": "Category | Specification Key Test: Create",
+      "description": "Category | Specification Key Test: Create - Description"
+    },
+    {
+      "name": "Category | Specification Key Test: Find One",
+      "description": "Category | Specification Key Test: Find One - Description"
+    },
+    {
+      "name": "Category | Specification Key Test: Update",
+      "description": "Category | Specification Key Test: Update - Description"
+    },
+    {
+      "name": "Category | Specification Key Test: Delete",
+      "description": "Category | Specification Key Test: Delete - Description"
+    },
+    {
+      "name": "Category | Specification Test: Create",
+      "description": "Category | Specification Test: Create - Description"
+    },
+    {
+      "name": "Category | Specification Test: Find One",
+      "description": "Category | Specification Test: Find One - Description"
+    },
+    {
+      "name": "Category | Specification Test: Update",
+      "description": "Category | Specification Test: Update - Description"
+    },
+    {
+      "name": "Category | Specification Test: Delete",
+      "description": "Category | Specification Test: Delete - Description"
     }
   ],
   "data": [

@@ -6,19 +6,7 @@ type SpecificationKey {
   updatedAt: String
 }
 
-type Specification {
-  id: ID
-  ad: Ad
-  name: String
-  value: String
-  createdAt: String
-  updatedAt: String
-}
-
 type Query {
-  specifications: [Specification]
-  specification(id: ID!): Specification
-  specificationCount: Int
   specificationKeys: [SpecificationKey]
   specificationKey(id: ID!): SpecificationKey
   specificationKeyCount: Int
@@ -35,17 +23,4 @@ type Mutation {
     name: String
   ): SpecificationKey
   deleteSpecificationKey(id: ID!): SpecificationKey
-
-  createSpecification(
-    ad: ID!
-    specificationKey: ID!
-    value: String!
-  ): Specification
-  updateSpecification(
-    id: ID!
-    ad: ID
-    specificationKey: ID
-    value: String
-  ): Specification
-  deleteSpecification(id: ID!): Specification
 }

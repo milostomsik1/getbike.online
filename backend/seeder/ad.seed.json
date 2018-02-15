@@ -41,10 +41,38 @@
       "priceAmount": 100
     },
     {
-      "userId": 12,
+      "userId": 13,
       "categoryId": 10,
       "title": "Ad | Rating Test: Delete",
       "description": "Ad | Rating Test: Delete - Description",
+      "priceAmount": 100
+    },
+    {
+      "userId": 17,
+      "categoryId": 11,
+      "title": "Ad | Specification Test: Create",
+      "description": "Ad | Specification Test: Create - Description",
+      "priceAmount": 100
+    },
+    {
+      "userId": 18,
+      "categoryId": 12,
+      "title": "Ad | Specification Test: Find One",
+      "description": "Ad | Specification Test: Find One - Description",
+      "priceAmount": 100
+    },
+    {
+      "userId": 20,
+      "categoryId": 13,
+      "title": "Ad | Specification Test: Update",
+      "description": "Ad | Specification Test: Update - Description",
+      "priceAmount": 100
+    },
+    {
+      "userId": 21,
+      "categoryId": 14,
+      "title": "Ad | Specification Test: Delete",
+      "description": "Ad | Specification Test: Delete - Description",
       "priceAmount": 100
     }
   ],
@@ -52,16 +80,16 @@
     {
       "userId": 1,
       "categoryId": 7,
-      "title": "Road Bicycle",
-      "description": "Description of a road bicycle",
+      "title": "Ad 1",
+      "description": "Description 1",
       "priceAmount": 100,
       "isRated": true
     },
     {
       "userId": 2,
       "categoryId": 8,
-      "title": "MTB Bicycle",
-      "description": "Description of an MTB bicycle",
+      "title": "Ad 2",
+      "description": "Description 2",
       "priceAmount": 100,
       "isRated": true
     },

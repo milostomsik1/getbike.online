@@ -1,22 +1,48 @@
 {
-  "modelName": "AdSpecification",
-  "dependsOn": ["Ad", "Specification"],
-  "testData": [],
+  "modelName": "Specification",
+  "dependsOn": ["Category"],
+  "testData": [
+    {
+      "categoryId": 12,
+      "name": "Specification Key Test: Find One"
+    },
+    {
+      "categoryId": 13,
+      "name": "Specification Key Test: Update"
+    },
+    {
+      "categoryId": 14,
+      "name": "Specification Key Test: Delete"
+    },
+    {
+      "categoryId": 15,
+      "name": "Specification Key | Specification Test: Create"
+    },
+    {
+      "categoryId": 16,
+      "name": "Specification Key | Specification Test: Find One"
+    },
+    {
+      "categoryId": 17,
+      "name": "Specification Key | Specification Test: Update"
+    },
+    {
+      "categoryId": 18,
+      "name": "Specification Key | Specification Test: Delete"
+    }
+  ],
   "data": [
     {
-      "adId": 1,
-      "specificationId": 1,
-      "value": "700C"
+      "categoryId": 1,
+      "name": "Wheel Size"
     },
     {
-      "adId": 1,
-      "specificationId": 2,
-      "value": "S"
+      "categoryId": 1,
+      "name": "Frame Size"
     },
     {
-      "adId": 1,
-      "specificationId": 3,
-      "value": "Carbon"
+      "categoryId": 1,
+      "name": "Frame Material"
     }
   ]
 }
