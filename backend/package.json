@@ -6,10 +6,10 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js --exec babel-node",
-    "server:test": "TEST_DB_NAME=getbike_test nodemon server.js --exec babel-node",
-    "test": "TEST_DB_NAME=getbike_test jest",
+    "server:test": "TESTING=true nodemon server.js --exec babel-node",
+    "test": "TESTING=true jest",
     "seed": "ONLY_SEEDING=true babel-node ./seeder/seed.js",
-    "seed:test": "TEST_DB_NAME=getbike_test ONLY_SEEDING=true babel-node ./seeder/seed.js"
+    "seed:test": "TESTING=true ONLY_SEEDING=true babel-node ./seeder/seed.js"
   },
   "dependencies": {
     "apollo-server-express": "^1.3.2",

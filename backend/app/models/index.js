@@ -1,15 +1,18 @@
-import Sequelize from 'sequelize';
-import config from '../../config/db';
 // https://dbdesigner.net/designer/schema/142871 <- DB Schema
+import Sequelize from 'sequelize';
 
+// -- Set .env Variables
+require('dotenv').config();
+
+const DB_NAME = process.env.TESTING ? process.env.DB_NAME_TEST : process.env.DB_NAME;
 
 const sequelize = new Sequelize(
-  process.env.TEST_DB_NAME || config.db.dbName,
-  config.db.username,
-  config.db.password,
+  DB_NAME,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
   {
-    host: config.db.host,
-    dialect: config.db.dialect,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
     logging: false
   }
 );

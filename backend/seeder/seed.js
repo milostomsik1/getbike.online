@@ -55,7 +55,7 @@ const seed = async () => {
     const { data } = file;
     const { testData } = file;
     try {
-      if (process.env.TEST_DB_NAME) {
+      if (process.env.TESTING) {
         await db[model].bulkCreate(testData);
       } else {
         await db[model].bulkCreate(data);

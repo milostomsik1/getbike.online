@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken';
-import config from './config/db';
 
 export const requireAuth = req => {
   const authHeader = req.headers.authorization;
   const token = authHeader ? authHeader.slice(7) : null;
-  const isAuthenticated = authHeader ? Boolean(jwt.verify(token, config.secret)) : false;
+  const isAuthenticated = authHeader ? Boolean(jwt.verify(token, process.env.SECRET_KEY)) : false;
   if (!isAuthenticated) {
     throw new Error('User not authenticated.');
   }

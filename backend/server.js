@@ -3,14 +3,10 @@ import { requireAuth, requireAdmin } from './auth';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import config from './config/db';
 import bodyParser from 'body-parser';
 import schema from './app/graphql.schema';
 import Sequelize from 'sequelize';
 import db from './app/models/index';
-
-// -- Set .env Variables
-require('dotenv').config();
 
 // -- Setup Express
 const server = express();
@@ -34,8 +30,9 @@ server.get('/graphiql', graphiqlExpress({ endpointURL: process.env.GRAPHQL_ENDPO
 
 db.sequelize.sync().then(() => {
   // -- Run seeder if test db
-  if (process.env.TEST_DB_NAME) {
+  if (process.env.TESTING) {
     const seed = require('./seeder/seed');
+    console.log('testing');
   }
   // -- Listen to requests
   server.listen(process.env.DB_PORT, () => {

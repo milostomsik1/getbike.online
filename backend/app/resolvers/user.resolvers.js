@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import config from '../../config/db';
+// // import config from '../../config/db';
 
 export default {
   Query: {
@@ -26,7 +26,7 @@ export default {
       if (user.password !== password) {
         throw new Error(`Invalid password.`);
       }
-      return jwt.sign(email, config.secret);
+      return jwt.sign(email, process.env.SECRET_KEY);
     },
     register(parentValue, args, {User}) {
       return User.create(args);
