@@ -1,7 +1,5 @@
-import {
-  graphqlExpress,
-  graphiqlExpress
-} from 'apollo-server-express';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import { requireAuth, requireAdmin } from './auth';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -10,7 +8,9 @@ import bodyParser from 'body-parser';
 import schema from './app/graphql.schema';
 import Sequelize from 'sequelize';
 import db from './app/models/index';
-import jwt from 'jsonwebtoken';
+
+// -- Set .env Variables
+require('dotenv').config();
 
 // -- Setup Express
 const server = express();
@@ -21,25 +21,16 @@ server.use(morgan('dev'));
 // -- Enable CORS
 server.use(cors());
 
-
-const authenticate = (isAuthenticated) => {
-  if (!isAuthenticated) {
-    throw new Error('Not authorized.');
-  }
-}
-
 // -- Authorize User
 server.use('/graphql', (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader ? authHeader.slice(7) : null;
-  const isAuthenticated = authHeader ? Boolean(jwt.verify(token, config.secret)) : false;
-  db.authenticate = () => authenticate(isAuthenticated);
+  db.requireAuth = () => requireAuth(req);
+  db.requireAdmin = () => requireAdmin(req);
   next();
 });
 
 // -- Apollo GraphQL setup
-server.use(config.GraphQLEndpoint, bodyParser.json(), graphqlExpress({ schema, context: db }));
-server.get('/graphiql', graphiqlExpress({ endpointURL: config.GraphQLEndpoint }));
+server.use(process.env.GRAPHQL_ENDPOINT, bodyParser.json(), graphqlExpress({ schema, context: db }));
+server.get('/graphiql', graphiqlExpress({ endpointURL: process.env.GRAPHQL_ENDPOINT }));
 
 db.sequelize.sync().then(() => {
   // -- Run seeder if test db
@@ -47,8 +38,8 @@ db.sequelize.sync().then(() => {
     const seed = require('./seeder/seed');
   }
   // -- Listen to requests
-  server.listen(config.port, () => {
-    console.log(`Listening for requests on localhost:${config.port}`)
+  server.listen(process.env.DB_PORT, () => {
+    console.log(`Listening for requests on localhost:${process.env.DB_PORT}`)
   });
 });
 

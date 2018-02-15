@@ -1,12 +1,11 @@
 import jwt from 'jsonwebtoken';
 import config from '../../config/db';
 
-
 export default {
   Query: {
-    users(parentValue, args, {User, authenticate}) {
-      // authenticate(isAuthenticated);
-      authenticate();
+    users(parentValue, args, {User, requireAuth, requireAdmin}) {
+      requireAuth();
+      requireAdmin();
       return User.findAll();
     },
     user(parentValue, {id}, {User}) {
