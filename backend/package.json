@@ -5,8 +5,8 @@
   "author": "Miloš Tomšik",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js --exec babel-node",
-    "server:test": "TESTING=true nodemon server.js --exec babel-node",
+    "server": "nodemon ./app/server.js --exec babel-node",
+    "server:test": "TESTING=true nodemon ./app/server.js --exec babel-node",
     "test": "TESTING=true jest",
     "seed": "ONLY_SEEDING=true babel-node ./seeder/seed.js",
     "seed:test": "TESTING=true ONLY_SEEDING=true babel-node ./seeder/seed.js"

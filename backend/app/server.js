@@ -4,9 +4,9 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import schema from './app/graphql.schema';
+import schema from './schema';
 import Sequelize from 'sequelize';
-import db from './app/models/index';
+import db from './models/index';
 
 // -- Setup Express
 const server = express();
@@ -32,7 +32,6 @@ db.sequelize.sync().then(() => {
   // -- Run seeder if test db
   if (process.env.TESTING) {
     const seed = require('./seeder/seed');
-    console.log('testing');
   }
   // -- Listen to requests
   server.listen(process.env.DB_PORT, () => {
