@@ -1,9 +1,10 @@
 export default {
   Query: {
-    ads(parentValue, {title, category}, {Ad, Sequelize}) {
-      const filters = {};
-      if (title) filters.title = {[Sequelize.Op.iLike]: `%${title}%`};
-      if (category) filters.categoryId = category;
+    ads(parentValue, args, {Ad, Sequelize}) {
+      const filters = args;
+      if (args.title) filters.title = {[Sequelize.Op.iLike]: `%${args.title}%`};
+      if (args.category) filters.categoryId = args.category;
+      console.log(filters);
       return Ad.findAll({where: filters});
     },
     ad(parentValue, {id}, {Ad}) {

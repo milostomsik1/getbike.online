@@ -18,6 +18,17 @@ type Query {
 }
 
 type Mutation {
+  login(
+    email: String!
+    password: String!
+  ): String
+  register(
+    name: String!
+    email: String!
+    password: String!
+    country: String!
+    city: String!
+  ): User
   createUser(
     name: String!
     email: String!
