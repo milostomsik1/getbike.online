@@ -2,7 +2,7 @@
 import Sequelize from 'sequelize';
 
 // -- Set .env Variables
-require('dotenv').config();
+require('dotenv').config({path: './app/.env'});
 
 const DB_NAME = process.env.TESTING ? process.env.DB_NAME_TEST : process.env.DB_NAME;
 
