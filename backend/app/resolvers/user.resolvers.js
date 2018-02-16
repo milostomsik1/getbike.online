@@ -1,11 +1,21 @@
 import jwt from 'jsonwebtoken';
-// // import config from '../../config/db';
+import bcrypt from 'bcryptjs';
+
+const register = async (parentValue, args, {User}) => {
+  const userExists = await User.findOne({where: {email: args.email}});
+  if (userExists) {
+    throw new Error('Email already taken.');
+  }
+  const hash = await bcrypt.hash(args.password, 10);
+  return User.create({
+    ...args,
+    password: hash
+  });
+}
 
 export default {
   Query: {
-    users(parentValue, args, {User, requireAuth, requireAdmin}) {
-      requireAuth();
-      requireAdmin();
+    users(parentValue, args, {User}) {
       return User.findAll();
     },
     user(parentValue, {id}, {User}) {
@@ -23,17 +33,14 @@ export default {
         throw new Error(`Invalid email.`);
       }
       const user = userExists.dataValues;
-      if (user.password !== password) {
+      const passwordsMatch = await bcrypt.compare(password, user.password);
+      if (!passwordsMatch) {
         throw new Error(`Invalid password.`);
       }
       return jwt.sign(email, process.env.SECRET_KEY);
     },
-    register(parentValue, args, {User}) {
-      return User.create(args);
-    },
-    createUser(parentValue, args, {User}) {
-      return User.create(args);
-    },
+    register,
+    createUser: register,
     async updateUser(parentValue, args, {User}) {
       await User.update(args, {where: {id: args.id}});
       return User.findOne({where: {id: args.id}});
