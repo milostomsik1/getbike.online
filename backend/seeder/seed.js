@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 const sequelize = db.sequelize;
 
-
 const isFileSeedable = fileName => {
   const regex = RegExp(/.+(\.seed.json)$/);
   return regex.test(fileName);

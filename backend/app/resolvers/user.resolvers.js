@@ -1,3 +1,4 @@
+// import { check, sanitize, validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
@@ -16,6 +17,7 @@ const register = async (parentValue, args, {User}) => {
 export default {
   Query: {
     users(parentValue, args, {User}) {
+      const x = [1,2,3,4];
       return User.findAll();
     },
     user(parentValue, {id}, {User}) {
@@ -41,11 +43,14 @@ export default {
     },
     register,
     createUser: register,
-    async updateUser(parentValue, args, {User}) {
+    async updateUser(parentValue, args, {User, requireAuth}) {
+      requireAuth();
       await User.update(args, {where: {id: args.id}});
       return User.findOne({where: {id: args.id}});
     },
-    async deleteUser(parentValue, {id}, {User}) {
+    async deleteUser(parentValue, {id}, {User, requireAuth, requireAdmin}) {
+      requireAuth();
+      requireAdmin();
       const user = await User.findOne({where: {id}});
       await User.destroy({where: {id}});
       return user;
