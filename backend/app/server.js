@@ -9,6 +9,7 @@ import Sequelize from 'sequelize';
 import models from './models/index';
 require('../polyfill');
 
+
 // -- Setup Express
 const server = express();
 
@@ -25,7 +26,6 @@ server.use(process.env.GRAPHQL_ENDPOINT, (req, res, next) => {
   next();
 });
 
-
 // -- Apollo GraphQL setup
 server.use(bodyParser.json());
 server.use(process.env.GRAPHQL_ENDPOINT, graphqlExpress({ schema, context: models }));
@@ -41,4 +41,3 @@ models.sequelize.sync().then(() => {
     console.log(`Listening for requests on localhost:${process.env.DB_PORT}`)
   });
 });
-

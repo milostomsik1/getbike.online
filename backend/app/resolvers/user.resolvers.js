@@ -1,6 +1,6 @@
-// import { check, sanitize, validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import Validate from '../validator';
 
 const register = async (parentValue, args, {User}) => {
   const userExists = await User.findOne({where: {email: args.email}});
@@ -17,7 +17,6 @@ const register = async (parentValue, args, {User}) => {
 export default {
   Query: {
     users(parentValue, args, {User}) {
-      const x = [1,2,3,4];
       return User.findAll();
     },
     user(parentValue, {id}, {User}) {
@@ -30,6 +29,7 @@ export default {
 
   Mutation: {
     async login(parentValue, {email, password}, {User}) {
+      Validate(email).isEmail();
       const userExists = await User.findOne({where: {email}});
       if (!userExists) {
         throw new Error(`Invalid email.`);

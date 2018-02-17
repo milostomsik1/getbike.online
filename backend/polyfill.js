@@ -15,3 +15,11 @@ if (!Array.prototype.last) {
     return this[this.length - 1];
   };
 }
+
+if (!String.prototype.capitalize) {
+  String.prototype.capitalize = function () {
+    return this.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
+      return letter.toUpperCase();
+    });
+  };
+}
