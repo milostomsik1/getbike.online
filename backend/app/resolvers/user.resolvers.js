@@ -32,8 +32,6 @@ export default {
     async login(parentValue, {email, password}, {User}) {
       Validate(email).isEmail();
       Validate(password).isPassword();
-      const {sanitized} = Sanitize(`<12'"3&>`).escape();
-      console.log(sanitized);
       const userExists = await User.findOne({where: {email}});
       if (!userExists) {
         throw new Error(`Invalid email.`);
