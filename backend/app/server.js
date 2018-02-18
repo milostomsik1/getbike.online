@@ -9,7 +9,6 @@ import Sequelize from 'sequelize';
 import models from './models/index';
 require('../polyfill');
 
-
 // -- Setup Express
 const server = express();
 

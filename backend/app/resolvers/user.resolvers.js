@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import Validate from '../validator';
+import Sanitize from '../sanitizer';
 
 const register = async (parentValue, args, {User}) => {
   const userExists = await User.findOne({where: {email: args.email}});
@@ -30,6 +31,7 @@ export default {
   Mutation: {
     async login(parentValue, {email, password}, {User}) {
       Validate(email).isEmail();
+      Validate(password).isPassword();
       const userExists = await User.findOne({where: {email}});
       if (!userExists) {
         throw new Error(`Invalid email.`);
