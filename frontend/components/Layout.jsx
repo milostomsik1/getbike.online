@@ -1,13 +1,15 @@
 import Head from 'next/head';
-import Navbar from './Navbar';
+import Header from './Header';
 
 const Layout = ({title, children}) => (
-  <div>
+  <div className='Layout'>
     <Head>
       <title>{title}</title>
       <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
     </Head>
-    <Navbar/>
+
+    <Header/>
+
     {children}
 
     <style jsx global>{`

@@ -1,17 +1,18 @@
-import { COLORS } from '../colors';
+import { COLORS } from '../variables';
 import Logo from './Logo';
 import StatusBar from './StatusBar';
 
 const Navbar = () => (
   <div className='Navbar'>
-    <StatusBar/>
     <Logo/>
+    <StatusBar/>
 
     <style jsx>{`
       .Navbar {
         display: flex;
         height: 60px;
 
+        justify-content: space-between;
         align-items: center;
 
         background: ${COLORS.charcoal};

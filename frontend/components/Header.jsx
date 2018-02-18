@@ -3,9 +3,11 @@ import Banner from './Banner';
 import SearchBar from './SearchBar';
 
 const Header = props => (
-  <div>
+  <div className='Header'>
     <Navbar/>
     <Banner/>
     <SearchBar/>
   </div>
 );
+
+export default Header;

@@ -1,16 +1,21 @@
-import { COLORS } from '../colors';
-import Link from 'next/link';
+import { COLORS } from '../variables';
+// import Link from 'next/link';
 
 const StatusBar = props => (
-  <div>
-    <ul className='StatusBar'>
-      <li><Link href='/'><a>Index</a></Link></li>
-      <li><Link href='/browse'><a>Browse</a></Link></li>
-      <li><Link href='/profile'><a>Profile</a></Link></li>
+  <div className='StatusBar'> STATUS BAR
+    <ul>
+      {/* <li><Link href='/'><a>Login</a></Link></li>
+      <li><Link href='/browse'><a>Register</a></Link></li> */}
     </ul>
 
     <style jsx>{`
       .StatusBar {
+        width: 200px;
+        height 45px;
+        background: ${COLORS.blue};
+      }
+
+      ul {
         display: flex;
       }
 
