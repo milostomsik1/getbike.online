@@ -1,28 +1,16 @@
 {
-  "name": "getbike.online-client",
+  "name": "next-tut",
   "version": "1.0.0",
-  "private": true,
-  "author": "Miloš Tomšik",
-  "dependencies": {
-    "node-sass-chokidar": "^0.0.3",
-    "npm-run-all": "^4.1.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
-  },
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
-  "devDependencies": {
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "react-test-renderer": "^16.2.0"
+  "dependencies": {
+    "next": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
