@@ -1,24 +1,20 @@
-import Link from 'next/link';
+import { COLORS } from '../colors';
+import Logo from './Logo';
+import StatusBar from './StatusBar';
 
 const Navbar = () => (
-  <div>
-    <ul>
-      <li><Link href='/'><a>Index</a></Link></li>
-      <li><Link href='/browse'><a>Browse</a></Link></li>
-      <li><Link href='/profile'><a>Profile</a></Link></li>
-    </ul>
+  <div className='Navbar'>
+    <StatusBar/>
+    <Logo/>
 
     <style jsx>{`
-      ul {
-        background: #777;
-        list-style: none;
-        padding: 0;
+      .Navbar {
         display: flex;
-      }
-      a {
-        display: block;
-        padding: 10px;
-        color: #fff;
+        height: 60px;
+
+        align-items: center;
+
+        background: ${COLORS.charcoal};
       }
     `}</style>
   </div>
