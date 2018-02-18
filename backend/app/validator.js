@@ -55,6 +55,23 @@ function Validate(field) {
     return this;
   }
 
+  function _matches(value) {
+    const isFieldPrimitive = typeof field !== 'object' || typeof field !== 'function';
+    const isValuePrimitive = typeof value !== 'object' || typeof value !== 'function';
+    if (isValuePrimitive && isFieldPrimitive) {
+      if (value != field) {
+        throw new Error(`Value ${value} does not match field ${field}.`);
+      }
+    } else {
+      let jsonValue = JSON.stringify(value);
+      let jsonField = JSON.stringify(field);
+      if (jsonValue !== jsonField) {
+        throw new Error(`Value ${jsonValue} does not match field ${jsonField}.`);
+      }
+    }
+    return this;
+  }
+
 
   return {
     isEmpty: _isEmpty,
@@ -64,6 +81,7 @@ function Validate(field) {
     isEmail: _isEmail,
     isURL: _isURL,
     isPassword: _isPassword,
+    matches: _matches,
   }
 }
 
