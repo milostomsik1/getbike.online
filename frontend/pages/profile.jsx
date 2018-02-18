@@ -1,9 +1,9 @@
 import Layout from '../components/Layout';
 
-const browse = () => (
+const profile = () => (
   <Layout>
-    <h1>Browse</h1>
+    <h1>Profile</h1>
   </Layout>
 );
 
-export default browse;
+export default profile;

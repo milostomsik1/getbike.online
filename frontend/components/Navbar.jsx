@@ -4,7 +4,8 @@ const Navbar = () => (
   <div>
     <ul>
       <li><Link href='/'><a>Index</a></Link></li>
-      <li><Link href='/about'><a>About</a></Link></li>
+      <li><Link href='/browse'><a>Browse</a></Link></li>
+      <li><Link href='/profile'><a>Profile</a></Link></li>
     </ul>
 
     <style jsx>{`

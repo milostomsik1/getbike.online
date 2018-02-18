@@ -17,6 +17,7 @@ Official repo of getbike.online - second hand bikes, equipment, tools and servic
 
 #### Frontend:
 * React
+* Next.js (server side rendering)
 * Redux
 * Apollo Client
 
