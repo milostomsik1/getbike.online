@@ -1,3 +1,4 @@
+import { COLORS } from '../variables';
 import Head from 'next/head';
 import Header from './Header';
 
@@ -24,6 +25,7 @@ const Layout = ({title, children}) => (
 
         list-style: none;
         text-decoration: none;
+        color: ${COLORS.charcoal};
       }
     `}</style>
   </div>
