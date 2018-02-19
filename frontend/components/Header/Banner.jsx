@@ -1,15 +1,26 @@
 import { COLORS } from '../../variables';
 
 const Banner = () => (
-  <div className='Banner'> BANNER
-    <h1>Welcome to GetBike</h1>
+  <div className='Banner'>
+    <h1 className='Banner__Headline'>The quickest way to your new bike</h1>
 
     <style jsx>{`
       .Banner {
-        height: 300px;
-        background: ${COLORS.green};
+        display: flex;
+        height: 350px;
+
+        align-items: center;
+
+        background-image: url('/static/img/banner.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
       }
-      h1 {
+
+      .Banner__Headline {
+        max-width: 650px;
+        font-size: 72px;
+        font-weight: 100;
         color: ${COLORS.white};
       }
     `}</style>

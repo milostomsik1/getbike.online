@@ -7,7 +7,7 @@ const Layout = ({title, children}) => (
   <div className='Layout'>
     <Head>
       <title>{title}</title>
-      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400&amp;subset=latin-ext" rel="stylesheet"/>
     </Head>
 
     <Header/>

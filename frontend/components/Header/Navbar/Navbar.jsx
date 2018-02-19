@@ -10,7 +10,7 @@ const Navbar = () => (
     <style jsx>{`
       .Navbar {
         display: flex;
-        height: 60px;
+        height: 80px;
 
         justify-content: space-between;
         align-items: center;

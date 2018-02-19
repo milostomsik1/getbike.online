@@ -1,8 +1,8 @@
 import Navbar from './Navbar/Navbar';
 import Banner from './Banner';
-import Searchbar from './Searchbar';
+import Searchbar from './Searchbar/Searchbar';
 
-const Header = props => (
+const Header = () => (
   <div className='Header'>
     <Navbar/>
     <Banner/>

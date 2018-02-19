@@ -1,13 +1,12 @@
 import { COLORS } from '../variables';
 
 const Logo = () => (
-  <div className='Logo'> LOGO
+  <div className='Logo'>
+    <img src="/static/img/logo.png" alt="GetBike.online logo"/>
 
     <style jsx>{`
-      .Logo {
-        width: 200px;
-        height: 45px;
-        background: ${COLORS.blue};
+      .Logo img {
+        display: block;
       }
     `}</style>
   </div>

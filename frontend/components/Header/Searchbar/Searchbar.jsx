@@ -1,4 +1,4 @@
-import { COLORS } from '../../variables';
+import { COLORS } from '../../../variables';
 import Search from './Search';
 import Sell from './Sell';
 

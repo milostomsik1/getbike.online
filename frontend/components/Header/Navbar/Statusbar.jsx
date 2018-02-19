@@ -1,4 +1,4 @@
-import { COLORS } from '../variables';
+import { COLORS } from '../../../variables';
 // import Link from 'next/link';
 
 const Statusbar = props => (
