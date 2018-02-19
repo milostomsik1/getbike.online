@@ -1,11 +1,11 @@
-import { COLORS } from '../variables';
-import Logo from './Logo';
-import StatusBar from './StatusBar';
+import { COLORS } from '../../../variables';
+import Logo from '../../Logo';
+import Statusbar from './Statusbar';
 
 const Navbar = () => (
   <div className='Navbar'>
     <Logo/>
-    <StatusBar/>
+    <Statusbar/>
 
     <style jsx>{`
       .Navbar {

@@ -1,14 +1,14 @@
-import { COLORS } from '../variables';
+import { COLORS } from '../../variables';
 import Search from './Search';
 import Sell from './Sell';
 
-const SearchBar = () => (
-  <div className='SearchBar'> SEARCH BAR
+const Searchbar = () => (
+  <div className='Searchbar'> SEARCH BAR
     <Search/>
     <Sell/>
 
     <style jsx>{`
-      .SearchBar {
+      .Searchbar {
         display: flex;
         justify-content: center;
         margin-top: -30px;
@@ -21,4 +21,4 @@ const SearchBar = () => (
   </div>
 );
 
-export default SearchBar;
+export default Searchbar;

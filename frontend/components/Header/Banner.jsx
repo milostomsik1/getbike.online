@@ -1,4 +1,4 @@
-import { COLORS } from '../variables';
+import { COLORS } from '../../variables';
 
 const Banner = () => (
   <div className='Banner'> BANNER
@@ -6,7 +6,7 @@ const Banner = () => (
 
     <style jsx>{`
       .Banner {
-        height: 200px;
+        height: 300px;
         background: ${COLORS.green};
       }
       h1 {

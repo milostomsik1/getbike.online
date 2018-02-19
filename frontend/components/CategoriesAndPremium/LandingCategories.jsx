@@ -1,4 +1,4 @@
-import { COLORS } from '../variables';
+import { COLORS } from '../../variables';
 
 const LandingCategories = () => (
   <div className='LandingCategories'> LandingCategories

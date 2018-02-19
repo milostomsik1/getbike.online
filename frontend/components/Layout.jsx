@@ -1,6 +1,6 @@
 import { COLORS } from '../variables';
 import Head from 'next/head';
-import Header from './Header';
+import Header from './Header/Header';
 import Footer from './Footer';
 
 const Layout = ({title, children}) => (

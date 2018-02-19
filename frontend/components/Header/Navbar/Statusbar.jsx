@@ -1,15 +1,15 @@
 import { COLORS } from '../variables';
 // import Link from 'next/link';
 
-const StatusBar = props => (
-  <div className='StatusBar'> STATUS BAR
+const Statusbar = props => (
+  <div className='Statusbar'> STATUS BAR
     <ul>
       {/* <li><Link href='/'><a>Login</a></Link></li>
       <li><Link href='/browse'><a>Register</a></Link></li> */}
     </ul>
 
     <style jsx>{`
-      .StatusBar {
+      .Statusbar {
         width: 200px;
         height 45px;
         background: ${COLORS.blue};
@@ -28,4 +28,4 @@ const StatusBar = props => (
   </div>
 );
 
-export default StatusBar;
+export default Statusbar;

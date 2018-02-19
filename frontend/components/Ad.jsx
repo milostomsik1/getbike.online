@@ -5,7 +5,8 @@ const Ad = props => (
 
     <style jsx>{`
       .Ad {
-
+        height: 200px;
+        width: 200px;
       }
     `}</style>
   </div>

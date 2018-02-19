@@ -1,5 +1,6 @@
-import { COLORS } from '../variables';
+import { COLORS } from '../../variables';
 import Link from 'next/link';
+import Ad from '../Ad';
 
 const FeaturedAds = () => (
   <div className='FeaturedAds'> FEATURED
