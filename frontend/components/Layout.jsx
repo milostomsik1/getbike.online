@@ -1,6 +1,7 @@
 import { COLORS } from '../variables';
 import Head from 'next/head';
 import Header from './Header';
+import Footer from './Footer';
 
 const Layout = ({title, children}) => (
   <div className='Layout'>
@@ -10,12 +11,13 @@ const Layout = ({title, children}) => (
     </Head>
 
     <Header/>
-
     {children}
+    <Footer/>
 
     <style jsx global>{`
       body {
         font-family: 'Raleway', sans-serif;
+        color: ${COLORS.charcoal};
       }
 
       * {
@@ -25,7 +27,6 @@ const Layout = ({title, children}) => (
 
         list-style: none;
         text-decoration: none;
-        color: ${COLORS.charcoal};
       }
     `}</style>
   </div>

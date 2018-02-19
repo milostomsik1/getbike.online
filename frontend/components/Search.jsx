@@ -1,7 +1,7 @@
 import { COLORS } from '../variables';
 
 const Search = () => (
-  <div className='Search'> Search
+  <div className='Search'> SEARCH
 
     <style jsx>{`
       .Search {

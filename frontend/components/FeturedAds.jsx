@@ -1,14 +1,15 @@
 import { COLORS } from '../variables';
 import Link from 'next/link';
 
-const Sell = () => (
-  <div className='Sell'>
-    <Link href="/"><a>Sell</a></Link>
+const FeaturedAds = () => (
+  <div className='FeaturedAds'> FEATURED
 
     <style jsx>{`
-
+      .FeaturedAds {
+        height: 500px;
+      }
     `}</style>
   </div>
 );
 
-export default Sell;
+export default FeaturedAds;

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Sell = () => (
   <div className='Sell'>
-    <Link href="/"><a>Sell</a></Link>
+    <Link href="/"><a>SELL</a></Link>
 
     <style jsx>{`
       .Sell {

@@ -11,8 +11,7 @@ const SearchBar = () => (
       .SearchBar {
         display: flex;
         justify-content: center;
-        position: relative;
-        top: -30px;
+        margin-top: -30px;
         height: 60px;
         background: ${COLORS.charcoal};
         opacity: 0.75;
