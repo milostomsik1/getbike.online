@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 
 const browse = () => (
-  <Layout>
+  <Layout title='Browse Ads'>
     <h1>Browse</h1>
   </Layout>
 );

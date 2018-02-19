@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Logo = () => (
   <div className='Logo'>
-    <Link href='/browse'>
+    <Link href='/'>
       <a>
         <img src="/static/img/logo.png" alt="GetBike.online logo"/>
       </a>

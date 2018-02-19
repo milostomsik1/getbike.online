@@ -1,9 +1,12 @@
 import { COLORS, DIMENSIONS } from '../../../variables';
+import Link from 'next/link';
 
 const Search = () => (
   <div className='Search'>
     <input className='Search__Input' type="text" placeholder='I am looking for...'/>
-    <div className='Search__Button'></div>
+    <Link href='/browse'><a>
+      <div className='Search__Button'></div>
+    </a></Link>
 
     <style jsx>{`
       .Search {
@@ -18,7 +21,7 @@ const Search = () => (
       .Search__Input {
         flex: 1;
         font-size: 24px;
-        font-weight: 200;
+        font-weight: 300;
         border: none;
         border-top-left-radius: ${DIMENSIONS.borderRadius};
         border-bottom-left-radius: ${DIMENSIONS.borderRadius};
@@ -39,6 +42,7 @@ const Search = () => (
       }
 
       .Search__Button {
+        height: 100%;
         width: 80px;
         background-color: ${COLORS.blue};
         border-top-right-radius: ${DIMENSIONS.borderRadius};

@@ -1,19 +1,22 @@
 import { COLORS } from '../../../variables';
 import Link from 'next/link';
+import Button from '../../Button';
 
 const Sell = () => (
-  <div className='Sell'>
-    <Link href="/"><a>SELL</a></Link>
+  <Link href="/sell"><a>
+    <Button className='Sell'
+      fontSize='24px;'
+      color={COLORS.white}
+      background={COLORS.green}
+      >Sell my item
+    </Button>
 
     <style jsx>{`
       .Sell {
-        background: ${COLORS.green};
-      }
-      .Sell a {
-        color: ${COLORS.white};
+        height: 68px;
       }
     `}</style>
-  </div>
+  </a></Link>
 );
 
 export default Sell;
