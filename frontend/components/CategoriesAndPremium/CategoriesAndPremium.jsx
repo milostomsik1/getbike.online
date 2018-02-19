@@ -11,7 +11,7 @@ const CategoriesAndPremium = () => (
       .CategoriesAndPremium {
         display: flex;
         justify-content: space-between;
-        margin-top: -30px;
+        margin-top: -34px;
         height: 500px;
       }
     `}</style>

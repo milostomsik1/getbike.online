@@ -1,8 +1,13 @@
 import { COLORS } from '../variables';
+import Link from 'next/link';
 
 const Logo = () => (
   <div className='Logo'>
-    <img src="/static/img/logo.png" alt="GetBike.online logo"/>
+    <Link href='/browse'>
+      <a>
+        <img src="/static/img/logo.png" alt="GetBike.online logo"/>
+      </a>
+    </Link>
 
     <style jsx>{`
       .Logo img {

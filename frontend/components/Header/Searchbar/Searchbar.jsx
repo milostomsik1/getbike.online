@@ -3,19 +3,18 @@ import Search from './Search';
 import Sell from './Sell';
 
 const Searchbar = () => (
-  <div className='Searchbar'> SEARCH BAR
+  <div className='Searchbar'>
     <Search/>
     <Sell/>
 
     <style jsx>{`
       .Searchbar {
         display: flex;
+        margin-top: -34px;
         justify-content: center;
-        margin-top: -30px;
-        height: 60px;
-        background: ${COLORS.charcoal};
-        opacity: 0.75;
-        color: ${COLORS.white};
+        height: 68px;
+        position: relative;
+        z-index: 999;
       }
     `}</style>
   </div>
