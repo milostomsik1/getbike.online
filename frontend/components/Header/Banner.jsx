@@ -1,30 +1,27 @@
 import { COLORS } from '../../variables';
+import styled from 'styled-components';
 
-const Banner = () => (
-  <div className='Banner'>
-    <h1 className='Banner__Headline'>The quickest way to your new bike</h1>
+const Headline = styled.h1`
+  max-width: 650px;
+  font-size: 72px;
+  font-weight: 100;
+  color: ${COLORS.white};
+`;
 
-    <style jsx>{`
-      .Banner {
-        display: flex;
-        height: 350px;
+const Banner = styled.div`
+  display: flex;
+  height: 350px;
 
-        align-items: center;
+  align-items: center;
 
-        background-image: url('/static/img/banner.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
+  background-image: url('/static/img/banner.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+`;
 
-      .Banner__Headline {
-        max-width: 650px;
-        font-size: 72px;
-        font-weight: 100;
-        color: ${COLORS.white};
-      }
-    `}</style>
-  </div>
+export default () => (
+  <Banner>
+    <Headline>The quickest way to your new bike</Headline>
+  </Banner>
 );
-
-export default Banner;
