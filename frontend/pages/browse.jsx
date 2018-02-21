@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 
 const browse = () => (
-  <Layout title='Browse Ads'>
+  <Layout title='Browse | GetBike.online'>
     <h1>Browse</h1>
   </Layout>
 );

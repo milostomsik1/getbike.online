@@ -1,28 +1,33 @@
-import { DIMENSIONS } from '../variables';
+import { COLORS, DIMENSIONS } from '../variables';
+import styled from 'styled-components';
 
-const Button = ({fontSize, color, background, children}) => (
-  <button className='Button'>
-    {children}
+const sellStyles = `
+  font-size: 24px;
+  color: ${COLORS.white};
+  background: ${COLORS.green};
+`;
 
-    <style jsx>{`
-      .Button {
-        display: flex;
-        padding: 0 5vw;
-        height: 100%;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        font-size: ${fontSize};
-        font-weight: 300;
-        color: ${color};
-        background: ${background};
-        text-transform: uppercase;
-        border-radius: ${DIMENSIONS.borderRadius};
-        outline: none;
-        cursor: pointer;
-        border: none;
-      }
-    `}</style>
-  </button>
-);
+const Button = styled.button`
+  display: flex;
+  padding: 0 5vw;
+  height: 100%;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  color: ${COLORS.charcoal};
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+
+  background: ${COLORS.white};
+  border-radius: ${DIMENSIONS.borderRadius};
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  ${({sell}) => sell && sellStyles}
+`;
+
 export default Button;

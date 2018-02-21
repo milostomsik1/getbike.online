@@ -1,15 +1,10 @@
-import { COLORS } from '../variables';
+import { COLORS, DIMENSIONS } from '../variables';
+import styled from 'styled-components';
 
-const Ad = props => (
-  <div className='Ad'> Ad
-
-    <style jsx>{`
-      .Ad {
-        height: 200px;
-        width: 200px;
-      }
-    `}</style>
-  </div>
-);
+const Ad = styled.div`
+  width: 200px;
+  height: 200px;
+  border-radius: ${DIMENSIONS.borderRadius};
+`;
 
 export default Ad;
