@@ -20,7 +20,7 @@ const LogoWrapper = styled.div`
 
 
 export default ({href}) => (
-  <Link href={href || '/'}>
+  <Link href={href || '/'} passHref>
     <LogoWrapper>
       <Logo src="/static/img/logo.png" alt="GetBike.online logo"/>
     </LogoWrapper>

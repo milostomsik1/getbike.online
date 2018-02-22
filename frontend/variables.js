@@ -50,3 +50,11 @@ export const TYPOGRAPHY = {
     fontWeight: 100,
   }
 }
+
+export const MEDIA = {
+  mobile: '@media (max-width: 767px)',
+  tablet: '@media (min-width: 768px) and (max-width: 1023px)',
+  laptop: '@media (min-width: 1024px) and (max-width: 1279px)',
+  desktop: '@media (min-width: 1280px) and (max-width: 1599px)',
+  desktopWide: '@media (min-width: 1600px)',
+}
