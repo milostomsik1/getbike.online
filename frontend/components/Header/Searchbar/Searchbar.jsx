@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import { COLORS } from '../../../variables';
+import { COLORS, DIMENSIONS } from '../../../variables';
 import Search from './Search';
 import Button from '../../Button';
 
 const Searchbar = styled.div`
   display: flex;
-  margin-top: -34px;
-  justify-content: center;
-  height: 68px;
+  height: ${DIMENSIONS.searchBar.height}px;
+  margin-top: -${DIMENSIONS.searchBar.height / 2}px;
+
   position: relative;
-  z-index: 9;
+  z-index: ${DIMENSIONS.searchBar.zIndex};
+
+  justify-content: center;
 `;
 
 const Sell = () => (

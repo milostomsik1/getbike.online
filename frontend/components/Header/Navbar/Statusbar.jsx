@@ -1,12 +1,23 @@
 import styled from 'styled-components';
-import { COLORS } from '../../../variables';
+import { COLORS, DIMENSIONS } from '../../../variables';
+import Button from '../../Button';
+
+const Login = () => (
+  <Button login>Login</Button>
+);
+
+const Register = () => (
+  <Button register>Register</Button>
+);
 
 const Statusbar = styled.div`
-  width: 200px;
-  height: 45px;
-  background: ${COLORS.blue};
+  display: flex;
+  height: ${DIMENSIONS.statusBar.height}px;
 `;
 
 export default () => (
-  <Statusbar>STATUSBAR</Statusbar>
+  <Statusbar>
+    <Login/>
+    <Register/>
+  </Statusbar>
 );

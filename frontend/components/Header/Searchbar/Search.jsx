@@ -1,20 +1,24 @@
 import styled from 'styled-components';
-import { COLORS, DIMENSIONS } from '../../../variables';
+import { COLORS, GLOBAL, DIMENSIONS, TYPOGRAPHY } from '../../../variables';
 import Link from 'next/link';
 
 const Input = styled.input`
+  padding-left: 16px;
+
   flex: 1;
-  font-size: 24px;
-  font-weight: 300;
+
+  font-size: ${TYPOGRAPHY.searchBar.fontSize}px;
+  font-weight: ${TYPOGRAPHY.searchBar.fontWeight};
+
   border: none;
-  border-top-left-radius: ${DIMENSIONS.borderRadius};
-  border-bottom-left-radius: ${DIMENSIONS.borderRadius};
+  border-top-left-radius: ${DIMENSIONS.borderRadius}px;
+  border-bottom-left-radius: ${DIMENSIONS.borderRadius}px;
   border-style: solid;
   border-color: ${COLORS.grayBorder};
   border-right: none;
   outline: none;
-  transition: all 0.3s;
-  padding-left: 16px;
+
+  transition: all ${GLOBAL.transitionSpeed}s;
 
   &::placeholder {
     color: ${COLORS.gray};
@@ -25,22 +29,26 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.div`
+const Button = styled.a`
+  display: block;
+  width: ${DIMENSIONS.search.width}px;
   height: 100%;
-  width: 80px;
+
   background-color: ${COLORS.blue};
-  border-top-right-radius: ${DIMENSIONS.borderRadius};
-  border-bottom-right-radius: ${DIMENSIONS.borderRadius};
-  cursor: pointer;
   background-image: url('/static/img/search.png');
   background-repeat: no-repeat;
   background-position: center;
+
+  border-top-right-radius: ${DIMENSIONS.borderRadius}px;
+  border-bottom-right-radius: ${DIMENSIONS.borderRadius}px;
+
+  cursor: pointer;
 `;
 
 const SearchButton = ({href}) => (
-  <Link href={href}><a>
+  <Link href={href}>
     <Button/>
-  </a></Link>
+  </Link>
 );
 
 const Search = styled.div`
@@ -49,7 +57,7 @@ const Search = styled.div`
   flex: 1;
   color: ${COLORS.white};
   background: ${COLORS.white};
-  border-radius: ${DIMENSIONS.borderRadius};
+  border-radius: ${DIMENSIONS.borderRadius}px;
 `;
 
 export default () => (

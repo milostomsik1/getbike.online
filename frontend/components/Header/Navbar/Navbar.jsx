@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { COLORS } from '../../../variables';
+import { COLORS, DIMENSIONS } from '../../../variables';
 import Logo from '../../Logo';
 import Statusbar from './Statusbar';
 
 const Navbar = styled.nav`
   display: flex;
-  height: 80px;
+  height: ${DIMENSIONS.navbar.height}px;
 
   justify-content: space-between;
   align-items: center;

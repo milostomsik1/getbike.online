@@ -1,11 +1,12 @@
-import { COLORS } from '../../variables';
+import { COLORS, TYPOGRAPHY } from '../../variables';
 import styled from 'styled-components';
 
 const Headline = styled.h1`
   max-width: 650px;
-  font-size: 72px;
-  font-weight: 100;
+
   color: ${COLORS.white};
+  font-size: ${TYPOGRAPHY.headline.fontSize}px;
+  font-weight: ${TYPOGRAPHY.headline.fontWeight};
 `;
 
 const Banner = styled.div`
