@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { COLORS } from '../variables';
 import Link from 'next/link';
 

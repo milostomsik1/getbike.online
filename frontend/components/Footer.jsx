@@ -1,6 +1,6 @@
+import styled from 'styled-components';
 import { COLORS } from '../variables';
 import Logo from '../components/Logo';
-import styled from 'styled-components';
 
 const Footer = styled.footer`
   display: flex;
