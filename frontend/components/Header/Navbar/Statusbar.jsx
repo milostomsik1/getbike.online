@@ -2,13 +2,25 @@ import styled from 'styled-components';
 import { COLORS, DIMENSIONS } from '../../../variables';
 import Button from '../../Button';
 
-const Login = () => (
-  <Button login>Login</Button>
-);
+const Login = () => {
+  const handleLoginClick = () => {
+    alert('Login clicked.');
+  }
 
-const Register = () => (
-  <Button register>Register</Button>
-);
+  return (
+    <Button login margin onClick={handleLoginClick}>Login</Button>
+  );
+};
+
+const Register = () => {
+  const handleRegisterClick = () => {
+    alert('Register clicked.');
+  }
+
+  return (
+    <Button register onClick={handleRegisterClick}>Register</Button>
+  );
+};
 
 const Statusbar = styled.div`
   display: flex;

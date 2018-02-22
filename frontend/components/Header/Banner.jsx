@@ -15,7 +15,7 @@ const Banner = styled.div`
 
   align-items: center;
 
-  background-image: url('/static/img/banner.png');
+  background-image: url('/static/img/banner.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

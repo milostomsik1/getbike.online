@@ -8,27 +8,56 @@ const sellStyles = `
   font-size: ${TYPOGRAPHY.searchBar.fontSize}px;
   text-transform: uppercase;
   background: ${COLORS.green};
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    background: ${COLORS.greenHover};
+  }
+
+  &:active {
+    background: ${COLORS.greenActive};
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 const loginStyles = `
   color: ${COLORS.white};
   background: transparent;
   border: 1px solid ${COLORS.white};
-  transition: all ${GLOBAL.transitionSpeed}s;
+  transition: box-shadow ${GLOBAL.transitionSpeed}s;
 
   &:hover {
     color: ${COLORS.charcoal};
     background: ${COLORS.white};
+  }
+
+  &:active {
+    color: ${COLORS.charcoal};
+    background: ${COLORS.white};
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   }
 `;
 
 const registerStyles = `
   color: ${COLORS.white};
   background: ${COLORS.blue};
+  transition: box-shadow ${GLOBAL.transitionSpeed}s;
+
+  &:hover {
+    color: ${COLORS.white};
+    background: ${COLORS.blueHover};
+  }
+
+  &:active {
+    color: ${COLORS.white};
+    background: ${COLORS.blueActive};
+    box-shadow: 0px 6px 10px rgba(50, 50, 50, 0.35);
+  }
 `;
 
 const Button = styled.button`
   display: flex;
+  margin: ${({margin}) => margin && '0 20px'};
   padding: 0 20px;
   height: 100%;
 
@@ -44,7 +73,6 @@ const Button = styled.button`
   border-radius: ${DIMENSIONS.borderRadius}px;
   border: none;
   outline: none;
-
   cursor: pointer;
 
   ${({login}) => login && loginStyles}

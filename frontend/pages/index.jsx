@@ -4,8 +4,8 @@ import CategoriesAndPremium from '../components/CategoriesAndPremium/CategoriesA
 
 const index = () => (
   <Layout title='GetBike.online'>
-  <CategoriesAndPremium/>
-  <FeaturedAds/>
+    <CategoriesAndPremium/>
+    <FeaturedAds/>
   </Layout>
 );
 

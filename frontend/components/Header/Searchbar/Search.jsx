@@ -38,11 +38,20 @@ const Button = styled.a`
   background-image: url('/static/img/search.png');
   background-repeat: no-repeat;
   background-position: center;
-
   border-top-right-radius: ${DIMENSIONS.borderRadius}px;
   border-bottom-right-radius: ${DIMENSIONS.borderRadius}px;
-
   cursor: pointer;
+
+  transition: box-shadow ${GLOBAL.transitionSpeed}s;
+
+  &:hover {
+    background-color: ${COLORS.blueHover};
+  }
+
+  &:active {
+    background-color: ${COLORS.blueActive};
+    box-shadow: 0px 6px 10px rgba(50, 50, 50, 0.35);
+  }
 `;
 
 const SearchButton = ({href}) => (
@@ -51,7 +60,7 @@ const SearchButton = ({href}) => (
   </Link>
 );
 
-const Search = styled.div`
+const Search = styled.form`
   display: flex;
   margin-right: 24px;
   flex: 1;
