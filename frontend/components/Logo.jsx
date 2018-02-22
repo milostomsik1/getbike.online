@@ -1,21 +1,28 @@
 import styled from 'styled-components';
-import { COLORS } from '../variables';
+import { COLORS, GLOBAL } from '../variables';
 import Link from 'next/link';
 
 const Logo = styled.img`
   display: block;
   cursor: pointer;
+  pointer-events: none;
 `;
 
-const ResponsiveImage = styled.div`
-  width: 100%;
-  height: auto;
+const LogoWrapper = styled.div`
+  height: 50px;
+  cursor: pointer;
+  transition: transform ${GLOBAL.transitionSpeed}s;
+
+  &:active {
+    transform: skewX(10deg) translateX(-4px);
+  }
 `;
+
 
 export default ({href}) => (
   <Link href={href || '/'}>
-    <ResponsiveImage>
+    <LogoWrapper>
       <Logo src="/static/img/logo.png" alt="GetBike.online logo"/>
-    </ResponsiveImage>
+    </LogoWrapper>
   </Link>
 );

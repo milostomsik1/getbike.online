@@ -16,7 +16,7 @@ const sellStyles = `
 
   &:active {
     background: ${COLORS.greenActive};
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -34,7 +34,7 @@ const loginStyles = `
   &:active {
     color: ${COLORS.charcoal};
     background: ${COLORS.white};
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -51,7 +51,7 @@ const registerStyles = `
   &:active {
     color: ${COLORS.white};
     background: ${COLORS.blueActive};
-    box-shadow: 0px 6px 10px rgba(50, 50, 50, 0.35);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
   }
 `;
 
