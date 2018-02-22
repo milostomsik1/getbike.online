@@ -17,7 +17,8 @@ Official repo of getbike.online - second hand bikes, equipment, tools and servic
 
 #### Frontend:
 * React
-* Next.js (server side rendering)
+* Next.js (Server Side Rendering)
+* Styled Components
 * Redux
 * Apollo Client
 
@@ -27,10 +28,16 @@ Official repo of getbike.online - second hand bikes, equipment, tools and servic
 ## Development:
 #### Backend:
 * Create PostgreSQL databases named 'getbike' and 'getbike_test'  
-* `cd ./backend`  to move to backend directory  
+* `cd ./backend` to move to the backend directory  
 * `yarn` to install the dependencies  
 * `yarn server` to start the development server (doesn't run the seeder)  
 * `yarn server:test` to start the development server with test DB(runs the seeder)  
 * `yarn test` to run the tests (needs to have running test db)  
 To repeat testing first restart test server by closing current test server and executing `yarn server:test` and then run `yarn test` again.
 * Optionally you can run `yarn seed` or `yarn seed:test` to seed development or test database.
+
+#### Frontend:
+* `cd ./frontend` to move to the frontend directory  
+* `yarn dev` to run the development server  
+* `yarn build` to build the project  
+* `yarn start` to run the previously built project
