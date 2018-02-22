@@ -13,6 +13,8 @@ const Footer = styled.footer`
 const Copyright = styled.p`
   width: 100%;
   color: ${COLORS.white};
+  text-align: center;
+  border-top: 1px solid ${COLORS.grayBorder};
 `;
 
 export default () => (

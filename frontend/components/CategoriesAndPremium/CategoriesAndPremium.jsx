@@ -1,21 +1,18 @@
+import styled from 'styled-components';
 import { COLORS } from '../../variables';
 import LandingCategories from './LandingCategories';
 import PremiumAds from './PremiumAds';
 
-const CategoriesAndPremium = () => (
-  <div className='CategoriesAndPremium'> CATEGORIESANDPREMIUM
+const CategoriesAndPremium = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin-top: -34px;
+  height: 500px;
+`;
+
+export default () => (
+  <CategoriesAndPremium>
     <LandingCategories/>
     <PremiumAds/>
-
-    <style jsx>{`
-      .CategoriesAndPremium {
-        display: flex;
-        justify-content: space-between;
-        margin-top: -34px;
-        height: 500px;
-      }
-    `}</style>
-  </div>
+  </CategoriesAndPremium>
 );
-
-export default CategoriesAndPremium;

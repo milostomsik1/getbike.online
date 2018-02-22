@@ -2,20 +2,20 @@ import styled from 'styled-components';
 import { COLORS } from '../variables';
 import Link from 'next/link';
 
-const Logo = () => (
-  <div className='Logo'>
-    <Link href='/'>
-      <img src="/static/img/logo.png" alt="GetBike.online logo"/>
-    </Link>
+const Logo = styled.img`
+  display: block;
+  cursor: pointer;
+`;
 
-    <style jsx>{`
-      .Logo img {
-        display: block;
-        cursor: pointer;
-      }
-    `}</style>
-  </div>
+const ResponsiveImage = styled.div`
+  width: 100%;
+  height: auto;
+`;
 
+export default ({href}) => (
+  <Link href={href || '/'}>
+    <ResponsiveImage>
+      <Logo src="/static/img/logo.png" alt="GetBike.online logo"/>
+    </ResponsiveImage>
+  </Link>
 );
-
-export default Logo;

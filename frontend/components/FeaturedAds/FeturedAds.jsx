@@ -1,16 +1,23 @@
+import styled from 'styled-components';
 import { COLORS } from '../../variables';
-import Link from 'next/link';
 import Ad from '../Ad';
 
-const FeaturedAds = () => (
-  <div className='FeaturedAds'> FEATURED
+const Title = styled.h2`
+  width: 100%;
+`;
 
-    <style jsx>{`
-      .FeaturedAds {
-        height: 500px;
-      }
-    `}</style>
-  </div>
+const FeaturedAds = styled.section`
+  display: flex;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+`;
+
+export default () => (
+  <FeaturedAds>
+    <Title>Featured:</Title>
+    <Ad/>
+    <Ad/>
+    <Ad/>
+    <Ad/>
+  </FeaturedAds>
 );
-
-export default FeaturedAds;

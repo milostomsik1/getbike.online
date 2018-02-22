@@ -1,15 +1,11 @@
+import styled from 'styled-components';
 import { COLORS } from '../../variables';
 
-const LandingCategories = () => (
-  <div className='LandingCategories'> LandingCategories
+const LandingCategories = styled.div`
+  background: ${COLORS.charcoal};
+  color: ${COLORS.white};
+`;
 
-    <style jsx>{`
-      .LandingCategories {
-        background: ${COLORS.charcoal};
-        color: ${COLORS.white};
-      }
-    `}</style>
-  </div>
+export default () => (
+  <LandingCategories></LandingCategories>
 );
-
-export default LandingCategories;
