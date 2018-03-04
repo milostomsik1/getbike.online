@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { COLORS, DIMENSIONS } from '../../../variables';
 import Search from './Search';
 import Button from '../../Button';
+import Container from '../../Container';
 
 const Searchbar = styled.div`
   display: flex;
@@ -20,7 +21,9 @@ const Sell = () => (
 
 export default () => (
   <Searchbar>
-    <Search/>
-    <Sell/>
+    <Container flex>
+      <Search/>
+      <Sell/>
+    </Container>
   </Searchbar>
 );

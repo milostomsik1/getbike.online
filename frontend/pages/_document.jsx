@@ -12,9 +12,15 @@ injectGlobal`
     padding: 0;
     box-sizing: border-box;
     color: ${COLORS.charcoal};
-    list-style: none;
-    text-decoration: none;
     user-select: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 

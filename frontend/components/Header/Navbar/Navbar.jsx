@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { COLORS, DIMENSIONS } from '../../../variables';
 import Logo from '../../Logo';
 import Statusbar from './Statusbar';
+import Container from '../../Container';
+
 
 const Navbar = styled.nav`
   display: flex;
@@ -15,7 +17,9 @@ const Navbar = styled.nav`
 
 export default () => (
   <Navbar>
-    <Logo/>
-    <Statusbar/>
+    <Container flex alignCenter justifyBetween>
+      <Logo/>
+      <Statusbar/>
+    </Container>
   </Navbar>
 );

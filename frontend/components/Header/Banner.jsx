@@ -1,13 +1,6 @@
 import { COLORS, TYPOGRAPHY } from '../../variables';
 import styled from 'styled-components';
-
-const Headline = styled.h1`
-  max-width: 650px;
-
-  color: ${COLORS.white};
-  font-size: ${TYPOGRAPHY.headline.fontSize}px;
-  font-weight: ${TYPOGRAPHY.headline.fontWeight};
-`;
+import Container from '../Container';
 
 const Banner = styled.div`
   display: flex;
@@ -21,8 +14,18 @@ const Banner = styled.div`
   background-size: cover;
 `;
 
+const Headline = styled.h1`
+  max-width: 650px;
+
+  color: ${COLORS.white};
+  font-size: ${TYPOGRAPHY.headline.fontSize}px;
+  font-weight: ${TYPOGRAPHY.headline.fontWeight};
+`;
+
 export default () => (
   <Banner>
-    <Headline>The quickest way to your new bike</Headline>
+    <Container flex alignCenter>
+      <Headline>The quickest way to your new bike</Headline>
+    </Container>
   </Banner>
 );

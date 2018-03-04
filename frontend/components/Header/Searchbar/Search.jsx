@@ -50,7 +50,7 @@ const Button = styled.a`
 
   &:active {
     background-color: ${COLORS.blueActive};
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: ${GLOBAL.buttonShadow};
   }
 `;
 

@@ -16,7 +16,8 @@ export const COLORS = {
 
 export const GLOBAL = {
   fontSize: 16,
-  transitionSpeed: 0.3
+  transitionSpeed: 0.3,
+  buttonShadow: '0px 6px 10px rgba(0, 0, 0, 0.3)'
 }
 
 export const DIMENSIONS = {
