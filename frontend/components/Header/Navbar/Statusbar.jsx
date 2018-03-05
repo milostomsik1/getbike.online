@@ -4,7 +4,7 @@ import Button from '../../Button';
 
 const Login = () => {
   const handleLoginClick = () => {
-    alert('Login clicked.');
+    console.log('Login clicked.');
   }
 
   return (
@@ -14,7 +14,7 @@ const Login = () => {
 
 const Register = () => {
   const handleRegisterClick = () => {
-    alert('Register clicked.');
+    console.log('Register clicked.');
   }
 
   return (

@@ -69,9 +69,29 @@ const Search = styled.form`
   border-radius: ${DIMENSIONS.borderRadius}px;
 `;
 
-export default () => (
-  <Search>
-    <Input type='text' placeholder='I am looking for...'/>
-    <SearchButton href='/browse'/>
-  </Search>
-);
+export default class extends React.Component {
+  state = {value: ''};
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state.value);
+  };
+
+  handleChange = event => {
+    this.setState({value: event.target.value});
+  }
+
+  render() {
+    return (
+      <Search onSubmit={this.handleSubmit}>
+        <Input
+          value={this.state.value}
+          onChange={this.handleChange}
+          type='text'
+          placeholder='I am looking for...'
+        />
+        <SearchButton href='/browse'/>
+      </Search>
+    );
+  }
+}

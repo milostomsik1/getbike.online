@@ -8,7 +8,6 @@ const sellStyles = `
   font-size: ${TYPOGRAPHY.searchBar.fontSize}px;
   text-transform: uppercase;
   background: ${COLORS.green};
-  transition: box-shadow 0.3s;
 
   &:hover {
     background: ${COLORS.greenHover};
@@ -24,7 +23,6 @@ const loginStyles = `
   color: ${COLORS.white};
   background: transparent;
   border: 1px solid ${COLORS.white};
-  transition: box-shadow ${GLOBAL.transitionSpeed}s;
 
   &:hover {
     color: ${COLORS.charcoal};
@@ -41,7 +39,6 @@ const loginStyles = `
 const registerStyles = `
   color: ${COLORS.white};
   background: ${COLORS.blue};
-  transition: box-shadow ${GLOBAL.transitionSpeed}s;
 
   &:hover {
     color: ${COLORS.white};
@@ -75,13 +72,20 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
 
+  transition: box-shadow ${GLOBAL.transitionSpeed}s,
+              transform ${GLOBAL.transitionSpeed / 2}s;
+
+  &:active {
+    transform: scale(0.99);
+  }
+
   ${({login}) => login && loginStyles}
   ${({register}) => register && registerStyles}
   ${({sell}) => sell && sellStyles}
 `;
 
 export default withRouter(({ href, router, children, ...props }) => {
-  const handleButtonClick = event => {
+  const handleClick = event => {
     event.preventDefault();
     if (href) {
       router.push(href);
@@ -92,7 +96,7 @@ export default withRouter(({ href, router, children, ...props }) => {
 
   return (
     <Button
-      onClick={handleButtonClick}
+      onClick={handleClick}
       active={isActive}
       {...props}>
       {children}
