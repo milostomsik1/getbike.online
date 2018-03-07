@@ -1,20 +1,20 @@
 import * as types from '../types';
 
 const initialState = {
-  loggedIn: null
+  value: ''
 };
 
-const auth = (state = initialState, action) => {
+const search = (state = initialState, action) => {
   switch(action.type) {
-    case types.LOG_IN:
+    case types.SEARCH:
+      console.log(`Looking for: ${action.payload}`)
       return {
         ...state,
-        loggedIn: action.payload.loggedIn
       };
-    case types.LOG_OUT:
+    case types.CHANGE_SEARCH_INPUT:
       return {
         ...state,
-        loggedIn: null
+        value: action.payload
       };
     default:
       return {
@@ -23,4 +23,4 @@ const auth = (state = initialState, action) => {
   }
 };
 
-export default auth;
+export default search;

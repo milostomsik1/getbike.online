@@ -1,3 +1,7 @@
+// Redux Dependencies
+import withRedux from 'next-redux-wrapper';
+import { initStore } from '../store';
+// Component Imports
 import Layout from '../components/Layout';
 
 const browse = () => (
@@ -6,4 +10,4 @@ const browse = () => (
   </Layout>
 );
 
-export default browse;
+export default withRedux(initStore)(browse);

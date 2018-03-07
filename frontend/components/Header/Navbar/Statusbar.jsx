@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS, DIMENSIONS } from '../../../variables';
 import Button from '../../Button';
+import { connect } from 'react-redux';
 
 const Login = () => {
   const handleLoginClick = () => {

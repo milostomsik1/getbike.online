@@ -72,12 +72,7 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
 
-  transition: box-shadow ${GLOBAL.transitionSpeed}s,
-              transform ${GLOBAL.transitionSpeed / 2}s;
-
-  &:active {
-    transform: scale(0.99);
-  }
+  transition: box-shadow ${GLOBAL.transitionSpeed}s;
 
   ${({login}) => login && loginStyles}
   ${({register}) => register && registerStyles}

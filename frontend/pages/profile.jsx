@@ -1,3 +1,7 @@
+// Redux Dependencies
+import withRedux from 'next-redux-wrapper';
+import { initStore } from '../store';
+// Component Imports
 import Layout from '../components/Layout';
 
 const profile = () => (
@@ -6,4 +10,4 @@ const profile = () => (
   </Layout>
 );
 
-export default profile;
+export default withRedux(initStore)(profile);

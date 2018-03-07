@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { COLORS, GLOBAL, DIMENSIONS, TYPOGRAPHY } from '../../../variables';
 import Link from 'next/link';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from '../../../store/actions';
+import reducers from '../../../store/reducers';
 
 const Input = styled.input`
   padding-left: 16px;
@@ -60,7 +64,7 @@ const SearchButton = ({href}) => (
   </Link>
 );
 
-const Search = styled.form`
+const SearchForm = styled.form`
   display: flex;
   margin-right: 24px;
   flex: 1;
@@ -69,29 +73,30 @@ const Search = styled.form`
   border-radius: ${DIMENSIONS.borderRadius}px;
 `;
 
-export default class extends React.Component {
-  state = {value: ''};
-
+class Search extends Component {
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.value);
+    console.log(this.props);
+    this.props.find(event.target.value);
   };
 
   handleChange = event => {
-    this.setState({value: event.target.value});
+    this.props.changeSearchInput(event.target.value);
   }
 
   render() {
     return (
-      <Search onSubmit={this.handleSubmit}>
+      <SearchForm onSubmit={this.handleSubmit}>
         <Input
-          value={this.state.value}
+          value={this.props.search.value}
           onChange={this.handleChange}
           type='text'
           placeholder='I am looking for...'
         />
         <SearchButton href='/browse'/>
-      </Search>
+      </SearchForm>
     );
   }
 }
+
+export default connect(reducers, actions)(Search);
